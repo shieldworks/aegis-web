@@ -89,7 +89,7 @@
           background: #0d1d3b;
           padding: 1em 2em 4em 2em;
           border-radius: 4px;
-          box-shadow: rgba(0, 0, 0, 0.55) 0px 14px 28px, rgba(0, 0, 0, 0.42) 0px 10px 10px;
+          box-shadow: rgba(0, 0, 0, 0.55) 0 14px 28px, rgba(0, 0, 0, 0.42) 0px 10px 10px;
       }
 
       pre {
@@ -151,9 +151,7 @@
               margin-right: -2em;
           }
 
-          #video-player {
-              display: none;
-          }
+
       }
 
       .footer {
@@ -162,6 +160,11 @@
           margin-top: 2em;
           font-weight: 100;
       }
+
+      .vidlink, .vidlink:hover {
+          background: none;
+          text-decoration: none;
+      }
   </style>
 </head>
 <body>
@@ -169,7 +172,7 @@
   <h1>Aegis</h1>
   <h2 id="keep-your-secrets">keep your secrets… secret</h2>
 
-  <p><a href="http://vimeo.com/v0lkan/secrets"><img width="100%" src="/assets/capture.png" alt="Watch Aegis Demo" /></a></p>
+  <p><a href="http://vimeo.com/v0lkan/secrets" class="vidlink"><img width="100%" src="/assets/capture.png" alt="Watch Aegis Demo" /></a></p>
 
   <h2 id="about">About</h2>
 
@@ -187,28 +190,23 @@
                                title="Introducing Aegis: A Cloud Native Solution to Secure Your Sensitive Data">this
     introductory video</a> yet, now might be a good time 🙂.</p>
 
-  <h2 id="where-not-to-use-aegis">Where <strong>NOT</strong> To Use Aegis</h2>
+  <h2 id="installation">Installation</h2>
+  <p><a href="https://github.com/zerotohero-dev/aegis">Check out <strong>Aegis</strong>’ Git Repository</a> for
+    <strong>system requirements</strong> and <strong>installation instructions</strong>.</p>
+
+  <h2 id="where-not-to-use-aegis">Where <strong>NOT</strong> to Use Aegis</h2>
   <p>Aegis is <strong>not</strong> a Database, nor is it a distributed caching layer. Of course, you may tweak it to act
     like one if you try hard enough, yet, that is generally not a good use of the tool.</p>
   <p>Aegis is suitable for storing secrets and dispatching them; however, it is a <em>terrible</em> idea to use it as a
     centralized database to store everything but the kitchen sink.</p>
   <p>Use Aegis to store service keys, database credentials, access tokens, etc.</p>
 
-  <h2 id="architecture-details">Architecture Details</h2>
-  <p><a href="https://github.com/zerotohero-dev/aegis/blob/main/ARCHITECTURE.md">Check out this <strong>Architecture</strong> document</a> for detailed information about
-    <strong>Aegis</strong>’s project folder structure, system design, sequence diagrams, workflows, and internal
-    operating principles.</p>
-
-  <h2 id="installation">Installation</h2>
-  <p><a href="https://github.com/zerotohero-dev/aegis">Check out <strong>Aegis</strong>’ Git Repository</a> for
-  <strong>system requirements</strong> and <strong>installation instructions</strong>.</p>
-
   <h2 id="design-decisions">Design Decisions</h2>
   <p>Keeping <em>Aegis</em> <strong>slim</strong>, <strong>secure</strong>, and <strong>boringly-easy</strong> to
-    install and operate are the three pillars of the project.</p>
+    install and operate are the main pillars of the project.</p>
 
-  <p><a href="https://github.com/zerotohero-dev/aegis/blob/main/DESIGN_DECISIONS.md">Check out the <strong>Design
-      Decisions</strong> document</a> for a deeper discussion about how we maintain the architectural balance in
+  <p><a href="https://github.com/zerotohero-dev/aegis">Check out <strong>Aegis</strong>’
+    Git Repository</a> for a deeper discussion about how we maintain the architectural balance in
     <strong>Aegis</strong>.</p>
 
   <h2 id="umm-how-do-i-pronounce-aegis">Umm… How Do I Pronounce “Aegis”?</h2>
@@ -223,13 +221,10 @@
   </ol>
 
   <h2 id="whats-coming-up-next">What’s Coming Up Next?</h2>
-  <p>You can see the project’s progress <a href="https://github.com/orgs/zerotohero-dev/projects/2/views/2">in this
-    <strong>Aegis MDP</strong> board</a>.</p>
 
-  <p>The board outlines what are the current outstanding work items, and what is currently being worked on.</p>
-
-  <p>There is also <a href="https://github.com/orgs/zerotohero-dev/projects/3/views/2">this <strong>Aegis
-    v1.0.0</strong> board</a> that contains longer-term goals that we’ll start once the MDP board is mostly done.</p>
+  <p>Again, the best place to look at is <a href="https://github.com/zerotohero-dev/aegis"><strong>Aegis</strong>’
+    Git Repository</a>. From there, you can dig into related Kanban boards and
+    projects to see what’s planned for the upcoming releases</p>
 
   <h2 id="code-of-conduct">Code Of Conduct</h2>
   <p><a href="https://github.com/zerotohero-dev/aegis/blob/main/CODE_OF_CONDUCT.md">Be a nice citizen</a>.</p>
