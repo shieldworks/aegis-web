@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Aegis: Keep your secrets… secret.</title>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
+  <link rel="stylesheet" href="https://use.typekit.net/mkv3paq.css">
+  <style>
+      * {
+          margin: 0;
+          padding: 0
+      }
+
+      body {
+          background: #2b364a;
+          font-family: input-mono, Consolas, Monaco, "Andale Mono", "Ubuntu Mono", Liberation Mono, Lucida Console, monospace;
+          color: #ffffff;
+          padding: 2em 2em 2em 2em;
+          font-weight: 100;
+      }
+
+      h1 {
+          background: url(/assets/aegis-icon.png) left center no-repeat;
+          background-size: contain;
+          padding-left: 1.25em;
+          padding-bottom: 0.1em;
+      }
+
+      strong {
+          font-weight: 700;
+          color: #7dc8c2;
+      }
+
+      em {
+          color: #7dc8c2;
+      }
+
+      html, body {
+          font-size: 18px;
+          line-height: 1.6;
+      }
+
+      h1 {
+          font-size: 4.25em;
+          line-height: 1.15em;
+          padding-top: 0.235em;
+          margin-bottom: -0.337em;
+          font-weight: 100;
+      }
+
+      #keep-your-secrets {
+          color: #a0a0a0;
+          margin-bottom: 1em;
+      }
+
+      h2, h3 {
+          color: #c8fe4f;
+          font-weight: normal;
+          font-size: 1.63em;
+          line-height: 2.00em;
+          padding-top: 0.654em;
+          margin-bottom: 0.346em;
+      }
+
+      h2 strong, h3 strong {
+          color: #c8fe4f;
+      }
+
+      h4 {
+          font-size: 1.63em;
+          line-height: 2.00em;
+          padding-top: 0.654em;
+          margin-bottom: 0.346em;
+      }
+
+      p {
+          font-size: 1.00em;
+          line-height: 1.63em;
+          padding-top: 0.500em;
+          margin-bottom: 1.13em;
+      }
+
+      article {
+          max-width: 750px;
+          margin: 0 auto;
+          background: #0d1d3b;
+          padding: 1em 2em 4em 2em;
+          border-radius: 4px;
+          box-shadow: rgba(0, 0, 0, 0.55) 0 14px 28px, rgba(0, 0, 0, 0.42) 0px 10px 10px;
+      }
+
+      pre {
+          font-family: input-mono, Consolas, Monaco, "Andale Mono", "Ubuntu Mono", Liberation Mono, Lucida Console, monospace;
+          background: #001337;
+          color: #c8fe4f;
+          padding: 1em;
+          border-radius: 4px;
+          overflow: auto;
+          margin: 4em -2em -4em;
+      }
+
+      a {
+          padding: 0.25em;
+          transition: all ease-out 260ms;
+      }
+
+      a, a strong {
+          color: #FFDF4F;
+      }
+
+      a:hover, a:hover strong {
+          color: #001337;
+          background: #7dc8c2;
+          text-decoration: none;
+      }
+
+      ol {
+          margin: 2em;
+      }
+
+      @media screen and (max-width: 700px) {
+          body {
+              padding: 0;
+              font-size: 14px;
+          }
+
+          h1 {
+              font-size: 3.26em;
+              margin-bottom: -0.737em;
+          }
+
+          h2 {
+              font-size: 1.31em;
+              line-height: 1.24em;
+              padding-top: 0.286em;
+              margin-bottom: 0.452em;
+              margin-top: 1.9em;
+          }
+
+          a {
+              padding: inherit;
+              display: inline;
+          }
+
+          pre {
+              font-size: 1em;
+              margin-left: -2em;
+              margin-right: -2em;
+          }
+
+
+      }
+
+      .footer {
+          text-align: center;
+          padding: 1em;
+          margin-top: 2em;
+          font-weight: 100;
+      }
+
+      .vidlink, .vidlink:hover {
+          background: none;
+          text-decoration: none;
+      }
+
+      pre.doc {
+          margin: 0;
+          padding: 0.5em;
+          margin-bottom: 1.13em;
+      }
+
+      h2.doc strong {
+          color: #FFDF4F;
+      }
+
+      ul.doc {
+          margin: 1em;
+      }
+
+      code {
+        color: #7dc8c2;
+      }
+
+      hr {
+          margin-bottom: 2em;
+      }
+  </style>
+</head>
+<body>
+<article>
+  <h1>Aegis</h1>
+  <h2 id="keep-your-secrets">Go SDK Documentation</h2>
+
+
+  <p><a href="/">Home</a> | <strong>Go SDK Docs</strong></p>
+
+  <hr />
+
+  <p>This is the documentation for
+ <a href="https://github.com/zerotohero-dev/aegis-sdk-go">Aegis Go SDK</a>.</p>
+
+  <h2 class="doc">Package <a href="https://github.com/zerotohero-dev/aegis-sdk-go/tree/main/sentry"><strong>sentry</strong></a></h2>
+
+  <p>The current SDK has two public methods under the package <strong>sentry</strong>:</p>
+
+  <ul class="doc">
+    <li><strong>func Fetch</strong></li>
+    <li><strong>func Watch</strong></li>
+  </ul>
+
+
+  <h2 class="doc">func Fetch() (string, error)</h2>
+  <p>
+    <strong>Fetch</strong> fetches the up-to-date secret that has been registered to the workload.
+  </p>
+
+  <pre class="doc">secret, err := sentry.Fetch()
+</pre>
+  <p>
+    In case of a problem, Fetch will return an empty string and an error explaining
+    what went wrong.
+  </p>
+
+  <h2>func Watch()</h2>
+  <p>
+    <strong>Watch</strong> synchronizes the internal state of the sidecar by talking to
+    <strong>Aegis Safe</strong> regularly. It periodically calls <strong>Fetch</strong> behind-the-scenes to
+    get its work done. Once it fetches the secrets, it saves it to
+    the location defined in the <code>AEGIS_SIDECAR_SECRETS_PATH</code> environment
+    variable (<code>/opt/aegis/secrets.json</code> by default).
+  </p>
+
+  <h2>Example</h2>
+
+  <p>Here is a demo workload that uses the <code>Fetch()</code> API to
+  retrieve secrets from <strong>Aegis Safe</strong>.</p>
+
+  <pre class="doc">
+package main
+
+import (
+	"fmt"
+	"github.com/zerotohero-dev/aegis-sdk-go/sentry"
+	"time"
+)
+
+func main() {
+	for {
+		// Fetch the secret bound to this workload
+		// using Aegis Go SDK:
+		data, err := sentry.Fetch()
+
+		if err != nil {
+			fmt.Println("Failed. Will retry…")
+		} else {
+			fmt.Println("secret: '", data, "'")
+		}
+
+		time.Sleep(5 * time.Second)
+	}
+}
+  </pre>
+
+  <p>Here follows a possible <strong>Deployment</strong> descriptor for such a workload.
+  Check out <a href="https://github.com/zerotohero-dev/aegis/tree/main/install/k8s/demo-workload">Aegis
+    demo workload manifests on GitHub</a> for additional examples.</p>
+
+  <pre class="doc">
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: aegis-workload-demo
+  namespace: default
+automountServiceAccountToken: false
+---
+apiVersion: spire.spiffe.io/v1alpha1
+kind: ClusterSPIFFEID
+metadata:
+  name: aegis-workload-demo
+spec:
+  spiffeIDTemplate: "spiffe://aegis.z2h.dev/workload/aegis-workload-demo"
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: aegis-workload-demo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aegis-workload-demo
+  namespace: default
+  labels:
+    app.kubernetes.io/name: aegis-workload-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: aegis-workload-demo
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: aegis-workload-demo
+    spec:
+      serviceAccountName: aegis-workload-demo
+      containers:
+        - name: main
+          image: z2hdev/aegis-workload-demo-using-sdk:0.7.0
+          volumeMounts:
+          - name: spire-agent-socket
+            mountPath: /spire-agent-socket
+            readOnly: true
+          env:
+          - name: SPIFFE_ENDPOINT_SOCKET
+            value: unix:///spire-agent-socket/agent.sock
+      volumes:
+      - name: spire-agent-socket
+        hostPath:
+          path: /run/spire/sockets
+          type: Directory
+  </pre>
+
+  <pre>
+ .-'_.---._'-.
+ ||####|(__)||  Protect your secrets,
+   \\()|##//    protect your business.
+    \\ |#//        &lt;aegis.z2h.dev&gt;
+     .\_/.
+</pre>
+</article>
+<p class="footer">Made with ❤️ in California.</p>
+</body>
+</html>
