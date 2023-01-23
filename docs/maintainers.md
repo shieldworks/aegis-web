@@ -7,7 +7,7 @@ micro_nav: true
 page_nav:
   prev:
     content: pronunciation guide
-    url: '/docs/technologies'
+    url: '/docs/pronunciation'
   next:
     content: what’s coming up?
     url: '/docs/timeline'
