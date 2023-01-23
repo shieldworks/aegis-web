@@ -40,6 +40,36 @@ If you haven’t watched this introductory video yet, now might be a good time �
 
 [![Watch the video](/doks-theme/assets/images/capture.png)](https://vimeo.com/v0lkan/secrets)
 
+## Where **NOT** to Use Aegis
+
+Aegis is **not** a Database, nor is it a distributed caching layer. Of course,
+you may tweak it to act like one if you try hard enough, yet, that is
+generally not a good use of the tool.
+
+Aegis is suitable for storing secrets and dispatching them; however, it
+is a *terrible* idea to use it as a centralized database to store everything
+but the kitchen sink.
+
+Use **Aegis** to store service keys, database credentials, access tokens,
+etc.
+
+
+## How Do I Get the Root Token? Where Do I Store It?
+
+Unlike some other secret vaults, you do not need an admin token
+to operate Aegis 🙂.
+
+Benefits of this approach is: It helps the Ops team `#sleepmore`, since
+everything is automated, and you won’t have to manually unlock Aegis upon
+a system crash, for example.
+
+However, there’s no free lunch, and as the operator of a production system,
+your homework is to secure access to your cluster. [Check out the **Production 
+Deployment Guideline**][production] for further instructions about hardening your 
+cluster to securely use **Aegis**.
+
+[production]: /docs/production
+
 ## Installation
 
 First, ensure that you have sufficient administrative rights on your 

@@ -26,7 +26,7 @@ want to report a security vulnerability,
 If none sounds like a plan, [email at (*me@volkan.io*)][email] and share
 your thoughts.
 
-## I Want to Be A Contributor
+## I Want to Be a Contributor
 
 We appreciate your interest in making the world a better and more secure place
 where everyone can `#sleepmore` 🤗. We’d love to have you on board.
@@ -38,7 +38,7 @@ else.
 [contributing]: https://github.com/zerotohero-dev/aegis/blob/main/CONTRIBUTING.md
 [code-of-conduct]: https://github.com/zerotohero-dev/aegis/blob/main/CODE_OF_CONDUCT.md
 
-## Can I Buy You A Coffee?
+## Can I Buy You a Coffee?
 
 Maintaining an open source project is a lot of hard work. And along with time
 investment, you end up making a heck lot of “out of pocket” expenses too.

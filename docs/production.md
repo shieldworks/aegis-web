@@ -50,6 +50,12 @@ This stance is especially important for the **Aegis Sentinel** Pod since an
 attacker who has access to that pod can override (*but not read*) secrets on
 workloads.
 
+**Aegis** leverages Kubernetes security primitives and modern cryptography
+to secure access to secrets. And **Aegis Sentinel** is the **only** system 
+part that has direct write access to the **Aegis Safe** secrets store. Therefore, 
+o nce you secure your access to **Aegis Sentinel** with proper RBAC and policies, 
+you secure your access to your secrets.
+
 [distroless]: https://github.com/GoogleContainerTools/distroless
 
 ## Set CPU and Memory Limits
