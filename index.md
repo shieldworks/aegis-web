@@ -20,7 +20,7 @@ grid_navigation:
   cta: get started
   url: '/docs'
 - title: Production Tips
-  excerpt: Production deployment recommendations to let your ops <code>#sleepmore</code>.
+  excerpt: Production deployment recommendations to let your ops team <code>#sleepmore</code>.
   cta: prepare
   url: '/docs/production'
 - title: Using Aegis SDK
@@ -32,7 +32,7 @@ grid_navigation:
 
 <div style="margin-top:0.75em"></div>
 
-**Aegis** is a **Kubernetes-native**, lightweight, secrets manager.
+**Aegis** is a **Kubernetes-native**, lightweight secrets manager.
 
 **Aegis** keeps your secrets… secret.
 
@@ -42,9 +42,9 @@ secure and protected.
 <div style="margin-top:3.75em"></div>
 
 <div>
-<a href="/contact" style="background:#FFE86D;color:#423700;display:inline-block;padding:0.5em 3em;border-radius:32px;border:0">contact</a> 
-<a href="/contact#i-want-to-be-a-contributor" style="background:#FFE86D;color:#423700;display:inline-block;padding:0.5em 3em;border-radius:32px;border:0">contribute</a> 
-<a href="/contact#community" style="background:#FFE86D;color:#423700;display:inline-block;padding:0.5em 3em;border-radius:32px;border:0">community</a> 
+<a href="/contact" style="margin:0.5em;background:#FFE86D;color:#423700;display:inline-block;padding:0.5em 3em;border-radius:32px;border:0">contact</a> 
+<a href="/contact#i-want-to-be-a-contributor" style="margin:0.5em;background:#FFE86D;color:#423700;display:inline-block;padding:0.5em 3em;border-radius:32px;border:0">contribute</a> 
+<a href="/contact#community" style="margin:0.5em;background:#FFE86D;color:#423700;display:inline-block;padding:0.5em 3em;border-radius:32px;border:0">community</a> 
 </div>
 
 [contact]: /contact

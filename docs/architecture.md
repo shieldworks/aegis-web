@@ -15,15 +15,15 @@ page_nav:
 
 ## Introduction
 
-This section discusses **Aegis** architecture and building block in greater
-detail. We will cover **Aegis**’ system design and project structure.
+This section discusses **Aegis** architecture and building blocks in greater
+detail: We will cover **Aegis**’ system design and project structure.
 
 You don’t have to know about these architectural details to use **Aegis**;
-however, gaining and understanding of how **Aegis** works as a system can
-prove to be useful when you want to extend, augment, or optimize **Aegis**.
+however, understanding how **Aegis** works as a system can
+prove helpful when you want to extend, augment, or optimize **Aegis**.
 
 Also, if you want to [contribute to the **Aegis** source code][contributor],
-then knowing what happens under the hood will serve you well.
+knowing what happens under the hood will serve you well.
 
 [contributor]: http://localhost:4000/contact/#i-want-to-be-a-contributor
 
@@ -75,7 +75,7 @@ hard, time-consuming, and error-prone endeavor.
   secrets stores, such as AWS KMS, GCP KMS, Azure KeyVault, and even HashiCorp
   Vault.
 * [Age Encryption][age] to enable out-of-memory encrypted
-  backup of the secrets store for disaster recovery.
+  backup of the secrets stored for disaster recovery.
 
 [spire]: https://spiffe.io/ "SPIFFE: Secure Production Identity Framework for Everyone"
 [sops]: https://github.com/mozilla/sops "Sops: Simple and flexible tool for managing secrets"
@@ -99,8 +99,8 @@ hard, time-consuming, and error-prone endeavor.
   demo workload that uses the **Go SDK** to talk to **Safe**.
 * [**Aegis Demo Workload (using Aegis Sidecar)**][aegis-workload-demo-using-sidecar]: 
   A demo workload dynamically injects secrets to itself using an **Aegis Sidecar**.
-* [**Aegis Web**][aegis-web]: The sourcecode of <https://aegis.z2h.dev>, which
-  iss the very website you read at the moment.
+* [**Aegis Web**][aegis-web]: The source code of <https://aegis.z2h.dev>, which
+  is the very website you read at the moment.
 
 [aegis-core]: https://github.com/zerotohero-dev/aegis-core
 [aegis-safe]: https://github.com/zerotohero-dev/aegis-safe
@@ -112,22 +112,22 @@ hard, time-consuming, and error-prone endeavor.
 [aegis-workload-demo-using-sdk]: https://github.com/zerotohero-dev/aegis-workload-demo-using-sdk
 [aegis-workload-demo-using-sidecar]: https://github.com/zerotohero-dev/aegis-workload-demo-using-sidecar
 
-## High Level Architecture
+## High-Level Architecture
 
 ### Dispatching Identities
 
-**SPIRE** is responsible for delivering short-lived X.509 SVIDs to **Aegis**
+**SPIRE** delivers short-lived X.509 SVIDs to **Aegis**
 components and consumer workloads.
 
-**Sidecar** periodically talks to **Safe** to check if there is a new secret
-to be updated.
+**Aegis Sidecar** periodically talks to **Aegis Safe** to check if there is 
+a new secret to be updated.
 
 ![Aegis High Level Architecture](/assets/aegis-hla.png "Aegis High Level Architecture")
 
 ### Creating Secrets
 
-**Sentinel** is the only place that secrets can be created and registered
-to **Safe**.
+**Aegis Sentinel** is the only place where secrets can be created and registered
+to **Aegis Safe**.
 
 ![Creating Secrets](/assets/aegis-create-secrets.png "Creating Secrets")
 
@@ -145,7 +145,7 @@ SPIFFE ID format wor workloads is as follows:
 For the non-`aegis-system` workloads that **Safe** injects secrets,
 `$workloadName` is determined by the workload’s `ClusterSPIFFEID` CRD.
 
-For `aegis-system` components we use `aegis-safe` and `aegis-sentinel`
+For `aegis-system` components, we use `aegis-safe` and `aegis-sentinel`
 for the `$workloadName` (*along with other attestors such as attesting
 the service account and namespace*):
 
@@ -166,24 +166,24 @@ the service account and namespace*):
 ## Persisting Secrets
 
 **Aegis Safe** uses [age][age] to securely persist the secrets to disk so that
-when its pod is replaced by another pod for any reason 
-(*eviction, crash, system restart, etc*) **Aegis Safe** can retrieve the 
-secrets from the file system.
+when its Pod is replaced by another pod for any reason 
+(*eviction, crash, system restart, etc.*). When that happens, **Aegis Safe** 
+can retrieve secrets from a persistent storage.
 
-Since decryption is a relatively expensive operation, once a secret is retrieved, 
-it is kept in memory and served from the memory for better performance. This also
-means, the amount of secrets you have for all your workloads **has to** fit in
-the memory you allocate to **Aegis Safe**.
+Since decryption is relatively expensive, once a secret is retrieved, 
+it is kept in memory and served from memory for better performance. 
+Unfortunately, this also means the amount of secrets you have for all 
+your workloads **has to** fit in the memory you allocate to **Aegis Safe**.
 
 ## **Aegis Safe** Bootstrapping Flow
 
-To persist secrets **Aegis Safe** needs a way to generate and securely store
-the private and public `age` keys that utilizes for decrypting and encrypting
-the secrets respectively.
+To persist secrets, **Aegis Safe** needs a way to generate and securely store
+the private and public `age` keys that are utilized for decrypting and 
+encrypting the secrets, respectively.
 
 * Key generation is conveniently provided by `age` Go SDK.
 * After generation, the keys are stored in a Kubernetes `Secret` that only
-  **Aegis Safe** is allowed to access.
+  **Aegis Safe** can access.
 
 Here is a sequence diagram of the **Aegis Safe** bootstrapping flow:
 
@@ -196,32 +196,32 @@ any API requests that you make from **Aegis Sentinel**.
 
 ## **Aegis Safe** Pod Layout
 
-Here is how an **Aegis Safe** Pod looks like at a high level:
+Here is what an **Aegis Safe** Pod looks like at a high level:
 
 ![Aegis Safe Pod](/assets/crypto.jpg "Aegis Safe Pod")
 
 * `spire-agent-socket`: Is a [SPIFFE CSI Driver][csi-driver]-managed volume that
   enables **SPIRE** to distribute **X.509 SVID**s to the Pod.
 * `/data` is the volume where secrets are stored in an encrypted format. You are
-  **strongly encouraged** to use a **persistent volume** for production setups,
-  so that if the Pod crashes and restarts, the secrets could be retrieved.
-* `/key` is where the secret `safe-age-key` mounts. For security reasons make
-  sure that **only** the pod **Aegis Safe** can read and write to `safe-age-key`
-  and no one else has access to it. In this diagram this is achieved by assigning
+  **strongly encouraged** to use a **persistent volume** for production setups
+  to retrieve the secrets if the Pod crashes and restarts.
+* `/key` is where the secret `safe-age-key` mounts. For security reasons, ensure
+  that **only** the pod **Aegis Safe** can read and write to `safe-age-key`
+  and no one else has access. In this diagram, this is achieved by assigning
   a `secret-readwriter` role to **Aegis Safe** and using that role to update
-  the secret. Any pod that does not have the role will not be able to read or
+  the secret. Any pod that does not have the role will be unable to read or
   write to this secret.
 
 If the `main` container does not have a public/private key pair in memory, it
 will attempt to retrieve it from the `/key` volume. If that fails, it will 
-generate a brand new key pair and then store it to the `safe-age-key` secret.
+generate a brand new key pair and then store it in the `safe-age-key` secret.
  
 [csi-driver]: https://github.com/spiffe/spiffe-csi
 
 ## Conclusion
 
 This was a deeper overview of **Aegis** architecture. If you have further
-questions feel free to [join the **Aegis** community on Slack][slack-invite]
+questions, feel free to [join the **Aegis** community on Slack][slack-invite]
 and ask them out.
 
 [slack-invite]: https://join.slack.com/t/aegis-6n41813/shared_invite/zt-1myzqdi6t-jTvuRd1zDLbHX0gN8VkCqg "Join aegis.slack.com"

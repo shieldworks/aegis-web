@@ -15,7 +15,7 @@ page_nav:
 
 ## Introduction
 
-In this tutorial, you are going to register secrets to Kubernetes workloads
+In this tutorial, you will register secrets to Kubernetes workloads
 using **Aegis**. 
 
 We will first discuss how to register a secret to a workload using
@@ -27,14 +27,14 @@ the [Aegis Go SDK][sdk-go].
 
 ## Prerequisites
 
-To complete this tutorial you will need:
+To complete this tutorial, you will need the following:
 
 * A **Kubernetes** cluster that you have sufficient admin rights.
 * **Aegis** up and running on your system.
 * [The `zerotohero-dev/aegis` repository][repo] cloned inside a workspace
   folder (such as `/home/jane-doe/Desktop/WORKSPACE/aegis`)
 
-To set up **Aegis** [follow the instructions on this quickstart guide][quickstart].
+To set up **Aegis**, [follow the instructions in this quickstart guide][quickstart].
 
 [quickstart]: /docs/
 [repo]: https://github.com/zerotohero-dev/aegis
@@ -50,12 +50,12 @@ On the above diagram:
 
 * **SPIRE** is the identity provider for all intents and purposes.
 * **Aegis Safe** is where secrets are stored.
-* **Aegis Sentinel** can be considered as a bastion host.
+* **Aegis Sentinel** can be considered a bastion host.
 * **Demo Workload** is a typical Kubernetes Pod that needs secrets.
 
 > **Want a Deeper Dive**?
 > 
-> In these tutorial, we cover only the amount of information necessary
+> In this tutorial, we cover only the amount of information necessary
 > to follow through the steps and make sense of how things tie together
 > from a platform operator’s perspective.
 > 
@@ -65,14 +65,14 @@ On the above diagram:
 [architecture]: /docs/architecture
 
 The **Demo Workload** fetches secrets from **Aegis Safe**. This is either
-indirectly done through a **sidecar**, or directly by using 
+indirectly done through a **sidecar** or directly by using 
 [**Aegis Go SDK**][go-sdk].
 
-Using **Aegis Sentinel** an admin operator, or ar CI/CD pipeline can register
+Using **Aegis Sentinel**, an admin operator or ar CI/CD pipeline can register
 secrets to **Aegis Safe** for the **Demo Workload** to consume.
 
-All of the above workload-to-safe and sentinel-to-safe communication is
-encrypted through **mTLS** by using the **X.509 SVID**s that **SPIRE** 
+All the above workload-to-safe and sentinel-to-safe communication are
+encrypted through **mTLS** using the **X.509 SVID**s that **SPIRE** 
 dispatches to all the actors.
 
 [go-sdk]: https://github.com/zerotohero-dev/aegis-sdk-go
@@ -147,19 +147,19 @@ automountServiceAccountToken: false
 
 > **Hint**
 > 
-> The manifest above is simplified, and most of the configuration parameters
+> The manifest above is simplified, and most configuration parameters
 > have been omitted to use defaults. You can find extensively-commented
-> versions of these manifest [inside this installation folder][install-k8s].
+> versions of these manifests [inside this installation folder][install-k8s].
 
 [install-k8s]: https://github.com/zerotohero-dev/aegis/tree/main/install/k8s
 
-You’ll see that there are two images in this deployment
+You’ll see that there are two images in this deployment:
 
 * `z2hdev/aegis-workload-demo`: This is the container that has the business logic.
-* `z2hdev/aegis-sidecar`: This is an **Aegis**-managed container that injects 
+* `z2hdev/aegis-sidecar`: This **Aegis**-managed container injects 
   secrets to a place that our demo container can consume.
 
-Here is the source code of the demo container’s app, for the sake of completeness:
+Here is the source code of the demo container’s app for the sake of completeness:
 
 ```go
 package main
@@ -188,12 +188,12 @@ func main() {
 }
 ```
 
-Our demo app tries to read a secret file, every 5 seconds forever.
+Our demo app tries to read a secret file every 5 seconds forever.
 
 Yet, how do we tell **Aegis** about our app so that it can identify it to
-deliver secrets.
+deliver secrets?
 
-For this, there is an identity file which defines a `ClusterSPIFFEID` for
+For this, there is an identity file that defines a `ClusterSPIFFEID` for
 the workload:
 
 ```yaml
@@ -223,16 +223,16 @@ This identity descriptor, tells **Aegis** that the workload:
 * Is bound to a certain service account,
 * And as a certain name.
 
-When the time comes, **Aegis** will read this identity, and learn about which
-workload is requesting secrets, and than it can make a decision to deliver
-the secrets (*because the workload is registered*) or deny dispatching the
-secrets (*because the workload is unknown/unregistered*).
+When the time comes, **Aegis** will read this identity and learn about which
+workload is requesting secrets. Then it can decide to deliver
+the secrets (*because the workload is registered*) or deny dispatching them
+(*because the workload is unknown/unregistered*).
 
 > **ClusterSPIFFEID is an Abstraction**
 > 
 > Please note that `Identity.yaml` is not a random YAML file:
-> It is a binding contract, and it abstracts a host of operations 
-> behind-the-scenes.
+> It is a binding contract and abstracts a host of operations 
+> behind the scenes.
 > 
 > For every `ClusterSPIFFEID` created this way, 
 > `SPIRE` (Aegis’ identity control plane) will deliver an **X.509 SVID**
@@ -276,25 +276,25 @@ secret: '  '
 …
 ```
 
-What we see here is: Our workload checks for the secrets file and cannot
-find it for a while and displays a failure message. And once the sidecar
-creates the secrets file, that the workload pod was trying to parse, it
-starts displaying an empty string.
+What we see here that our workload checks for the secrets file and cannot
+find it for a while, and displays a failure message. And once the sidecar
+creates the secrets file that the workload pod was trying to parse, it
+shows an empty string.
 
-At this point we have an empty secrets file because we haven’t registered
-any secret to this workload yet. 
+At this point, we have an empty secrets file because we haven’t registered
+any secrets to this workload yet. 
 
-What essentially happens is: **Safe** identifies and acknowledges this workload
-and delivers it an empty secrets file.
+Later, **Aegis Safe** will identify and acknowledge this workload
+and deliver it an empty secrets file.
 
 Next, we will add some secrets to that file using **Aegis Sentinel**:
 
 > **What Is Aegis Sentinel**?
 > 
 > For all practical purposes, you can think of **Aegis Sentinel** as the
-> “*bastion host*” that you log in an execute sensitive operations.
+> “*bastion host*” you log in and execute sensitive operations.
 > 
-> In our case, we are going to register secrets to workloads using it.
+> In our case, we will register secrets to workloads using it.
 
 ## Registering Secrets to a Workload
 
@@ -353,11 +353,11 @@ secret: ' {"username":"Aegis", "password": "KeepYourSecrets"} '
 
 ## BONUS: Setting Aegis Safe’s Log Level
 
-An undocumented (*and subject to change*) feature of **Aegis** is, you
-can use sentinel to set secrets and update the behavior of **Aegis** system
-components too.
+An undocumented (*and subject to change*) feature of **Aegis** is you
+can use **Aegis Sentinel** to set secrets and update the behavior of 
+**Aegis** system components.
 
-Here is how you increase the log verbosity of **Aegis Safe** for example:
+Here is how you increase the log verbosity of **Aegis Safe**, for example:
 
 ```bash 
 kubectl exec aegis-safe-c85c5c7d9-9k8dq -it \
@@ -390,19 +390,19 @@ your secrets, and you will not need to add a sidecar to your pod.
 The advantage of this approach is: you are in charge.
 The downside of it is: Well, you are in charge 🙂. 
 
-But, jokes aside, without a sidecar your application will have to be 
-more tightly-bound to **Aegis**. 
+But, jokes aside, your application will have to be 
+more tightly bound to **Aegis** without a sidecar.
 
-When you use a sidecar, however, your application does not have any idea of 
+However, when you use a sidecar, your application does not have any idea of 
 **Aegis**’s existence. From its perspective, it is merely reading from a file
 that something magically updates every once in a while. This 
 “*separation of concerns*” can make your application architecture more 
 adaptable to changes.
 
-As in anything, there is no one true way to do it. Your apprach will depend
+As in anything, there is no one true way to do it. Your approach will depend
 on your project’s requirements.
 
-That part taken care of, let’s deploy a workload that does not use a sidecar.
+That part taken care of; let’s deploy a workload that does not use a sidecar.
 
 Here is the deployment manifest for our workload:
 
@@ -481,7 +481,7 @@ func main() {
 }
 ```
 
-Where all the heavy-lifting is done by 
+Where all the heavy lifting is done by 
 `github.com/zerotohero-dev/aegis-sdk-go/sentry`.
 
 The `sentry.Fetch()` operation will fetch the most recent secret from 
@@ -527,19 +527,19 @@ value: {"username":"Aegis", "password": "KeepYourSecrets"}
 …
 ```
 
-It looks like, our workload was able to receive its secret too. In addition
-to that, we were able to fetch important meta information about the secret
-such as creation and update time stamps.
+It looks like our workload was able to receive its secret too. In addition,
+we were able to fetch important meta-information about the secret,
+such as the creation and update time stamps.
 
 ## Conclusion
 
 In this tutorial, you have seen how to register secrets to workloads using
 **Aegis Sentinel**. First, we have used a **sidecar** to streamline the process
-and keep the workload oblivious of the existing of **Aegis**. Then we used
+and keep the workload oblivious to the existence of **Aegis**. Then we used
 [**Aegis** Go SDK][go-sdk] to skip the workload and directly consume secrets
 from **Aegis Safe**.
 
-For the interested, [the next section][next-section] covers the **Aegis** 
+For the interested, [the following section][next-section] covers the **Aegis** 
 Go SDK’s methods in more detail.
 
 [next-section]: /docs/sdk

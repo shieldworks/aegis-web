@@ -15,8 +15,8 @@ page_nav:
 
 ## What Is **Aegis**?
 
-[**Aegis**][aegis] is a **Kubernetes-native**, lightweight, secrets management 
-framework that keeps your secrets secret. With **Aegis**, you can rest assured 
+[**Aegis**][aegis] is a **Kubernetes-native**, lightweight secrets manager 
+that keeps your secrets secret. With **Aegis**, you can rest assured 
 that your sensitive data is always **secure** and **protected**. 
 
 Aegis is perfect for securely storing arbitrary configuration information at a 
@@ -25,7 +25,7 @@ central location and securely dispatching it to workloads.
 By leveraging Kubernetes security primitives, [SPIRE][spire], and strong,
 industry-standard encryption, **Aegis** ensures that your secrets are **only** 
 accessible to **trusted** and **authorized** workloads. **Aegis**’s 
-Cloud Native, secure by default, foundation helps you safeguard your business 
+Cloud Native—secure by default—foundation helps you safeguard your business 
 and protect against data breaches.
 
 [Check out **Aegis**’s *GitHub* for details][aegis-github].
@@ -120,5 +120,5 @@ you are looking for:
 
 ## Thanks ❤️
 
-Hope you enjoy using **Aegis** as much as we do, and find it helpful 
-in making you `#sleepmore`. May the source be with you 🦄.
+Hope you enjoy using **Aegis** as much as we do and find it helpful 
+in making your ops teams `#sleepmore`. May the source be with you 🦄.

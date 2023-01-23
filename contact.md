@@ -8,7 +8,7 @@ micro_nav: true
 
 Hi, thank you for wanting to contact us ❤️.
 
-Here are a few way that you can get in touch:
+Here are a few ways that you can get in touch:
 
 ## Community
 
@@ -17,22 +17,23 @@ and let us change the world together metal.
 
 ## Comments and Suggestions
 
-If you found a bug, or if you have an idea that can make **Aegis** even better,
-or if you want to report a security vulnerability,
+If you found a bug, have an idea that can make **Aegis** even better, or 
+want to report a security vulnerability,
 [please file an issue at **Aegis**’s **GitHub** repository][ticket]. 
 
 ## I Have This Crazy Idea…
 
-If none of these sound like a plan [you can just send me an email 
-at (*me@volkan.io*)][email].
+If none sounds like a plan, [email at (*me@volkan.io*)][email] and share
+your thoughts.
 
 ## I Want to Be A Contributor
 
-Thank you for your interest in making the world a better and more secure place
-where everyone can `#sleepmore` 🤗. We’d love you to have you on board.
+We appreciate your interest in making the world a better and more secure place
+where everyone can `#sleepmore` 🤗. We’d love to have you on board.
 
-Please read [the contribution guidelines][contributing], and 
-[the code of conduct][code-of-conduct], and let us know if you need anything else.
+Please read [the contribution guidelines][contributing] and 
+[the code of conduct][code-of-conduct], and let us know if you need anything 
+else.
 
 [contributing]: https://github.com/zerotohero-dev/aegis/blob/main/CONTRIBUTING.md
 [code-of-conduct]: https://github.com/zerotohero-dev/aegis/blob/main/CODE_OF_CONDUCT.md
@@ -40,7 +41,7 @@ Please read [the contribution guidelines][contributing], and
 ## Can I Buy You A Coffee?
 
 Maintaining an open source project is a lot of hard work. And along with time
-investment, you end up doing a heck lot making “out of pocket” expenses too.
+investment, you end up making a heck lot of “out of pocket” expenses too.
 
 To financially support **Aegis**, [visit my ko-fi page][ko-fi].
 

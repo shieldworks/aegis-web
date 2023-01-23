@@ -41,8 +41,8 @@ explaining what went wrong.
 
 `Watch` synchronizes the internal state of the workload by talking to 
 [**Aegis Safe**][aegis-safe] regularly. It periodically calls `Fetch()` 
-behind-the-scenes to get its work done. Once it fetches the secrets, 
-it saves it to the location defined in the `AEGIS_SIDECAR_SECRETS_PATH` 
+behind the scenes to get its work done. Once it fetches the secrets, 
+it saves them to the location defined in the `AEGIS_SIDECAR_SECRETS_PATH` 
 environment variable (*`/opt/aegis/secrets.json` by default*).
 
 [aegis-safe]: https://github.com/zerotohero-dev/aegis-safe
@@ -50,6 +50,6 @@ environment variable (*`/opt/aegis/secrets.json` by default*).
 ## Examples
 
 [Check out the relevant section of the **Registering Secrets** article][registering-secrets]
-for an example of [**Aegis Go SDK**][go-sdk] in action.
+for an example of [**Aegis Go SDK**][go-sdk] usage.
 
 [registering-secrets]: /docs/register

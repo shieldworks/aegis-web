@@ -1,7 +1,7 @@
 ---
 layout: default
 keywords: Aegis, architecture, design decisions, design philosophy
-title: <strong>Aegis</strong> Design Decisions
+title: Aegis Design Decisions
 description: architectural pillars and software design guidelines we follow
 micro_nav: true
 page_nav:
@@ -15,8 +15,8 @@ page_nav:
 
 ## Introduction
 
-We follow the **guidelines** outlined in the next few sections as an arcitectural
-baseline.
+We follow the **guidelines** outlined in the next few sections as an 
+architectural baseline.
 
 Since **Aegis** is still in development, some of these goals discussed in the
 following sections may still need to be fully implemented. Regardless,
@@ -72,8 +72,7 @@ doesn’t exist at all.
 **Aegis** stores your sensitive data in memory by default. Yes, that brings
 up resource limitations since you cannot store a gorilla holding a banana and
 the entire jungle in your store; however, a couple of gigabytes of RAM can store
-a lot of plain text secrets in it, so it’s good enough for most practical
-purposes.
+a lot of plain text secrets, so it’s good enough for most practical purposes.
 
 More importantly, almost all modern instruction set architectures and
 operating systems implement [*memory protection*][memory-protection]. The primary
@@ -87,21 +86,21 @@ Therefore, reading a variable’s value from a process’s memory is practically
 impossible unless you attach a debugger to it.
 
 For disaster recovery, Aegis can back up an encrypted version of its state on
-file system; however, the data that it actively dispatches to workloads will
+the file system; however, the data it actively dispatches to workloads will
 always be stored in memory.
 
 ## Resilient By Default
 
-When an **Aegis** component crashes, or when an **Aegis** component is evicted,
+When an **Aegis** component crashes or when an **Aegis** component is evicted,
 the workloads can still function with the existing secrets they have without
 having to rely on the existence of an active secrets store.
 
-When an **Aegis** component restarts, it will seamlessly recover its state from
-an encrypted backup without requiring any manual intervention.
+When an **Aegis** component restarts, it seamlessly recovers its state from an 
+encrypted backup without requiring manual intervention.
 
 ## Conclusion
 
 While **Aegis** might not have all the bells and whistles of a full-blown 
-security suite that integrates everything but the kitchen sink; we are sure 
-that by following these guiding principles, it will remain to be a 
+security suite that integrates everything but the kitchen sink, we are sure 
+that by following these guiding principles, it will remain a 
 **delightfully secure** secrets manager that a lot of people will love to use.
