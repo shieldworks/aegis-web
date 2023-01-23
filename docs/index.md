@@ -19,7 +19,7 @@ page_nav:
 that keeps your secrets secret. With **Aegis**, you can rest assured 
 that your sensitive data is always **secure** and **protected**. 
 
-Aegis is perfect for securely storing arbitrary configuration information at a 
+**Aegis** is perfect for securely storing arbitrary configuration information at a 
 central location and securely dispatching it to workloads.
 
 By leveraging Kubernetes security primitives, [SPIRE][spire], and strong,
@@ -42,17 +42,16 @@ If you havenâ€™t watched this introductory video yet, now might be a good time ð
 
 ## Where **NOT** to Use Aegis
 
-Aegis is **not** a Database, nor is it a distributed caching layer. Of course,
+**Aegis** is **not** a Database, nor is it a distributed caching layer. Of course,
 you may tweak it to act like one if you try hard enough, yet, that is
 generally not a good use of the tool.
 
-Aegis is suitable for storing secrets and dispatching them; however, it
+**Aegis** is suitable for storing secrets and dispatching them; however, it
 is a *terrible* idea to use it as a centralized database to store everything
 but the kitchen sink.
 
 Use **Aegis** to store service keys, database credentials, access tokens,
 etc.
-
 
 ## How Do I Get the Root Token? Where Do I Store It?
 
