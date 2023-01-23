@@ -6,9 +6,25 @@ description: EE-JISS, AEY-GISS, what?!
 micro_nav: true
 page_nav:
   prev:
-    content: technologies used
-    url: '/docs/technologies'
+    content: guiding principles
+    url: '/docs/philosophy'
   next:
     content: maintainers
     url: '/docs/maintainers'
 ---
+
+“Aegis” is a word of Greek origin and is pronounced `EE-jiss`.
+
+[Here’s a YouTube pronunciation guide][pronounce].
+
+[pronounce]: http://www.youtube.com/watch?v=x4bUgXWdNfM
+
+**Aegis** has two definitions:
+
+1. (Classical Mythology) The shield or breastplate of Zeus or Athena, bearing
+   at its center the head of the Gorgon.
+2. Protection; support.
+
+Here’s an image of an aegis (*shield*) as depicted in Greek mythology:
+
+![aegis](/assets/aegis-shield.jpg "aegis")
