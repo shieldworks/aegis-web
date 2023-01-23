@@ -57,10 +57,10 @@ etc.
 ## How Do I Get the Root Token? Where Do I Store It?
 
 Unlike some other secret vaults, you do not need an admin token
-to operate Aegis 🙂.
+to operate **Aegis** 🙂.
 
 Benefits of this approach is: It helps the Ops team `#sleepmore`, since
-everything is automated, and you won’t have to manually unlock Aegis upon
+everything is automated, and you won’t have to manually unlock **Aegis** upon
 a system crash, for example.
 
 However, there’s no free lunch, and as the operator of a production system,
