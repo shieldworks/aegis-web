@@ -65,7 +65,7 @@ a system crash, for example.
 
 However, there’s no free lunch, and as the operator of a production system,
 your homework is to secure access to your cluster. [Check out the **Production 
-Deployment Guideline**][production] for further instructions about hardening your 
+Deployment Guidelines**][production] for further instructions about hardening your 
 cluster to securely use **Aegis**.
 
 [production]: /docs/production
