@@ -31,7 +31,7 @@ knowing what happens under the hood will serve you well.
 
 **Aegis**, as a system, has the following components.
 
-### SPIRE
+### Aegis SPIRE
 
 [`aegis-spire`][aegis-spire] is what makes communication within **Aegis** 
 components and workloads possible. It dispatches **x.509 SVID Certificates** 
@@ -42,15 +42,15 @@ about how **SPIRE** works internally.
 
 [spiffe]: https://spiffe.io/
 
-### Safe
+### Aegis Safe
 
 [`aegis-safe`][safe] stores secrets and dispatches them to workloads.
 
-### Sidecar
+### Aegis Sidecar
 
 [`aegis-sidecar`][sidecar] is a sidecar that facilitates delivering secrets to workloads.
 
-### Sentinel
+### Aegis Sentinel
 
 [`aegis-sentinel`][sentinel] is a pod you can shell in and do administrative tasks such as
 registering secrets for workloads.
@@ -70,11 +70,11 @@ interact with each other:
 Without the following technologies, implementing **Aegis** would have been a very
 hard, time-consuming, and error-prone endeavor.
 
-* [SPIFFE and SPIRE][spire] for establishing an Identity Control Plane.
-* [Mozilla Sops][sops] (*in design phase*) to enable integration with cloud
+* [SPIFFE and **SPIRE**][spire] for establishing an Identity Control Plane.
+* [Mozilla **Sops**][sops] (*in design phase*) to enable integration with cloud
   secrets stores, such as AWS KMS, GCP KMS, Azure KeyVault, and even HashiCorp
   Vault.
-* [Age Encryption][age] to enable out-of-memory encrypted
+* [**Age** Encryption][age] to enable out-of-memory encrypted
   backup of the secrets stored for disaster recovery.
 
 [spire]: https://spiffe.io/ "SPIFFE: Secure Production Identity Framework for Everyone"
@@ -215,7 +215,108 @@ Here is what an **Aegis Safe** Pod looks like at a high level:
 If the `main` container does not have a public/private key pair in memory, it
 will attempt to retrieve it from the `/key` volume. If that fails, it will 
 generate a brand new key pair and then store it in the `safe-age-key` secret.
- 
+
+## Environment Variables
+
+**Aegis** system components can be configured using environment variables.
+
+### SPIFFE_ENDPOINT_SOCKET
+
+`SPIFFE_ENDPOINT_SOCKET` is required for **Aegis Sentinel** to talk to 
+**Aegis SPIRE**. 
+
+If not provided, a default value of `"unix:///spire-agent-socket/agent.sock"` 
+will be used.
+
+### AEGIS_SAFE_LOG_LEVEL
+
+`AEGIS_SAFE_LOG_LEVEL` determines the verbosity of the logs in **Aegis Safe**. 
+
+`1`: logs are off, `6`: highest verbosity. default: `3` 
+
+```text
+Off = 1
+Error = 2
+Warn = 3
+Info = 4
+Debug = 5
+Trace = 6
+```
+
+### AEGIS_WORKLOAD_SVID_PREFIX
+
+Both **Aegis Safe** and **workloads** use this environment variable.
+
+`AEGIS_WORKLOAD_SVID_PREFIX` is required for validation. If not provided, 
+it will default to: `"spiffe://aegis.z2h.dev/workload/"`
+
+### AEGIS_SENTINEL_SVID_PREFIX
+
+Both **Aegis Safe** and **Aegis Sentinel** use this environment variable.
+
+`AEGIS_SENTINEL_SVID_PREFIX` is required for validation.
+
+If not provided, it will default to:
+`"spiffe://aegis.z2h.dev/workload/aegis-sentinel/ns/aegis-system/sa/aegis-sentinel/n/"`
+
+### AEGIS_SAFE_SVID_PREFIX
+
+Both **Aegis Sentinel**, **Aegis Safe**, and **workloads** use this environment
+variable.
+
+`AEGIS_SAFE_SVID_PREFIX` is required for validation.
+
+If not provided, it will default to:
+`"spiffe://aegis.z2h.dev/workload/aegis-safe/ns/aegis-system/sa/aegis-safe/n/"`
+
+### AEGIS_SAFE_DATA_PATH
+
+`AEGIS_SAFE_DATA_PATH` is where the encrypted secrets are stored.
+
+If not given, defaults to `"/data"`.
+
+### AEGIS_SAFE_AGE_KEY_PATH
+        
+`AEGIS_SAFE_AGE_KEY_PATH` is where **Aegis Safe** will fetch the `"key.txt"`
+that contains the encryption keys. 
+
+If not given, it will default to `"/key/key.txt"`.
+
+### AEGIS_SAFE_ENDPOINT_URL
+
+`AEGIS_SAFE_ENDPOINT_URL` is the **REST API** endpoint that **Aegis Safe** 
+exposes from its `Service`. 
+
+If not provided, it will default to:
+`"https://aegis-safe.aegis-system.svc.cluster.local:8443/"`.
+
+### AEGIS_PROBE_LIVENESS_PORT
+        
+`AEGIS_PROBE_LIVENESS_PORT` is the port where the liveness probe
+will serve.
+
+Defaults to `:8081`.
+
+### AEGIS_PROBE_READINESS_PORT
+
+`AEGIS_PROBE_READINESS_PORT` is the port where the readiness probe
+will serve. 
+
+Defaults to `:8082`.
+
+### AEGIS_SAFE_SVID_RETRIEVAL_TIMEOUT
+
+`AEGIS_SAFE_SVID_RETRIEVAL_TIMEOUT` is how long (*in seconds*) **Aegis Safe**
+will wait for an *SPIRE X.509 SVID* bundle before giving up and crashing.
+
+The default value is `30` seconds.
+
+### AEGIS_SAFE_TLS_PORT
+
+`AEGIS_SAFE_TLS_PORT` is the port that Safe serves its API endpoints.
+
+Defaults to `":8443"`.
+
 [csi-driver]: https://github.com/spiffe/spiffe-csi
 
 ## Conclusion

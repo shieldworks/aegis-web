@@ -53,6 +53,33 @@ h6, .h6 {
 	}
 }
 
+ul.level-2.nav {
+	border-left: 1px #dadada solid;
+
+	li {
+		border: 0
+	}
+}
+
+ul li {
+	line-height: 2.05em;
+}
+
+p {
+	line-height: 2.05em;
+}
+
+a.btn-home {
+	margin:0.5em;background:#FFE86D;color:#423700;
+	display:inline-block;padding:0.5em 3em;border-radius:32px;border:0;
+
+	&:hover {
+		background-color: #ffffff;
+
+	}
+}
+
+
 h1, .h1 {
 	font-size: $font-size-h1;
 	font-weight: 700;

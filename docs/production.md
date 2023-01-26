@@ -19,6 +19,20 @@ There are certain aspects that you need to pay attention to and certain
 parts of the system that you’d need to harden for a **production** *Aegis* setup.
 This article will overview them.
 
+## Version Compatibility
+
+By the time of this writing,
+**Aegis** has been tested with the following Kubernetes version:
+
+```text
+Client Version: v1.26.0
+Kustomize Version: v4.5.7
+Server Version: v1.25.3
+```
+
+Any Kubernetes setup that has components with version greater
+than or euqal to the ones above will likely work just fine.
+
 ## Restrict Access To `aegis-age-key`
 
 The `aegis-age-key` secret that **Aegis Safe** stores in the `aegis-system` 
@@ -31,7 +45,7 @@ volume in that Pod*) it is still **crucial** to follow the **principle of least
 privilege** guideline and do not allow anyone on the cluster read or write
 to the `aegis-age-key` secret.
 
-The only entity allowed to have read/write (but not delete) access to
+The only entity allowed to have read/write (*but not delete*) access to
 `aegis-safe-key` is the **Aegis Safe** Pod inside the `aegis-system` namespace
 with an `aegis-safe` service account.
 
@@ -65,21 +79,10 @@ Benchmark your system usage and set **CPU** and **Memory** limits to the
 
 It is recommended to…
 
-* Set a memory **request** and **limit**.
-* Set a CPU **request**; but **do not** set a CPU limit (*i.e., 
+* Set a memory **request** and **limit**,
+* Set a CPU **request**; but **not** set a CPU limit (*i.e., 
   the **Aegis Safe** pod will ask for a baseline CPU
   and burst for more upon need*).
-
-**Aegis** has been recently tested with the following Kubernetes version:
-
-```text
-Client Version: v1.26.0
-Kustomize Version: v4.5.7
-Server Version: v1.25.3
-```
-
-Although not explicitly tested, any recent Kubernetes installation will
-likely work just fine.
 
 As in any secrets management solution, your compute and memory requirements
 will depend on several factors, such as:

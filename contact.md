@@ -17,9 +17,12 @@ and let us change the world together metal.
 
 ## Comments and Suggestions
 
-If you found a bug, have an idea that can make **Aegis** even better, or 
-want to report a security vulnerability,
-[please file an issue at **Aegis**’s **GitHub** repository][ticket]. 
+If you found a bug, have an idea that can make **Aegis** even better
+[please file an issue at **Aegis**’s **GitHub** repository][ticket].
+
+If you have a vulnerability to report, [please follow this guideline][vuln].
+
+[vuln]: https://github.com/zerotohero-dev/aegis/blob/main/SECURITY.md
 
 ## I Have This Crazy Idea…
 

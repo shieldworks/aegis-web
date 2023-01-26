@@ -6,12 +6,12 @@ doks:
         logo:
             image: /doks-theme/assets/images/aegis-icon.png
         nav:
-            - item_name: About
+            - item_name: Home
               item_url: '/'
             - item_name: Contact
               item_url: '/contact'
-            - item_name: Privacy
-              item_url: '/privacy'
+            - item_name: Community
+              item_url: '/contact#community'
     footer:
         content:
             logo:

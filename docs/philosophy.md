@@ -69,10 +69,14 @@ doesn’t exist at all.
 
 ## Secure By Default
 
-**Aegis** stores your sensitive data in memory by default. Yes, that brings
-up resource limitations since you cannot store a gorilla holding a banana and
-the entire jungle in your store; however, a couple of gigabytes of RAM can store
-a lot of plain text secrets, so it’s good enough for most practical purposes.
+**Aegis** stores your sensitive data **in memory**. None of your secrets
+are stored as plain text on disk. Anything that **Aegis** saves to disk
+is encrypted.
+
+Yes, that brings up resource limitations since you cannot store a gorilla holding 
+a banana and the entire jungle in your store; however, a couple of gigabytes of 
+RAM can store a lot of plain text secrets, so it’s good enough for most 
+practical purposes.
 
 More importantly, almost all modern instruction set architectures and
 operating systems implement [*memory protection*][memory-protection]. The primary
@@ -83,11 +87,13 @@ from affecting other processes or the operating system itself.
 [memory-protection]: https://en.wikipedia.org/wiki/Memory_protection "Memory Protection (Wikipedia)"
 
 Therefore, reading a variable’s value from a process’s memory is practically
-impossible unless you attach a debugger to it.
+impossible unless you attach a debugger to it. And that makes keeping 
+plain text secrets in memory (*and nowhere else than memory*) crucial.
 
-For disaster recovery, Aegis can back up an encrypted version of its state on
-the file system; however, the data it actively dispatches to workloads will
-always be stored in memory.
+For disaster recovery, Aegis (*by default*) backs up encrypted version of 
+its state on the file system; however, the 
+plain text secrets that **Aegis Safe** dispatches to 
+workloads will always be stored in memory.
 
 ## Resilient By Default
 

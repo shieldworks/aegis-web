@@ -42,9 +42,9 @@ secure and protected.
 <div style="margin-top:3.75em"></div>
 
 <div>
-<a href="/contact" style="margin:0.5em;background:#FFE86D;color:#423700;display:inline-block;padding:0.5em 3em;border-radius:32px;border:0">contact</a> 
-<a href="/contact#i-want-to-be-a-contributor" style="margin:0.5em;background:#FFE86D;color:#423700;display:inline-block;padding:0.5em 3em;border-radius:32px;border:0">contribute</a> 
-<a href="/contact#community" style="margin:0.5em;background:#FFE86D;color:#423700;display:inline-block;padding:0.5em 3em;border-radius:32px;border:0">community</a> 
+<a href="/contact" class="btn-home">contact</a> 
+<a href="/contact#i-want-to-be-a-contributor" class="btn-home">contribute</a> 
+<a href="/contact#community" class="btn-home">community</a> 
 </div>
 
 [contact]: /contact
