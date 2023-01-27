@@ -317,6 +317,14 @@ The default value is `30` seconds.
 
 Defaults to `":8443"`.
 
+### AEGIS_SAFE_SECRET_BUFFER_SIZE
+
+`AEGIS_SAFE_SECRET_BUFFER_SIZE` is the amount of secret insertion operations
+to be buffered until **Safe API** blocks and waits for the buffer to have an
+empty slot.
+
+If the environment variable is not set, this buffer size defaults to `10`.
+
 [csi-driver]: https://github.com/spiffe/spiffe-csi
 
 ## Conclusion
