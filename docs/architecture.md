@@ -336,7 +336,7 @@ Any value other than `"persistent"` will mean `"in-memory"`.
 
 An `"in-memory"` backing store means **Aegis Safe** does not persist backups
 of the secrets it created to disk. When that option is selected, you will
-lose all of your secrets it **Aegis Safe** is evicted by the scheduler or
+lose all of your secrets if **Aegis Safe** is evicted by the scheduler or
 manually restarted by an operator.
 
 [csi-driver]: https://github.com/spiffe/spiffe-csi
