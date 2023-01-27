@@ -32,7 +32,7 @@ grid_navigation:
   cta: get your hands dirty
   url: '/docs/secrets'
 - title: <strong>Aegis</strong> Community
-  excerpt: Join Us On <strong>Slack</strong>. It’s nice and cozy.
+  excerpt: Join us on <strong>Slack</strong>. It’s nice and cozy.
   cta: welcome to the jungle
   url: '/contact#community'
 - title: Coming Up Next…
