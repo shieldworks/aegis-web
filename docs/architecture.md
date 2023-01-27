@@ -325,6 +325,20 @@ empty slot.
 
 If the environment variable is not set, this buffer size defaults to `10`.
 
+### AEGIS_SAFE_BACKING_STORE_TYPE
+
+`AEGIS_SAFE_BACKING_STORE_TYPE` is the type of the storage where the secrets
+will be encrypted and persisted.
+
+If not given, defaults to `"persistent"`.
+
+Any value other than `"persistent"` will mean `"in-memory"`.
+
+An `"in-memory"` backing store means **Aegis Safe** does not persist backups
+of the secrets it created to disk. When that option is selected, you will
+lose all of your secrets it **Aegis Safe** is evicted by the scheduler or
+manually restarted by an operator.
+
 [csi-driver]: https://github.com/spiffe/spiffe-csi
 
 ## Conclusion
