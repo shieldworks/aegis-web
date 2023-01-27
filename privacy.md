@@ -17,8 +17,9 @@ regulations? —Good news: I do not use any tracking cookies.
 
 ## Your Personal Data is Safe
 
-I do not collect your data, and I will never share that information with 
-anyone without your prior consent.
+I do not collect your data. Since I don’t have your data, I cannot share your
+data (*d’uh*). However, to make lawyers happy, I want to reiterate that
+I will never share your information with anyone without your prior consent.
 
 > Also, I am determined to keep this website ad-free: So you can be sure that 
 > nothing about you will be shared with stupid third-party ad networks.
