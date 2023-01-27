@@ -9,8 +9,8 @@ page_nav:
     content: maintainers
     url: '/docs/maintainers'
   next:
-    content: the <strong>Aegis</strong> community
-    url: '/contact'
+    content: releasing a new version
+    url: '/docs/release'
 ---
 
 You can see the project’s progress [in these **Aegis** boards][mdp].

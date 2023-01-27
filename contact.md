@@ -4,6 +4,10 @@ keywords: Aegis, issues, reports, feedback, recommendation
 title: Contact
 description: have something to say?
 micro_nav: true
+page_nav:
+  prev:
+    content: quickstart
+    url: '/docs'
 ---
 
 Hi, thank you for wanting to contact us ❤️.

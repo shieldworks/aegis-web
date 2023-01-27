@@ -20,14 +20,26 @@ grid_navigation:
   cta: get started
   url: '/docs'
 - title: Production Tips
-  excerpt: Production deployment recommendations to let your ops team <code>#sleepmore</code>.
-  cta: prepare
+  excerpt: Production deployment recommendations to let your ops teams <code>#sleepmore</code>.
+  cta: prepare your clusters
   url: '/docs/production'
-- title: Using Aegis SDK
-  excerpt: Use Aegis Go SDK for a tighter integration with <strong>Aegis</strong> components.
-  cta: dive in
+- title: Using <strong>Aegis</strong> SDK
+  excerpt: Use <strong>Aegis Go SDK</strong> for a tighter integration with <strong>Aegis</strong> components.
+  cta: dive in; water is warm
   url: '/docs/sdk'
-
+- title: Keeping Secrets
+  excerpt: A tutorial on how to dispatch secrets to workloads.
+  cta: get your hands dirty
+  url: '/docs/secrets'
+- title: <strong>Aegis</strong> Community
+  excerpt: Join Us On <strong>Slack</strong>. It’s nice and cozy.
+  cta: welcome to the jungle
+  url: '/contact#community'
+- title: Coming Up Next…
+  excerpt: What we are planning to do in the near (<em>and far</em>) future.
+  cta: see what’s cooking
+  url: '/docs/timeline'
+ 
 ---
 
 <div style="margin-top:0.75em"></div>

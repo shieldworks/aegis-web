@@ -69,6 +69,10 @@ p {
 	line-height: 2.05em;
 }
 
+pre, blockquote {
+	border-radius: 8px;
+}
+
 a.btn-home {
 	margin:0.5em;background:#FFE86D;color:#423700;
 	display:inline-block;padding:0.5em 3em;border-radius:32px;border:0;

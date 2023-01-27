@@ -34,7 +34,13 @@ pre {
 /* ----- Highlight ----- */
 .highlight .hll { background-color: #49483e }
 pre.highlight { background: #212733; color: $color-pre; padding: 1.5625rem; }
-.highlight .c { color: #75715e } /* Comment */
+.highlight .c {
+
+	// color: #75715e
+	background: #a6e22e;
+	color: #000000;
+
+} /* Comment */
 .highlight .err { color: #960050; background-color: #1e0010 } /* Error */
 .highlight .k { color: #66d9ef } /* Keyword */
 .highlight .l { color: #ae81ff } /* Literal */

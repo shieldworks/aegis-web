@@ -9,7 +9,7 @@ page_nav:
     content: quickstart
     url: '/docs/'
   next:
-    content: using <strong>Aegis</strong> Go sdk
+    content: using <strong>Aegis</strong> go sdk
     url: '/docs/sdk'
 ---
 
@@ -199,22 +199,22 @@ the workload:
 ```yaml
 # k8s/Identity.yaml
 
-apiVersion: spire.spiffe.io/v1alpha1
+{% raw %}apiVersion: spire.spiffe.io/v1alpha1
 kind: ClusterSPIFFEID
 metadata:
   name: aegis-workload-demo
 spec:
-  spiffeIDTemplate: {% raw %}>- 
-    spiffe://aegis.z2h.dev/workload/aegis-workload-demo
-    /ns/{{ .PodMeta.Namespace }}
-    /sa/{{ .PodSpec.ServiceAccountName }}
-    /n/{{ .PodMeta.Name }}{% endraw %}
+  spiffeIDTemplate: "spiffe://aegis.z2h.dev\
+    /workload/aegis-workload-demo\
+    /ns/{{ .PodMeta.Namespace }}\
+    /sa/{{ .PodSpec.ServiceAccountName }}\
+    /n/{{ .PodMeta.Name }}"
   podSelector:
     matchLabels:
       app.kubernetes.io/name: aegis-workload-demo
-  workloadSelectorTemplates:{% raw %}
-    - "k8s:ns:{{ .PodMeta.Namespace }}"
-    - "k8s:sa:{{ .PodSpec.ServiceAccountName }}"{% endraw %}
+  workloadSelectorTemplates:
+  - "k8s:ns:{{ .PodMeta.Namespace }}"
+  - "k8s:sa:{{ .PodSpec.ServiceAccountName }}"{% endraw %}
 ```
 
 This identity descriptor, tells **Aegis** that the workload:
@@ -351,6 +351,13 @@ secret: ' {"username":"Aegis", "password": "KeepYourSecrets"} '
 …
 ```
 
+> **Aegis Sentinel Commands**
+>
+> You can execute
+> `kubectl exec -it $sentinelPod -n aegis-sytem -- aegis --help`
+> for a list of all available commands and command-line flags
+> that **Aegis Sentinel** has.
+
 ## BONUS: Setting Aegis Safe’s Log Level
 
 An undocumented (*and subject to change*) feature of **Aegis** is you
@@ -363,13 +370,13 @@ Here is how you increase the log verbosity of **Aegis Safe**, for example:
 kubectl exec aegis-safe-c85c5c7d9-9k8dq -it \
 -n aegis-system -- \
 aegis -w aegis-safe 
--s '{"logLevel":"6"}'
+-s '{"logLevel": 6}'
 
 OK
 
 ```
 
-You can set the log level from any number between `1` to `6`.
+You can set the log level to any number from `1` to `6`.
 
 ```text 
 # 1: logs are off, 6: highest verbosity.
@@ -381,7 +388,7 @@ You can set the log level from any number between `1` to `6`.
 # Trace = 6
 ```
 
-## Deploying a Demo Workload Without A Sidecar
+## Deploying a Demo Workload Without a Sidecar
 
 You can also programmatically consume the **Aegis Secrets** API from your 
 workload. That way, you will have more control over how you consume and cache 
@@ -407,6 +414,8 @@ That part taken care of; let’s deploy a workload that does not use a sidecar.
 Here is the deployment manifest for our workload:
 
 ```yaml
+# k8s/Deployment.yaml
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:

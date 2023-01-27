@@ -52,4 +52,47 @@ environment variable (*`/opt/aegis/secrets.json` by default*).
 [Check out the relevant sections of the **Registering Secrets** article][registering-secrets]
 for an example of [**Aegis Go SDK**][go-sdk] usage.
 
-[registering-secrets]: /docs/register
+<p>&nbsp;</p>
+
+----
+
+<p>&nbsp;</p>
+
+## **Aegis Safe** REST API
+
+The **Aegis Go SDK** is, at a high level, and abstraction over **Aegis Safe** 
+REST API.
+
+That said, knowing the internals of **Aegis Safe** API can be helpful in case
+you want to develop your own SDK in your programming language of choice.
+
+### `POST /v1/fetch`
+
+`/v1/fetch` can only be called from the **workloads**.
+
+
+```bash 
+# The workload is is inferred from the workload’s TLS certificate.
+
+http POST $aegisSafeHost/v1/fetch 
+
+{
+  "data": "content of the secret",
+  "created": "2022-12-12 00:00",
+  "updated": "2023-01-01 00:00",
+}
+```
+
+### `POST /v1/secret`
+
+`/v1/secret` can only be called from **Aegis Sentinel**.
+
+```bash
+# The workload is is inferred from the workload’s TLS certificate.
+
+http POST $aegisSafeHost/v1/secret
+   key="demo-workload" # the ID of the workload.
+   value="contents of the secret"
+   
+OK
+```
