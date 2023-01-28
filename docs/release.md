@@ -62,31 +62,16 @@ make build
 make deploy
 ```
 
-### 5. Test the Demo Workload (*With Sidecar*)
-
-Then execute the following:
+### 5. Run Integration Tests
 
 ```bash 
-make demo-sidecar
+make test
 ```
 
-Ensure that you can save a secret.
+Ensure that the program succeeds.
+It can take several minutes to complete.
 
-### 6. Test the Demo (*Using SDK*)
-
-Then execute the following:
-
-```bash 
-make demo-sdk
-```
-
-Ensure that you can save a secret.
-
-### 7. All Tests Shall Pass
-
-If anything fails, rinse and repeat.
-
-### 8. Push the Updated Code
+### 6. Push the Updated Code
 
 At least, there are new version numbers in the manifests.
 They need to be pushed before tagging a release:
@@ -95,13 +80,13 @@ They need to be pushed before tagging a release:
 make commit
 ```
 
-### 9. Tag a New Release
+### 7. Tag a New Release
 
 ```bash
 make tag
 ```
 
-### 10. All Set 🎉
+### 8. All Set 🎉
 
 You’re all set.
 
