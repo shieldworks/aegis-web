@@ -138,6 +138,11 @@ In addition, these topics might pique your interest too:
 * [Umm… How Do I Pronounce “**Aegis**”](/docs/pronounciation)?
 * [Who’s Behind **Aegis**](/docs/maintainers)?
 * [What’s Coming Up Next](/docs/timeline)?
+* [Can I See a Change Log](/docs/changelog)?
+
+If  you are an **Aegis** maintainer the following guideline will help you:
+
+* [Releasing a New Version](/docs/release)
 
 If you have comments, suggestions, and ideas to share; or if you have found
 a bug; or if you want to contribute to **Aegis**, these links might be what
