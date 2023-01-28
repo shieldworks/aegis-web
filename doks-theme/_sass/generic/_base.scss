@@ -76,6 +76,8 @@ pre, blockquote {
 a.btn-home {
 	margin:0.5em;background:#FFE86D;color:#423700;
 	display:inline-block;padding:0.5em 3em;border-radius:32px;border:0;
+	min-width: 180px;
+	text-align: center;
 
 	&:hover {
 		background-color: #ffffff;

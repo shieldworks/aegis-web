@@ -9,8 +9,8 @@ page_nav:
     content: what’s coming up
     url: '/docs/timeline'
   next:
-    content: the <strong>Aegis</strong> community
-    url: '/contact'
+    content: <strong>Aegis</strong> changelog
+    url: '/docs/changelog'
 ---
 
 > ⚠️ **This Section Is for Maintainers**
