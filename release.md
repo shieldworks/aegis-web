@@ -1,4 +1,12 @@
 ---
+#
+# .-'_.---._'-.
+# ||####|(__)||   Protect your secrets, protect your business.
+#   \\()|##//       Secure your sensitive data with Aegis.
+#    \\ |#//                  <aegis.z2h.dev>
+#     .\_/.
+#
+
 layout: default
 keywords: Aegis, release, maintenance
 title: Releasing a New Version
@@ -6,20 +14,9 @@ description: guidelines to maintain, sign, and publish code
 micro_nav: true
 page_nav:
   prev:
-    content: what’s coming up
-    url: '/docs/timeline'
-  next:
-    content: <strong>Aegis</strong> changelog
-    url: '/docs/changelog'
+    content: Miscellaneous
+    url: '/misc'
 ---
-
-> ⚠️ **This Section Is for Maintainers**
-> 
-> This is a brief guideline for **Aegis** maintainers.
-> 
-> This section describes release related operations.
-> 
-> If you are not a maintainer, feel free to skip this section.
 
 ## Cutting a Release
 

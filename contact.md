@@ -1,4 +1,12 @@
 ---
+#
+# .-'_.---._'-.
+# ||####|(__)||   Protect your secrets, protect your business.
+#   \\()|##//       Secure your sensitive data with Aegis.
+#    \\ |#//                  <aegis.z2h.dev>
+#     .\_/.
+#
+
 layout: default
 keywords: Aegis, issues, reports, feedback, recommendation
 title: Contact
@@ -6,8 +14,8 @@ description: have something to say?
 micro_nav: true
 page_nav:
   prev:
-    content: quickstart
-    url: '/docs'
+    content: Miscellaneous
+    url: '/misc'
 ---
 
 Hi, thank you for wanting to contact us ❤️.

@@ -1,4 +1,12 @@
 ---
+#
+# .-'_.---._'-.
+# ||####|(__)||   Protect your secrets, protect your business.
+#   \\()|##//       Secure your sensitive data with Aegis.
+#    \\ |#//                  <aegis.z2h.dev>
+#     .\_/.
+#
+
 layout: default
 keywords: Aegis, installation, deployment, faq, quickstart
 title: Quickstart
@@ -127,22 +135,22 @@ Since you have **Aegis** up and running, here is a list of topics that you can
 explore next:
 
 * [How to Register Secrets to A Workload Using **Aegis**](/docs/register)
-* [How to Use **Aegis** Go SDK](/docs/tutorial)
+* [How to Use **Aegis** Go SDK](/docs/sdk)
 * [A Deeper Dive into **Aegis** Architecture](/docs/architecture)
-* [**Aegis** Production Deployment Guidelines](/docs/production)
-* [**Aegis** Design Decisions](/docs/system-design)
-* [Core Technologies **Aegis** Leverages](/docs/technologies)
+* [**Aegis** Production Deployment Guidelines](/production)
+* [**Aegis** Design Decisions](/docs/philosophy)
+* [Core Technologies **Aegis** Leverages](/docs/architecture/#technologies-used)
 
 In addition, these topics might pique your interest too:
 
-* [Umm… How Do I Pronounce “**Aegis**”](/docs/pronounciation)?
-* [Who’s Behind **Aegis**](/docs/maintainers)?
-* [What’s Coming Up Next](/docs/timeline)?
-* [Can I See a Change Log](/docs/changelog)?
+* [Umm… How Do I Pronounce “**Aegis**”](/pronounciation)?
+* [Who’s Behind **Aegis**](/maintainers)?
+* [What’s Coming Up Next](/timeline)?
+* [Can I See a Change Log](/changelog)?
 
 If  you are an **Aegis** maintainer the following guideline will help you:
 
-* [Releasing a New Version](/docs/release)
+* [Releasing a New Version](/release)
 
 If you have comments, suggestions, and ideas to share; or if you have found
 a bug; or if you want to contribute to **Aegis**, these links might be what

@@ -1,4 +1,12 @@
 ---
+#
+# .-'_.---._'-.
+# ||####|(__)||   Protect your secrets, protect your business.
+#   \\()|##//       Secure your sensitive data with Aegis.
+#    \\ |#//                  <aegis.z2h.dev>
+#     .\_/.
+#
+
 layout: default
 keywords: Aegis, timeline, projects, deadlines, milestones
 title: What’s Coming Up Next?
@@ -6,11 +14,8 @@ description: we are cooking cool stuff in the kitchen 🧁
 micro_nav: true
 page_nav:
   prev:
-    content: maintainers
-    url: '/docs/maintainers'
-  next:
-    content: releasing a new version
-    url: '/docs/release'
+    content: Miscellaneous
+    url: '/misc'
 ---
 
 You can see the project’s progress [in these **Aegis** boards][mdp].

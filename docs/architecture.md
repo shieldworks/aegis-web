@@ -1,4 +1,12 @@
 ---
+#
+# .-'_.---._'-.
+# ||####|(__)||   Protect your secrets, protect your business.
+#   \\()|##//       Secure your sensitive data with Aegis.
+#    \\ |#//                  <aegis.z2h.dev>
+#     .\_/.
+#
+
 layout: default
 keywords: Aegis, architecture, system design, deep dive
 title: Aegis Deep Dive
@@ -9,8 +17,8 @@ page_nav:
     content: using <strong>Aegis</strong> go SDK
     url: '/docs/sdk'
   next:
-    content: production deployment 
-    url: '/docs/production'
+    content: design decisions
+    url: '/docs/philosophy'
 ---
 
 ## Introduction

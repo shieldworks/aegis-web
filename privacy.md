@@ -1,9 +1,21 @@
 ---
+#
+# .-'_.---._'-.
+# ||####|(__)||   Protect your secrets, protect your business.
+#   \\()|##//       Secure your sensitive data with Aegis.
+#    \\ |#//                  <aegis.z2h.dev>
+#     .\_/.
+#
+
 layout: default
 keywords: Aegis, privacy policy
 title: Privacy Policy
 description: I am a nice person
 micro_nav: true
+page_nav:
+  prev:
+    content: Miscellaneous
+    url: '/misc'
 ---
 
 > This is the shortest privacy policy you’ll possibly read.

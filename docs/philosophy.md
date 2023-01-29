@@ -6,11 +6,11 @@ description: architectural pillars and software design guidelines we follow
 micro_nav: true
 page_nav:
   prev:
-    content: production setup
-    url: '/docs/production'
+    content: <strong>Aegis</strong> deep dive
+    url: '/docs/architecture'
   next:
-    content: pronunciation guide
-    url: '/docs/pronunciation'
+    content: join the <strong>Aegis</strong> community
+    url: '/contact/#community'
 ---
 
 ## Introduction

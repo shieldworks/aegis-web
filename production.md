@@ -1,4 +1,12 @@
 ---
+#
+# .-'_.---._'-.
+# ||####|(__)||   Protect your secrets, protect your business.
+#   \\()|##//       Secure your sensitive data with Aegis.
+#    \\ |#//                  <aegis.z2h.dev>
+#     .\_/.
+#
+
 layout: default
 keywords: Aegis, installation, deployment, production, reference architecture
 title: Production Deployment
@@ -6,11 +14,8 @@ description: things to pay attention to
 micro_nav: true
 page_nav:
   prev:
-    content: <strong>Aegis</strong> deep dive
-    url: '/docs/architecture'
-  next:
-    content: design decisions
-    url: '/docs/philosophy'
+    content: Miscellaneous
+    url: '/misc'
 ---
 
 ## Introduction
@@ -31,7 +36,24 @@ Server Version: v1.25.3
 ```
 
 Any Kubernetes setup that has components with version greater
-than or euqal to the ones above will likely work just fine.
+than or equal to the ones above will likely work just fine.
+
+## Back Up Your Cluster Regularly
+
+**Aegis** is designed to be resilient; however, it is still a possibility
+to lose access to your sensitive data by inadvertently deleting a Kubernetes
+`Secret` that you are not supposed to delete. Or, your backing store that
+contains the secrets can get corrupted for any reason. 
+
+Cloud Native, or not, you rely on hardware which—intrinsically—is unreliable.
+
+Things happen. Make sure you back up your cluster 
+[using a tool like **Velero**][velero], so when things do happen, you 
+can revert to the last known good state of your cluster.
+
+Set up your backups from day zero.
+
+[velero]: https://velero.io/ "Velero"
 
 ## Restrict Access To `aegis-age-key`
 

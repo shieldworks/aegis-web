@@ -1,4 +1,12 @@
 ---
+#
+# .-'_.---._'-.
+# ||####|(__)||   Protect your secrets, protect your business.
+#   \\()|##//       Secure your sensitive data with Aegis.
+#    \\ |#//                  <aegis.z2h.dev>
+#     .\_/.
+#
+
 layout: default
 keywords: Aegis, maintainers
 title: Who Maintains Aegis?
@@ -6,11 +14,8 @@ description: "we are always open to contributions: the more the merrier"
 micro_nav: true
 page_nav:
   prev:
-    content: pronunciation guide
-    url: '/docs/pronunciation'
-  next:
-    content: what’s coming up?
-    url: '/docs/timeline'
+    content: Miscellaneous
+    url: '/misc'
 ---
 
 As of now, I, [Volkan Özçelik][me], am the sole maintainer of **Aegis**.

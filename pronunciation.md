@@ -1,4 +1,12 @@
 ---
+#
+# .-'_.---._'-.
+# ||####|(__)||   Protect your secrets, protect your business.
+#   \\()|##//       Secure your sensitive data with Aegis.
+#    \\ |#//                  <aegis.z2h.dev>
+#     .\_/.
+#
+
 layout: default
 keywords: Aegis, pronunciation, pronunciation guide, EE-JISS
 title: Pronouncing “Aegis”
@@ -6,11 +14,8 @@ description: EE-JISS, AEY-GISS, what?!
 micro_nav: true
 page_nav:
   prev:
-    content: guiding principles
-    url: '/docs/philosophy'
-  next:
-    content: maintainers
-    url: '/docs/maintainers'
+    content: Miscellaneous
+    url: '/misc'
 ---
 
 “Aegis” is a word of Greek origin and is pronounced `EE-jiss`.

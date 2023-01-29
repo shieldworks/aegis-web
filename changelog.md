@@ -1,4 +1,12 @@
 ---
+#
+# .-'_.---._'-.
+# ||####|(__)||   Protect your secrets, protect your business.
+#   \\()|##//       Secure your sensitive data with Aegis.
+#    \\ |#//                  <aegis.z2h.dev>
+#     .\_/.
+#
+
 layout: default
 keywords: Aegis, Changelog
 title: Aegis Changelog
@@ -6,14 +14,21 @@ description: what happened so far
 micro_nav: true
 page_nav:
   prev:
-    content: releasing a new version
-    url: '/docs/release'
-  next:
-    content: the <strong>Aegis</strong> community
-    url: '/contact'
+    content: Miscellaneous
+    url: '/misc'
 ---
 
+> **Cutting A Release**
+> 
+> If you are a maintainer responsible for release cuts, 
+> see the [**release instructions for maintainers**](/release).
+
 # Aegis Changelog
+
+## [current WIP]
+
+* Improved the website’s information architecture.
+
 
 ## [v1.11.0] - 2023-01-28
 
@@ -21,7 +36,7 @@ page_nav:
 
 As per this release, Aegis is able to securely dispatch secrets to workloads 
 within a single cluster; it encrypts and backs up secrets to a volume; and
-if it crashes, it is recover its state from the backups. The code is stable
+if it crashes, it recovers its state from the backups. The code is stable
 enough and the solution can be used at a production capacity.
 
 That’s also why we started a changelog: Before this point in time, it

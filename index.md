@@ -1,4 +1,11 @@
 ---
+#
+# .-'_.---._'-.
+# ||####|(__)||   Protect your secrets, protect your business.
+#   \\()|##//       Secure your sensitive data with Aegis.
+#    \\ |#//                  <aegis.z2h.dev>
+#     .\_/.
+#
 
 layout: homepage
 keywords: aegis, secrets management, secrets store, Kubernetes
@@ -6,7 +13,7 @@ keywords: aegis, secrets management, secrets store, Kubernetes
 title: Aegis
 description: keep your secrets… secret
 buttons:
-- content: Quickstart
+- content: <strong>Aegis</strong> Quickstart
   url: '/docs/'
   external_url: false
 - icon: github
@@ -15,14 +22,14 @@ buttons:
   external_url: true
 
 grid_navigation:
-- title: Quickstart
+- title: <strong>Aegis</strong> Quickstart
   excerpt: Get your hands dirty. Install and use Aegis on your Kubernetes cluster.
   cta: get started
   url: '/docs'
 - title: Production Tips
   excerpt: Production deployment recommendations to let your ops teams <code>#sleepmore</code>.
   cta: prepare your clusters
-  url: '/docs/production'
+  url: '/production'
 - title: Using <strong>Aegis</strong> SDK
   excerpt: Use <strong>Aegis Go SDK</strong> for a tighter integration with <strong>Aegis</strong> components.
   cta: dive in; water is warm
@@ -30,7 +37,7 @@ grid_navigation:
 - title: Keeping Secrets
   excerpt: A tutorial on how to dispatch secrets to workloads.
   cta: get your hands dirty
-  url: '/docs/secrets'
+  url: '/docs/register'
 - title: <strong>Aegis</strong> Community
   excerpt: Join us on <strong>Slack</strong>. It’s nice and cozy in here.
   cta: welcome to the jungle
@@ -38,7 +45,7 @@ grid_navigation:
 - title: Coming Up Next…
   excerpt: What we are planning to do in the near (<em>and far</em>) future.
   cta: see what’s cooking
-  url: '/docs/timeline'
+  url: '/timeline'
  
 ---
 
