@@ -27,12 +27,17 @@ page_nav:
 
 ## [v0.11.5] - 2023-02-01
 
+### Added
+
 * Improved the website’s information architecture.
 * Added audit logs to Safe API methods.
-* Retry persisting secrets to disk one more time before erring out.
 * When a secret persist error occurs, it is logged.
-* Added a channel mechanism to funnel disk errors instead of supressing them.
 * Improvements in development workflow (*enabling local registries*)
+
+### Changed
+
+* Retry persisting secrets to disk one more time before erring out.
+* Added a channel mechanism to funnel disk errors instead of suppressing them.
 
 ## [v1.11.0] - 2023-01-28
 
