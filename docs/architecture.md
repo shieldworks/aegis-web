@@ -41,8 +41,8 @@ knowing what happens under the hood will serve you well.
 
 ### Aegis SPIRE
 
-[`aegis-spire`][aegis-spire] is what makes communication within **Aegis** 
-components and workloads possible. It dispatches **x.509 SVID Certificates** 
+[`aegis-spire`][aegis-spire] is what makes communication within **Aegis**
+components and workloads possible. It dispatches **x.509 SVID Certificates**
 to the required parties to make secure **mTLS** communication possible.
 
 [Check out the official SPIFFE/SPIRE documentation][spiffe] for more information
@@ -93,19 +93,19 @@ hard, time-consuming, and error-prone endeavor.
 
 **Aegis** consists of the following sister projects:
 
-* [**Aegis SPIRE**][aegis-spire]: **Aegis** uses [SPIRE][spire] as its Identity 
+* [**Aegis SPIRE**][aegis-spire]: **Aegis** uses [SPIRE][spire] as its Identity
   Control Plane.
 * [**Aegis Safe**][aegis-safe]: **Safe** is the **secrets store** of **Aegis**.
-* [**Aegis Sentinel**][aegis-sentinel]: **Sentinel** acts as a bastion that an 
+* [**Aegis Sentinel**][aegis-sentinel]: **Sentinel** acts as a bastion that an
   operator (or a CI) can register secrets to workloads.
-* [**Aegis Sidecar**][aegis-sidecar]: **Sidecar** is a utility that can help 
+* [**Aegis Sidecar**][aegis-sidecar]: **Sidecar** is a utility that can help
   workloads retrieve secrets dynamically at runtime.
-* [**Aegis Go SDK**][aegis-sdk-go]: **Go SDK** is a library that workloads can 
+* [**Aegis Go SDK**][aegis-sdk-go]: **Go SDK** is a library that workloads can
   use to directly talk to **Safe** (instead of using the **Sidecar**).
 * [**Aegis Core**][aegis-core]: Common modules that other projects share.
-* [**Aegis Demo Workload (using Go SDK)**][aegis-workload-demo-using-sdk]: A 
+* [**Aegis Demo Workload (using Go SDK)**][aegis-workload-demo-using-sdk]: A
   demo workload that uses the **Go SDK** to talk to **Safe**.
-* [**Aegis Demo Workload (using Aegis Sidecar)**][aegis-workload-demo-using-sidecar]: 
+* [**Aegis Demo Workload (using Aegis Sidecar)**][aegis-workload-demo-using-sidecar]:
   A demo workload dynamically injects secrets to itself using an **Aegis Sidecar**.
 * [**Aegis Web**][aegis-web]: The source code of <https://aegis.z2h.dev>, which
   is the very website you read at the moment.
@@ -127,7 +127,7 @@ hard, time-consuming, and error-prone endeavor.
 **SPIRE** delivers short-lived X.509 SVIDs to **Aegis**
 components and consumer workloads.
 
-**Aegis Sidecar** periodically talks to **Aegis Safe** to check if there is 
+**Aegis Sidecar** periodically talks to **Aegis Safe** to check if there is
 a new secret to be updated.
 
 ![Aegis High Level Architecture](/assets/aegis-hla.png "Aegis High Level Architecture")
@@ -174,19 +174,19 @@ the service account and namespace*):
 ## Persisting Secrets
 
 **Aegis Safe** uses [age][age] to securely persist the secrets to disk so that
-when its Pod is replaced by another pod for any reason 
-(*eviction, crash, system restart, etc.*). When that happens, **Aegis Safe** 
+when its Pod is replaced by another pod for any reason
+(*eviction, crash, system restart, etc.*). When that happens, **Aegis Safe**
 can retrieve secrets from a persistent storage.
 
-Since decryption is relatively expensive, once a secret is retrieved, 
-it is kept in memory and served from memory for better performance. 
-Unfortunately, this also means the amount of secrets you have for all 
+Since decryption is relatively expensive, once a secret is retrieved,
+it is kept in memory and served from memory for better performance.
+Unfortunately, this also means the amount of secrets you have for all
 your workloads **has to** fit in the memory you allocate to **Aegis Safe**.
 
 ## **Aegis Safe** Bootstrapping Flow
 
 To persist secrets, **Aegis Safe** needs a way to generate and securely store
-the private and public `age` keys that are utilized for decrypting and 
+the private and public `age` keys that are utilized for decrypting and
 encrypting the secrets, respectively.
 
 * Key generation is conveniently provided by `age` Go SDK.
@@ -221,7 +221,7 @@ Here is what an **Aegis Safe** Pod looks like at a high level:
   write to this secret.
 
 If the `main` container does not have a public/private key pair in memory, it
-will attempt to retrieve it from the `/key` volume. If that fails, it will 
+will attempt to retrieve it from the `/key` volume. If that fails, it will
 generate a brand new key pair and then store it in the `safe-age-key` secret.
 
 ## Environment Variables
@@ -230,17 +230,17 @@ generate a brand new key pair and then store it in the `safe-age-key` secret.
 
 ### SPIFFE_ENDPOINT_SOCKET
 
-`SPIFFE_ENDPOINT_SOCKET` is required for **Aegis Sentinel** to talk to 
-**Aegis SPIRE**. 
+`SPIFFE_ENDPOINT_SOCKET` is required for **Aegis Sentinel** to talk to
+**Aegis SPIRE**.
 
-If not provided, a default value of `"unix:///spire-agent-socket/agent.sock"` 
+If not provided, a default value of `"unix:///spire-agent-socket/agent.sock"`
 will be used.
 
-### AEGIS_SAFE_LOG_LEVEL
+### AEGIS_LOG_LEVEL
 
-`AEGIS_SAFE_LOG_LEVEL` determines the verbosity of the logs in **Aegis Safe**. 
+`AEGIS_LOG_LEVEL` determines the verbosity of the logs in **Aegis Safe**.
 
-`1`: logs are off, `6`: highest verbosity. default: `3` 
+`1`: logs are off, `6`: highest verbosity. default: `3`
 
 ```text
 Off = 1
@@ -255,7 +255,7 @@ Trace = 6
 
 Both **Aegis Safe** and **workloads** use this environment variable.
 
-`AEGIS_WORKLOAD_SVID_PREFIX` is required for validation. If not provided, 
+`AEGIS_WORKLOAD_SVID_PREFIX` is required for validation. If not provided,
 it will default to: `"spiffe://aegis.z2h.dev/workload/"`
 
 ### AEGIS_SENTINEL_SVID_PREFIX
@@ -284,22 +284,22 @@ If not provided, it will default to:
 If not given, defaults to `"/data"`.
 
 ### AEGIS_SAFE_AGE_KEY_PATH
-        
+
 `AEGIS_SAFE_AGE_KEY_PATH` is where **Aegis Safe** will fetch the `"key.txt"`
-that contains the encryption keys. 
+that contains the encryption keys.
 
 If not given, it will default to `"/key/key.txt"`.
 
 ### AEGIS_SAFE_ENDPOINT_URL
 
-`AEGIS_SAFE_ENDPOINT_URL` is the **REST API** endpoint that **Aegis Safe** 
-exposes from its `Service`. 
+`AEGIS_SAFE_ENDPOINT_URL` is the **REST API** endpoint that **Aegis Safe**
+exposes from its `Service`.
 
 If not provided, it will default to:
 `"https://aegis-safe.aegis-system.svc.cluster.local:8443/"`.
 
 ### AEGIS_PROBE_LIVENESS_PORT
-        
+
 `AEGIS_PROBE_LIVENESS_PORT` is the port where the liveness probe
 will serve.
 
@@ -308,7 +308,7 @@ Defaults to `:8081`.
 ### AEGIS_PROBE_READINESS_PORT
 
 `AEGIS_PROBE_READINESS_PORT` is the port where the readiness probe
-will serve. 
+will serve.
 
 Defaults to `:8082`.
 
