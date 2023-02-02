@@ -25,6 +25,10 @@ page_nav:
 
 # Aegis Changelog
 
+## Currently Working On
+
+* Added a [media kit ](/media).
+
 ## [v0.11.5] - 2023-02-01
 
 ### Added
