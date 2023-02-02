@@ -9,8 +9,8 @@
 					<a href="{% if jekyll.environment == 'production' %}{{ site.doks.baseurl }}{% endif %}/" class="site-footer__logo">{{ site.doks.footer.content.logo.text }}</a>
 					{% elsif site.doks.footer.content.logo.image %}
 						<a href="{% if jekyll.environment == 'production' %}{{ site.doks.baseurl }}{% endif %}/" class="site-footer__logo">
-							<img src="{% if jekyll.environment == 'production' %}{{ site.doks.baseurl }}{% endif %}/doks-theme/assets/images/aegis-icon.png"
-								 style="width:64px;">
+							<img class="footer-logo" src="{% if jekyll.environment == 'production' %}{{ site.doks.baseurl }}{% endif %}/doks-theme/assets/images/aegis-icon.png"
+								 style="width:64px;margin:0.1em">
 						</a><!-- /.site-footer__logo -->
 					{% endif %}
 					<p style="color:#ffffff">keep your secrets… secret</p>

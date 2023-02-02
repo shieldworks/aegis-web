@@ -98,6 +98,14 @@ a.fl {
 	}
 }
 
+a.site-footer__logo {
+	cursor: default;
+
+	&:hover {
+		background-color: transparent;
+	}
+}
+
 
 h1, .h1 {
 	font-size: $font-size-h1;
