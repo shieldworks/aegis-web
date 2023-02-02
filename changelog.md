@@ -19,22 +19,26 @@ page_nav:
 ---
 
 > **Cutting A Release**
-> 
-> If you are a maintainer responsible for release cuts, 
+>
+> If you are a maintainer responsible for release cuts,
 > see the [**release instructions for maintainers**](/release).
 
 # Aegis Changelog
 
-## [current WIP]
+## [v0.11.5] - 2023-02-01
 
 * Improved the website’s information architecture.
-
+* Added audit logs to Safe API methods.
+* Retry persisting secrets to disk one more time before erring out.
+* When a secret persist error occurs, it is logged.
+* Added a channel mechanism to funnel disk errors instead of supressing them.
+* Improvements in development workflow (*enabling local registries*)
 
 ## [v1.11.0] - 2023-01-28
 
 ### Current State
 
-As per this release, Aegis is able to securely dispatch secrets to workloads 
+As per this release, Aegis is able to securely dispatch secrets to workloads
 within a single cluster; it encrypts and backs up secrets to a volume; and
 if it crashes, it recovers its state from the backups. The code is stable
 enough and the solution can be used at a production capacity.

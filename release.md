@@ -24,16 +24,16 @@ Before every release cut, follow the steps outlined below.
 
 ### 1. Double Check
 
-Ensure all changes that need to go to a release in all 
+Ensure all changes that need to go to a release in all
 repositories have been merged to `main`.
 
 ### 2. Fetch Assets
 
-```bash 
+```bash
 # Uninstall Aegis:
 make clean
 # Pull recent code:
-make pull 
+make pull
 # Copy over recent manifests:
 make sync
 ```
@@ -47,22 +47,27 @@ Then edit `./hack/bump-version.sh` to move everything to the new version.
 
 Then execute the following:
 
-```bash 
+```bash
 make bump
 make sync
 ```
 
 ### 4. Build and Deploy Locally
 
-```bash 
-make build
-make deploy
+Before running the following commands, make sure you haven an **insecure**
+docker registry running at `localhost:5000`.
+
+For minikube, `minikube addons enable registry`, should work.
+
+```bash
+make build-local
+make deploy-local
 ```
 
 ### 5. Run Integration Tests
 
-```bash 
-make test
+```bash
+make test-local
 ```
 
 Ensure that the program succeeds.
