@@ -28,3 +28,4 @@ they don’t quite fit the narrative of the rest of the documentation.
 * [Is there a **CHANGELOG**](/changelog)?
 * [I have something to say](/contact).
 * [Where is your privacy policy](/privacy)?
+* [Is there a “**media kit**” page to download official **Aegis** logos and icons](/media)?
