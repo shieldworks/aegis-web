@@ -57,7 +57,7 @@ make sync
 Before running the following commands, make sure you haven an **insecure**
 docker registry running at `localhost:5000`.
 
-For minikube, `minikube addons enable registry`, should work.
+For minikube, `minikube addons enable registry` should work.
 
 ```bash
 make build-local
