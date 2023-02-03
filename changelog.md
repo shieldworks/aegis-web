@@ -31,6 +31,8 @@ page_nav:
 * Aegis Sidecar now exponentially backs off if it cannot fetch secrets
   in a timely manner.
 * Added more configuration options through environment variables.
+* **BREAKING CHANGE**: All time units in environment variables 
+  are now milliseconds, instead of seconds.
 
 ## [v0.11.5] - 2023-02-01
 
