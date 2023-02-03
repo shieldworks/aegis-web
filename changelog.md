@@ -28,6 +28,9 @@ page_nav:
 ## Currently Working On
 
 * Added a [media kit ](/media).
+* Aegis Sidecar now exponentially backs off if it cannot fetch secrets
+  in a timely manner.
+* Added more configuration options through environment variables.
 
 ## [v0.11.5] - 2023-02-01
 
