@@ -41,7 +41,14 @@ will be used.
 
 `AEGIS_LOG_LEVEL` determines the verbosity of the logs in **Aegis Safe**.
 
+**Aegis Sidecar** also uses this configuration; however, unlike **Aegis Safe**, 
+it is not dynamic. While you can dynamically configure this at runtime for 
+**Aegis Safe** without having to restart **Aegis Safe**, for **Aegis Sidecar** 
+you’ll have to restart the **workload**’s pod for any changes to take effect.
+
 `1`: logs are off, `6`: highest verbosity. default: `3`
+
+Here are what various log levels correspond to:
 
 ```text
 Off = 1
@@ -80,7 +87,7 @@ If not provided, it will default to:
 
 ### AEGIS_SAFE_DATA_PATH
 
-`AEGIS_SAFE_DATA_PATH` is where the encrypted secrets are stored.
+`AEGIS_SAFE_DATA_PATH` is where **Aegis Safe** stores its encrypted secrets.
 
 If not given, defaults to `"/data"`.
 
@@ -99,6 +106,9 @@ exposes from its `Service`.
 If not provided, it will default to:
 `"https://aegis-safe.aegis-system.svc.cluster.local:8443/"`.
 
+**Aegis Sentinel**, **Aegis Sidecar** and 
+**workloads** need this URL configured.
+
 ### AEGIS_PROBE_LIVENESS_PORT
 
 `AEGIS_PROBE_LIVENESS_PORT` is the port where the liveness probe
@@ -106,12 +116,16 @@ will serve.
 
 Defaults to `:8081`.
 
+**Aegis Safe** and **Aegis Sentinel** use this configuration.
+
 ### AEGIS_PROBE_READINESS_PORT
 
 `AEGIS_PROBE_READINESS_PORT` is the port where the readiness probe
 will serve.
 
 Defaults to `:8082`.
+
+**Aegis Safe** uses this configuration.
 
 ### AEGIS_SAFE_SVID_RETRIEVAL_TIMEOUT
 
@@ -122,14 +136,14 @@ The default value is `30000` milliseconds.
 
 ### AEGIS_SAFE_TLS_PORT
 
-`AEGIS_SAFE_TLS_PORT` is the port that Safe serves its API endpoints.
+`AEGIS_SAFE_TLS_PORT` is the port that **Aegis Safe** serves its API endpoints.
 
 Defaults to `":8443"`.
 
 ### AEGIS_SAFE_SECRET_BUFFER_SIZE
 
 `AEGIS_SAFE_SECRET_BUFFER_SIZE` is the amount of secret insertion operations
-to be buffered until **Safe API** blocks and waits for the buffer to have an
+to be buffered until **Aegis Safe API** blocks and waits for the buffer to have an
 empty slot.
 
 If the environment variable is not set, this buffer size defaults to `10`.

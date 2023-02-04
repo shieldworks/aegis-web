@@ -31,6 +31,7 @@ page_nav:
 * Added local development instructions.
 * Improvements to local development workflow.
 * Other documentation updates.
+* Added default values to sample `yaml` manifests.
 
 ## [v0.11.20]
 
