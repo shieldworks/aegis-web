@@ -25,12 +25,17 @@ page_nav:
 
 # Aegis Changelog
 
-## Currently Working On
+## [v0.11.20]
+
+### Added
 
 * Added a [media kit ](/media).
+* Added more configuration options through environment variables.
+
+### Changed
+
 * Aegis Sidecar now exponentially backs off if it cannot fetch secrets
   in a timely manner.
-* Added more configuration options through environment variables.
 * **BREAKING CHANGE**: All time units in environment variables 
   are now milliseconds, instead of seconds.
 
