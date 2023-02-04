@@ -60,6 +60,8 @@ environment variable (*`/opt/aegis/secrets.json` by default*).
 [Check out the relevant sections of the **Registering Secrets** article][registering-secrets]
 for an example of [**Aegis Go SDK**][go-sdk] usage.
 
+[registering-secrets]: /docs/register
+
 <p>&nbsp;</p>
 
 ----

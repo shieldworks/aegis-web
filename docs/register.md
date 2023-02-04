@@ -27,8 +27,8 @@ In this tutorial, you will register secrets to Kubernetes workloads
 using **Aegis**. 
 
 We will first discuss how to register a secret to a workload using
-[Aegis sidecar][sidecar], and then we will cover a more direct approach using
-the [Aegis Go SDK][sdk-go].
+[**Aegis Sidecar**][sidecar], and then we will cover a more direct approach using
+the [**Aegis Go SDK**][sdk-go].
 
 [sidecar]: https://github.com/zerotohero-dev/aegis-sidecar
 [sdk-go]: https://github.com/zerotohero-dev/aegis-sdk-go
@@ -38,11 +38,13 @@ the [Aegis Go SDK][sdk-go].
 To complete this tutorial, you will need the following:
 
 * A **Kubernetes** cluster that you have sufficient admin rights.
-* **Aegis** up and running on your system.
+* **Aegis** up and running on that cluster.
 * [The `zerotohero-dev/aegis` repository][repo] cloned inside a workspace
   folder (such as `/home/jane-doe/Desktop/WORKSPACE/aegis`)
 
-To set up **Aegis**, [follow the instructions in this quickstart guide][quickstart].
+> **How Do I Set Up Aegis**?
+> 
+> To set up **Aegis**, [follow the instructions in this quickstart guide][quickstart].
 
 [quickstart]: /docs/
 [repo]: https://github.com/zerotohero-dev/aegis
@@ -243,7 +245,7 @@ the secrets (*because the workload is registered*) or deny dispatching them
 > behind the scenes.
 > 
 > For every `ClusterSPIFFEID` created this way, 
-> `SPIRE` (Aegis’ identity control plane) will deliver an **X.509 SVID**
+> `SPIRE` (*Aegis’ identity control plane*) will deliver an **X.509 SVID**
 > bundle to the workload.
 > 
 > Therefore, creating a `ClusterSPIFFEID` is a way to **irrefutably**,
@@ -368,7 +370,7 @@ secret: ' {"username":"Aegis", "password": "KeepYourSecrets"} '
 
 ## BONUS: Setting Aegis Safe’s Log Level
 
-An undocumented (*and subject to change*) feature of **Aegis** is you
+A relatively-hidden (*and subject to change*) feature of **Aegis** is you
 can use **Aegis Sentinel** to set secrets and update the behavior of 
 **Aegis** system components.
 
@@ -544,7 +546,9 @@ value: {"username":"Aegis", "password": "KeepYourSecrets"}
 …
 ```
 
-It looks like our workload was able to receive its secret too. In addition,
+It looks like our workload was able to receive its secret too. 
+
+In addition,
 we were able to fetch important meta-information about the secret,
 such as the creation and update time stamps.
 

@@ -30,7 +30,7 @@ that your sensitive data is always **secure** and **protected**.
 **Aegis** is perfect for securely storing arbitrary configuration information at a 
 central location and securely dispatching it to workloads.
 
-By leveraging Kubernetes security primitives, [SPIRE][spire], and strong,
+By leveraging Kubernetes security primitives, [**SPIRE**][spire], and strong,
 industry-standard encryption, **Aegis** ensures that your secrets are **only** 
 accessible to **trusted** and **authorized** workloads. **Aegis**’s 
 Cloud Native—secure by default—foundation helps you safeguard your business 
@@ -80,8 +80,9 @@ cluster to securely use **Aegis**.
 ## Installation
 
 First, ensure that you have sufficient administrative rights on your 
-**Kubernetes** cluster. Then create a workspace folder and clone the project.
-And finally execute the `./hack/install.sh` as follows.
+**Kubernetes** cluster. Then create a workspace folder 
+(*such as `$HOME/Desktop/WORKSPACE`*) and clone the project.
+And finally execute `./hack/install.sh` as follows.
 
 ```bash 
 mkdir $HOME/Desktop/WORKSPACE
@@ -95,18 +96,9 @@ cd aegis
 ./hack/install.sh
 ```
 
-Additionally, you can deploy a demo workload to experiment:
+## Verifying Installation
 
-```bash 
-# Demo workload that uses `aegis-sidecar` 
-./hack/install-workload-using-sidecar.sh
-
-# Demo workload that directly talks to `aegis-safe` 
-# using Aegis Go SDK
-./hack/install-workload-using-sdk.sh
-```
-
-To verify installation check out the `aegis-system` namespace:
+To verify installation, check out the `aegis-system` namespace:
 
 ```bash
 kubectl get deployment -n aegis-system
