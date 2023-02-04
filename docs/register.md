@@ -17,8 +17,8 @@ page_nav:
     content: quickstart
     url: '/docs/'
   next:
-    content: using <strong>Aegis</strong> go sdk
-    url: '/docs/sdk'
+    content: local development
+    url: '/docs/contributing'
 ---
 
 ## Introduction

@@ -14,8 +14,8 @@ description: directly consume the <strong>Aegis Safe</strong> API
 micro_nav: true
 page_nav:
   prev:
-    content: registering secrets
-    url: '/docs/register'
+    content: local development
+    url: '/docs/contributing'
   next:
     content: <strong>Aegis</strong> deep dive
     url: '/docs/architecture'

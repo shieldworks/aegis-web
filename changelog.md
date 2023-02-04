@@ -25,6 +25,13 @@ page_nav:
 
 # Aegis Changelog
 
+## Currently Working
+
+* Added contributing guidelines.
+* Added local development instructions.
+* Improvements to local development workflow.
+* Other documentation updates.
+
 ## [v0.11.20]
 
 ### Added
