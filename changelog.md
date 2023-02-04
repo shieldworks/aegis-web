@@ -32,6 +32,7 @@ page_nav:
 * Improvements to local development workflow.
 * Other documentation updates.
 * Added default values to sample `yaml` manifests.
+* Added the ability to list secrets to Aegis Sentinel.
 
 ## [v0.11.20]
 
