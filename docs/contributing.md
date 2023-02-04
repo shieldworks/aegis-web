@@ -152,6 +152,7 @@ make sync
 
 Just explore the [Makefile][makefile] and get a feeling of it.
 
-[Feel free to touch base](/contact#community) if you have any issues.
+[Feel free to touch base](/contact#community) if you have any questions, comments,
+recommendations.
 
 [makefile]: https://github.com/zerotohero-dev/aegis/blob/main/Makefile
