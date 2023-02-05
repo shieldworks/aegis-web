@@ -76,15 +76,15 @@ REST API.
 That said, knowing the internals of **Aegis Safe** API can be helpful in case
 you want to develop your own SDK in your programming language of choice.
 
-### `POST /v1/fetch`
+### `GET /workload/v1/secrets`
 
-`/v1/fetch` can only be called from the **workloads**.
+`/workload/v1/secrets` can only be called from the **workloads**.
 
 
 ```bash 
 # The workload is is inferred from the workload’s TLS certificate.
 
-http POST $aegisSafeHost/v1/fetch 
+http GET $aegisSafeHost/workload/v1/secrets
 
 {
   "data": "content of the secret",
@@ -93,16 +93,28 @@ http POST $aegisSafeHost/v1/fetch
 }
 ```
 
-### `POST /v1/secret`
+### `POST /sentinel/v1/secrets`
 
-`/v1/secret` can only be called from **Aegis Sentinel**.
+`/sentinel/v1/secrets` can only be called from **Aegis Sentinel**.
 
 ```bash
-# The workload is is inferred from the workload’s TLS certificate.
-
-http POST $aegisSafeHost/v1/secret
+http POST $aegisSafeHost/sentinel/v1/secrets
    key="demo-workload" # the ID of the workload.
    value="contents of the secret"
    
 OK
+```
+
+### `GET /sentinel/v1/secrets`
+
+`/sentinel/v1/secrets` lists all of the registered secrets to **Aegis Sentinel**.
+
+```bash
+http GET $aegisSafeHost/sentinel/v1/secrets
+
+{"secrets":[
+  {"name":"aegis-workload-demo",
+    "created":"Sun Feb 05 14:47:03 +0000 2023",
+    "updated":"Sun Feb 05 14:47:45 +0000 2023"}
+]}
 ```

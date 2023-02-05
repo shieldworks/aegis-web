@@ -25,16 +25,23 @@ page_nav:
 
 # Aegis Changelog
 
-## Currently Working
+## [v0.12.30] - 2023-02-05
+
+## Added
 
 * Added contributing guidelines.
 * Added local development instructions.
-* Improvements to local development workflow.
-* Other documentation updates.
 * Added default values to sample `yaml` manifests.
 * Added the ability to list secrets to Aegis Sentinel.
+* Other documentation updates.
 
-## [v0.11.20]
+## Changed
+
+* Improvements to local development workflow.
+* **BREAKING**: Changes in Aegis Safe REST API that required changes in
+  demo workload implementations, and Aegis Sentinel.
+
+## [v0.11.20] - 2023-02-03
 
 ### Added
 
@@ -45,7 +52,7 @@ page_nav:
 
 * Aegis Sidecar now exponentially backs off if it cannot fetch secrets
   in a timely manner.
-* **BREAKING CHANGE**: All time units in environment variables 
+* **BREAKING**: All time units in environment variables 
   are now milliseconds, instead of seconds.
 
 ## [v0.11.5] - 2023-02-01
