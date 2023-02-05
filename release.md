@@ -85,6 +85,7 @@ make commit
 ### 7. Tag a New Release
 
 ```bash
+make build
 make tag
 ```
 
