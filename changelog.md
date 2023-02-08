@@ -25,9 +25,14 @@ page_nav:
 
 # Aegis Changelog
 
+## Currently Working On
+
+* Implementing Aegis Notary: To inject Kubernetes Secrets to workloads, 
+  if needed.
+
 ## [v0.12.30] - 2023-02-05
 
-## Added
+### Added
 
 * Added contributing guidelines.
 * Added local development instructions.
@@ -35,7 +40,7 @@ page_nav:
 * Added the ability to list secrets to Aegis Sentinel.
 * Other documentation updates.
 
-## Changed
+### Changed
 
 * Improvements to local development workflow.
 * **BREAKING**: Changes in Aegis Safe REST API that required changes in

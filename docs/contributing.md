@@ -148,6 +148,29 @@ cd $WORKSPACE/aegis
 make sync
 ```
 
+## Minikube Quirks
+
+Depending on your operating system, and the Minikube version that you use
+it might take a while to find a way to push images to Minikube’s internal
+Docker registry. [The relevant section about the Minikube handbook][minikube-push]
+covers a lot of details, and can be helpful; however, it is also really easy 
+skip or overlook certain steps.
+
+If you have `docker push` issues, or you have problem your Kubernetes Pods 
+acquiring images from the local registry, try these:
+
+* Execute `eval $(minikube docker-env)` before pushing things to **Docker**. This
+  is one of the first instructions [on the “*push*” section of the Minikube
+  handbook][minikube-push], yet it is still very easy to inadvertently skip it.
+* Make sure you have the registry addon enabled (`minikube addons list`).
+* You might have luck directly pushing the image: 
+  `docker build --tag $(minikube ip):5000/test-img`; followed by:
+  `docker push $(minikube ip):5000/test-img`.
+* There are also `minikube image load` and `minikube image build` commands
+  that might be helful.
+
+[minikube-push]: https://minikube.sigs.k8s.io/docs/handbook/pushing/
+
 ## Enjoy 🎉
 
 Just explore the [Makefile][makefile] and get a feeling of it.

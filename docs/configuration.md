@@ -134,9 +134,10 @@ will wait for an *SPIRE X.509 SVID* bundle before giving up and crashing.
 
 The default value is `30000` milliseconds.
 
-### AEGIS_SAFE_TLS_PORT
+### AEGIS_TLS_PORT
 
-`AEGIS_SAFE_TLS_PORT` is the port that **Aegis Safe** serves its API endpoints.
+`AEGIS_TLS_PORT` is the port that **Aegis Safe** and **Aegis Notary** 
+serve their API endpoints.
 
 Defaults to `":8443"`.
 
