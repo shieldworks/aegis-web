@@ -27,8 +27,12 @@ page_nav:
 
 ## Currently Working On
 
-* Implementing Aegis Notary: To inject Kubernetes Secrets to workloads, 
-  if needed.
+* Added ability to use actual Kubernetes `Secret` object to save the values
+  of the registered secrets—this is mostly for legacy support.
+* Added an option to use the cluster as a backing store (*work in progress*)
+* More configuration options.
+* Created a script to list the status of all Aegis projects (*especially
+  useful when doing deployments and release cuts*)
 
 ## [v0.12.30] - 2023-02-05
 

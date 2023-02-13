@@ -167,7 +167,7 @@ acquiring images from the local registry, try these:
   `docker build --tag $(minikube ip):5000/test-img`; followed by:
   `docker push $(minikube ip):5000/test-img`.
 * There are also `minikube image load` and `minikube image build` commands
-  that might be helful.
+  that might be helpful.
 
 [minikube-push]: https://minikube.sigs.k8s.io/docs/handbook/pushing/
 
