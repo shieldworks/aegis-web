@@ -27,6 +27,11 @@ Before every release cut, follow the steps outlined below.
 Ensure all changes that need to go to a release in all
 repositories have been merged to `main`.
 
+```bash
+# Checks if there are any uncommitted changes
+make status
+```
+
 ### 2. Fetch Assets
 
 ```bash
