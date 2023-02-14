@@ -18,6 +18,41 @@ page_nav:
     url: '/misc'
 ---
 
+## Configuring Minikube Local Registry for Linux
+
+Switch to the **Aegis** project folder
+Then, delete any existing minikube cluster.
+
+```bash
+cd $WORKSPACE/aegis
+make k8s-delete
+```
+
+Then start the **Minikube** cluster.
+
+```bash 
+cd $WORKSPACE/aegis
+make k8s-start
+```
+
+This will also start the local registry. However, you will need to 
+eval some environment variables to be able to use Minikube’s registry insted
+of the local Docker registry.
+
+```bash 
+cd $WORKSPACE/aegis
+eval $(minikube docker-env)
+
+echo $DOCKER_HOST
+# example: tcp://192.168.49.2:2376
+#
+# Any non-empty value to `echo $DOCKER_HOST` means that the environment
+# has been set up correctly.
+```
+
+Note that you might need to execute `eval $(minikube docker-env)` whenever 
+you need to use Minikube Docker registry locally.
+
 ## Cutting a Release
 
 Before every release cut, follow the steps outlined below.
