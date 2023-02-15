@@ -25,6 +25,10 @@ page_nav:
 
 # Aegis Changelog
 
+## Currently Working On
+
+* Upgraded all builder images to Go `v1.20.1`.
+
 ## [v0.12.55] - 2023-02-15
 
 ### Added
