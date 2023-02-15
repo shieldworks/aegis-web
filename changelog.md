@@ -27,12 +27,19 @@ page_nav:
 
 ## [v0.12.55] - 2023-02-15
 
+### Added
+
 * Added ability to use actual Kubernetes `Secret` object to save the values
   of the registered secrets—this is (*mostly*) for legacy support.
 * Added an option to use the cluster as a backing store (*work in progress*)
 * Implemented additional configuration options through environment variables
 * Created a script to list the status of all Aegis projects (*especially
   useful when doing deployments and release cuts*)
+
+### Changed
+
+* There are breaking changes in certain environment variable names. The 
+  documentation ha been updated to reflect these changes.
 
 ## [v0.12.30] - 2023-02-05
 
