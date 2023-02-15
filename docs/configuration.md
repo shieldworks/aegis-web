@@ -10,7 +10,7 @@
 layout: default
 keywords: Aegis, architecture, configuration, environment
 title: Configuring Aegis
-description: buttons, lever, knobs, nuts, and bolts…
+description: buttons, levers, knobs, nuts, and bolts…
 micro_nav: false
 page_nav:
   prev:
@@ -51,10 +51,10 @@ you’ll have to restart the **workload**’s pod for any changes to take effect
 Here are what various log levels correspond to:
 
 ```text
-Off = 1
+Off   = 1
 Error = 2
-Warn = 3
-Info = 4
+Warn  = 3
+Info  = 4
 Debug = 5
 Trace = 6
 ```
@@ -149,19 +149,85 @@ empty slot.
 
 If the environment variable is not set, this buffer size defaults to `10`.
 
-### AEGIS_SAFE_BACKING_STORE_TYPE
+Two separate buffers of the same size are used for IO operations, and 
+Kubernetes `Secret` creation (*depending on the type of the API request*). The
+Kubernetes Secrets buffer, and File IO buffer work asynchronously and
+independent of each other int two separate goroutines.
 
-`AEGIS_SAFE_BACKING_STORE_TYPE` is the type of the storage where the secrets
+### AEGIS_SAFE_BACKING_STORE
+
+`AEGIS_SAFE_BACKING_STORE` is the type of the storage where the secrets
 will be encrypted and persisted.
 
-If not given, defaults to `"persistent"`.
+If not given, defaults to `"file"`.
 
-Any value other than `"persistent"` will mean `"in-memory"`.
+Other options are `"in-memory"` nad `"cluster"`.
+
+A `"file"` backing store means **Aegis Safe** persists an encrypted version
+of its state in a volume (*ideally a `PersistedVolume`*).
 
 An `"in-memory"` backing store means **Aegis Safe** does not persist backups
 of the secrets it created to disk. When that option is selected, you will
 lose all of your secrets if **Aegis Safe** is evicted by the scheduler or
 manually restarted by an operator.
+
+> **Work In Progress**
+> 
+> The `"cluster"` mode means **Aegis Safe** will store encrypted backups
+> of its state as Kubernetes `Secret` objects. The `"cluster"` mode has
+> not been implemented yet, and it will `panic` if selected.
+
+### AEGIS_SAFE_SECRET_BACKUP_COUNT
+
+`AEGIS_SAFE_SECRET_BACKUP_COUNT` indicates the number of backups to keep for
+**Aegis Safe** secrets. 
+
+If the environment variable AEGIS_SAFE_SECRET_BACKUP_COUNT is not set or is not 
+a valid integer, the default value of `"3"` will be used.
+
+This configuration is **not** effective when `AEGIS_SAFE_BACKING_STORE` is
+set to `"in-memory"`.
+
+### AEGIS_SAFE_USE_KUBERNETES_SECRETS
+
+`AEGIS_SAFE_USE_KUBERNETES_SECRETS` is a flag indicating whether to create a
+plain text Kubernetes secret for the workloads registered. 
+
+If the environment variable is not set or its value is not `"true"`, it will
+be assumed `"false"`.
+
+There are two things to note about this approach:
+
+First, by design, and for security reasons, the original Kubernetes `Secret` 
+should exist, and it should be initiated to a default data as follows before
+it can be synced by **Aegis Safe**:
+
+```text
+apiVersion: v1
+kind: Secret
+metadata:
+  # The string after `aegis-secret-` must match the workload’s name.
+  # For example, this is an Aegis-managed secret for `aegis-workload-demo`
+  # with the SPIFFE ID 
+  # `"spiffe://aegis.z2h.dev/workload/aegis-workload-demo\
+  #  /ns/{{ .PodMeta.Namespace }}\
+  #  /sa/{{ .PodSpec.ServiceAccountName }}\
+  #  /n/{{ .PodMeta.Name }}"`
+  name: aegis-secret-aegis-workload-demo
+  namespace: default
+type: Opaque
+data:
+  # '{}' (e30=) is a special placeholder to tell Safe that the Secret
+  # is not initialized. DO NOT remove or change it.
+  KEY_TXT: "e30="
+```
+
+Secondly this approach is **less** secure, and it is meant to be used for 
+**legacy** systems where directly using the **Safe Sidecar** or 
+**Safe SDK** are not feasible. For example, you might not have direct control
+over the source code to enable a tighter **Safe** integration. Or, you might
+temporarily want to establish behavior parity of your legacy system before 
+starting a more canonical **Aegis** implementation.
 
 ### AEGIS_SIDECAR_POLL_INTERVAL
 

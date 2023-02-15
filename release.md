@@ -50,8 +50,12 @@ echo $DOCKER_HOST
 # has been set up correctly.
 ```
 
-Note that you might need to execute `eval $(minikube docker-env)` whenever 
-you need to use Minikube Docker registry locally.
+> **Add Docker Settings to Your Profile**
+> 
+> Note that you might need to execute `eval $(minikube docker-env)` whenever 
+> you need to use Minikube Docker registry locally. A practical way to do this
+> is to add the instruction to your profile file (*i.e., `.bash_profile`, 
+> `.profile`, `.zprofile`, etc.*).
 
 ## Cutting a Release
 
