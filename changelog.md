@@ -28,6 +28,7 @@ page_nav:
 ## Currently Working On
 
 * Upgraded all builder images to Go `v1.20.1`.
+* Ability to wait for the secret to initialize first, using Aegis Init Container.
 
 ## [v0.12.55] - 2023-02-15
 
