@@ -25,10 +25,24 @@ page_nav:
 
 # Aegis Changelog
 
-## Currently Working On
+## [v0.12.70] - 2023-02-17
+
+### Added
+
+* Ability to wait for the secret to initialize first, using Aegis Init Container.
+* Ability to use go templates to transform secrets. In this version, the 
+  transformation only applies to the generated Kubernetes `Secret`s. In the
+  upcoming versions, Aegis Safe API will also honor the transformations when
+  returning the secret values.
+
+### Changed
 
 * Upgraded all builder images to Go `v1.20.1`.
-* Ability to wait for the secret to initialize first, using Aegis Init Container.
+
+### Fixed
+
+* Fixed a channel overflow bug that was blocking secret operations when an
+  error occurs.
 
 ## [v0.12.55] - 2023-02-15
 
