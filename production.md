@@ -94,6 +94,21 @@ you secure your access to your secrets.
 
 [distroless]: https://github.com/GoogleContainerTools/distroless
 
+## Volume Selection for Aegis Safe Backing Store
+
+[**Aegis Safe** default deployment descriptor][aegis-safe-deployment-yaml]
+uses [`HostPath`][k8s-pv] to store encrypted backups for secrets.
+
+It is highly recommended to make sure that the backing store that **Aegis Safe**
+uses is durable, performant, and reliable.
+
+It is a best practice to avoid `HostPath` volumes for production deployments.
+For production setups, you are strongly encouraged to [choose a `PersistentVolume`
+that suits your needs][k8s-pv].
+
+[aegis-safe-deployment-yaml]: https://github.com/zerotohero-dev/aegis/blob/main/install/k8s/safe/Deployment.yaml
+[k8s-pv]: https://kubernetes.io/docs/concepts/storage/volumes/
+
 ## Set CPU and Memory Limits
 
 Benchmark your system usage and set **CPU** and **Memory** limits to the
@@ -135,6 +150,24 @@ spire-system  spire-server        6m         41Mi
 ```
 
 Note that 1000m is 1 full CPU core.
+
+Based on these findings, the following resource and limit allocations can be
+a starting point for **Aegis**-managed containers:
+
+```text
+  # Resource allocation will highly-depend on the system.
+  # Benchmark your deployment, monitor your resource utilization,
+  # and adjust these values accordingly.
+  resources:
+    requests:
+      memory: "128Mi"
+      cpu: "250m"
+    limits:
+      memory: "128Mi"
+      # We recommend “NOT” setting a CPU limit.
+      # As long as you have configured your CPU “requests”
+      # correctly, everything would work fine.
+```
 
 ## Conclusion
 
