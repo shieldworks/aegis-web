@@ -552,6 +552,117 @@ In addition,
 we were able to fetch important meta-information about the secret,
 such as the creation and update time stamps.
 
+## Deploying a Demo Workload With an Init Container
+
+In certain situations you might not have full control over the source code
+of your workloads. For example, your workload can be a containerized third
+party binary executable that you don’t have the source code of. It might
+be consuming Kubernetes `Secrets` through injected environment variables, 
+
+Luckily, with **Aegis Init Container** you can interpolate secrets stored in 
+**Aegis Safe** to the `Data` section of Kubernetes `Secret`s at runtime to 
+be consumed by the workloads.
+
+Here is a sample deployment descriptor for your workload that uses
+**Aegis Sidecar**:
+
+```yaml
+# Deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aegis-workload-demo
+  namespace: default
+  labels:
+    app.kubernetes.io/name: aegis-workload-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: aegis-workload-demo
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: aegis-workload-demo
+    spec:
+      serviceAccountName: aegis-workload-demo
+      containers:
+      - name: main
+        image: z2hdev/aegis-workload-demo-using-init-container:0.12.70
+        
+        # These environment variables are interpolated dynamically at runtime.
+        env:
+        - name: SECRET
+          valueFrom:
+            secretKeyRef:
+              name: aegis-secret-aegis-workload-demo
+              key: VALUE
+        - name: USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: aegis-secret-aegis-workload-demo
+              key: USERNAME
+        - name: PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: aegis-secret-aegis-workload-demo
+              key: PASSWORD
+
+      initContainers:
+      # Using Aegis Init Container.
+      - name: init-container
+        image: z2hdev/aegis-init-container:0.12.70
+        volumeMounts:
+        # Volume mount for SPIRE unix domain socket.
+        - name: spire-agent-socket
+          mountPath: /spire-agent-socket
+          readOnly: true
+      volumes:
+      - name: spire-agent-socket
+        csi:
+          driver: "csi.spiffe.io"
+          readOnly: true
+```
+
+Then you can execute the following code to inject the secrets that the
+container needs.
+
+```bash
+# ./hack/register.sh
+
+# Find a Sentinel node.
+SENTINEL=$(kubectl get po -n aegis-system \
+  | grep "aegis-sentinel-" | awk '{print $1}')
+
+# Execute the command needed to interpolate the secret.
+kubectl exec "$SENTINEL" -n aegis-system -- aegis \
+-w "aegis-workload-demo" \
+-n "default" \
+-s '{"username": "root", "password": "SuperSecret", "value": "AegisRocks"}' \
+-t '{"USERNAME":"{{.username}}", "PASSWORD":"{{.password}}", "VALUE": "{{.value}}"}' \
+-k
+
+# Sit back and relax.
+```
+
+The `Pod` that your `Deployment` manages will not initialize until you register
+secrets to your workload.
+
+Once you register secrets using the above command, **Aegis Init Container** will
+exit with a success status code and let the main container initialize with the
+updated Kubernetes `Secret`.
+
+Here is a sequence diagram of how the secret is transformed (*open the image
+in a new tab for a larger version*):
+
+![Transforming Secrets](/assets/secret-transformation.png "Transforming Secrets")
+
+You can also watch a demo video that implements the above flow. The video
+visually explains the above concepts in greater detail:
+
+[![Watch the video](/doks-theme/assets/images/capture.png)](https://vimeo.com/v0lkan/aegis-secrets)
+
 ## Conclusion
 
 In this tutorial, you have seen how to register secrets to workloads using

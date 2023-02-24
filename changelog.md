@@ -25,6 +25,12 @@ page_nav:
 
 # Aegis Changelog
 
+## Currently Working On
+
+* Documentation updates to talk about how to use Aegis Sidecar to propagate 
+  Aegis-Safe-managed secrets into Kubernetes.
+
+
 ## [v0.12.70] - 2023-02-17
 
 ### Added
