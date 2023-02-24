@@ -571,7 +571,7 @@ such as the creation and update time stamps.
 In certain situations you might not have full control over the source code
 of your workloads. For example, your workload can be a containerized third
 party binary executable that you don’t have the source code of. It might
-be consuming Kubernetes `Secrets` through injected environment variables, 
+be consuming Kubernetes `Secret`s through injected environment variables, 
 
 Luckily, with **Aegis Init Container** you can interpolate secrets stored in 
 **Aegis Safe** to the `Data` section of Kubernetes `Secret`s at runtime to 
