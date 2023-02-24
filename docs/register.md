@@ -198,6 +198,13 @@ func main() {
 }
 ```
 
+> **Read The Source Luke**
+>
+> [Check out the **Sidecar Demo** Git repository][git-sidecar]
+> to view the source for this use case.
+
+[git-sidecar]: https://github.com/zerotohero-dev/aegis-workload-demo-using-sidecar "Aegis Workload Demo Using Sidecar"
+
 Our demo app tries to read a secret file every 5 seconds forever.
 
 Yet, how do we tell **Aegis** about our app so that it can identify it to
@@ -419,6 +426,13 @@ adaptable to changes.
 As in anything, there is no one true way to do it. Your approach will depend
 on your project’s requirements.
 
+> **Read The Source Luke**
+>
+> [Check out the **SDK Demo** Git repository][git-sdk]
+> to view the source for this use case.
+
+[git-sdk]: https://github.com/zerotohero-dev/aegis-workload-demo-using-sdk "Aegis Workload Demo Using SDK"
+
 That part taken care of; let’s deploy a workload that does not use a sidecar.
 
 Here is the deployment manifest for our workload:
@@ -563,8 +577,13 @@ Luckily, with **Aegis Init Container** you can interpolate secrets stored in
 **Aegis Safe** to the `Data` section of Kubernetes `Secret`s at runtime to 
 be consumed by the workloads.
 
+> **Read The Source Luke**
+>
+> [Check out the **Init Container Demo** Git repository][git-init-container]
+> to view the source for this use case.
+
 Here is a sample deployment descriptor for your workload that uses
-**Aegis Sidecar**:
+**Aegis Init Container**:
 
 ```yaml
 # Deployment.yaml
@@ -662,6 +681,9 @@ You can also watch a demo video that implements the above flow. The video
 visually explains the above concepts in greater detail:
 
 [![Watch the video](/doks-theme/assets/images/capture.png)](https://vimeo.com/v0lkan/aegis-secrets)
+
+[git-init-container]: https://github.com/zerotohero-dev/aegis-workload-demo-using-init-container "Aegis Workload Demo Using Init Container"
+
 
 ## Conclusion
 
