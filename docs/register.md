@@ -691,9 +691,12 @@ In this tutorial, you have seen how to register secrets to workloads using
 **Aegis Sentinel**. First, we have used a **sidecar** to streamline the process
 and keep the workload oblivious to the existence of **Aegis**. Then we used
 [**Aegis** Go SDK][go-sdk] to skip the workload and directly consume secrets
-from **Aegis Safe**.
+from **Aegis Safe**. Finally, we looked into a use case where we can dynamically
+create Kubernetes `Secret`s and bind them to workloads with the help of 
+**Aegis Sentinel**, **Aegis Safe**, and **Aegis Init Container**.
 
 For the interested, [the following section][next-section] covers the **Aegis** 
-Go SDK’s methods in more detail.
+Go SDK’s methods in more detail; and the section after that is about
+[**Aegis** Sentinel Command Line Interface Usage](/docs/sentinel).
 
 [next-section]: /docs/sdk

@@ -38,7 +38,7 @@ If you have a vulnerability to report, [please follow this guideline][vuln].
 
 ## I Have This Crazy Idea…
 
-If none sounds like a plan, [email at (*me@volkan.io*)][email] and share
+If none sounds like a plan, [email at (*feedback@aegis.ist*)][email] and share
 your thoughts.
 
 ## I Want to Be a Contributor
@@ -74,6 +74,6 @@ Thanks so much for your interest: It means a lot 🙏.
 
 [ticket]: https://github.com/zerotohero-dev/aegis/issues/new/choose
 [slack]: https://join.slack.com/t/aegis-6n41813/shared_invite/zt-1myzqdi6t-jTvuRd1zDLbHX0gN8VkCqg
-[email]: mailto:me@volkan.io
+[email]: mailto:feedback@aegis.ist
 [ko-fi]: https://ko-fi.com/volkanozcelik
 [girls-who-code]: https://girlswhocode.com/

@@ -18,20 +18,21 @@ page_nav:
     url: '/misc'
 ---
 
-> **Cutting A Release**
->
-> If you are a maintainer responsible for release cuts,
-> see the [**release instructions for maintainers**](/release).
-
 # Aegis Changelog
 
 ## Currently Working On
 
+### Added
+
+* Aegis has a new website: [aegis.ist](https://aegis.ist/).
+
+### Changed
+
 * Documentation updates to talk about how to use Aegis Sidecar to propagate 
   Aegis-Safe-managed secrets into Kubernetes.
-* Aegis has a new website: https://aegis.ist/
-* BREAKING: Trust root of entities changed from `z2h.dev` to `aegist.ist`.
-
+* Documentation update: Changed contact, support, and security feedback emails
+  to official `@aegis.ist` emails.
+* **BREAKING**: Trust root of entities changed from `z2h.dev` to `aegist.ist`.
 
 ## [v0.12.70] - 2023-02-17
 

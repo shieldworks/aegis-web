@@ -17,8 +17,8 @@ page_nav:
     content: local development
     url: '/docs/contributing'
   next:
-    content: <strong>Aegis</strong> deep dive
-    url: '/docs/architecture'
+    content: <strong>Aegis</strong> Sentinel CLI
+    url: '/docs/sentinel'
 ---
 
 This is the documentation for [Aegis Go SDK][go-sdk].
