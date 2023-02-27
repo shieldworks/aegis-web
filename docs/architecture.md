@@ -3,7 +3,7 @@
 # .-'_.---._'-.
 # ||####|(__)||   Protect your secrets, protect your business.
 #   \\()|##//       Secure your sensitive data with Aegis.
-#    \\ |#//                  <aegis.z2h.dev>
+#    \\ |#//                  <aegis.ist>
 #     .\_/.
 #
 
@@ -107,7 +107,7 @@ hard, time-consuming, and error-prone endeavor.
   demo workload that uses the **Go SDK** to talk to **Safe**.
 * [**Aegis Demo Workload (using Aegis Sidecar)**][aegis-workload-demo-using-sidecar]:
   A demo workload dynamically injects secrets to itself using an **Aegis Sidecar**.
-* [**Aegis Web**][aegis-web]: The source code of <https://aegis.z2h.dev>, which
+* [**Aegis Web**][aegis-web]: The source code of <https://aegis.ist>, which
   is the very website you read at the moment.
 
 [aegis-core]: https://github.com/zerotohero-dev/aegis-core
@@ -144,7 +144,7 @@ to **Aegis Safe**.
 SPIFFE ID format wor workloads is as follows:
 
 ```text
-{% raw %}spiffe://aegis.z2h.dev/workload/$workloadName
+{% raw %}spiffe://aegis.ist/workload/$workloadName
 /ns/{{ .PodMeta.Namespace }}
 /sa/{{ .PodSpec.ServiceAccountName }}
 /n/{{ .PodMeta.Name }}{% endraw %}
@@ -158,14 +158,14 @@ for the `$workloadName` (*along with other attestors such as attesting
 the service account and namespace*):
 
 ```text
-{% raw %}spiffe://aegis.z2h.dev/workload/aegis-safe
+{% raw %}spiffe://aegis.ist/workload/aegis-safe
 /ns/{{ .PodMeta.Namespace }}
 /sa/{{ .PodSpec.ServiceAccountName }}
 /n/{{ .PodMeta.Name }}{% endraw %}
 ```
 
 ```text
-{% raw %}spiffe://aegis.z2h.dev/workload/aegis-sentinel
+{% raw %}spiffe://aegis.ist/workload/aegis-sentinel
 /ns/{{ .PodMeta.Namespace }}
 /sa/{{ .PodSpec.ServiceAccountName }}
 /n/{{ .PodMeta.Name }}{% endraw %}

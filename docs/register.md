@@ -3,7 +3,7 @@
 # .-'_.---._'-.
 # ||####|(__)||   Protect your secrets, protect your business.
 #   \\()|##//       Secure your sensitive data with Aegis.
-#    \\ |#//                  <aegis.z2h.dev>
+#    \\ |#//                  <aegis.ist>
 #     .\_/.
 #
 
@@ -221,7 +221,7 @@ kind: ClusterSPIFFEID
 metadata:
   name: aegis-workload-demo
 spec:
-  spiffeIDTemplate: "spiffe://aegis.z2h.dev\
+  spiffeIDTemplate: "spiffe://aegis.ist\
     /workload/aegis-workload-demo\
     /ns/{{ .PodMeta.Namespace }}\
     /sa/{{ .PodSpec.ServiceAccountName }}\
@@ -331,7 +331,7 @@ If you remember from the beginning of this tutorial, our demo workload had
 a SPIFFE ID that matched the following template:
 
 ```text
-{% raw %}spiffe://aegis.z2h.dev/workload/aegis-workload-demo
+{% raw %}spiffe://aegis.ist/workload/aegis-workload-demo
 /ns/{{ .PodMeta.Namespace }}
 /sa/{{ .PodSpec.ServiceAccountName }}
 /n/{{ .PodMeta.Name }}{% endraw %}

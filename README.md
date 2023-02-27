@@ -6,7 +6,7 @@ keep your secrets… secret
 
 ## Aegis Web
 
-This is the source code for https://aegis.z2h.dev
+This is the source code for https://aegis.ist
 
 [Check out Aegis’ README][aegis-readme] for more information about the project, 
 high level design, contributing guidelines, and code of conduct.

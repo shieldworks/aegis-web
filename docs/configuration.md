@@ -3,7 +3,7 @@
 # .-'_.---._'-.
 # ||####|(__)||   Protect your secrets, protect your business.
 #   \\()|##//       Secure your sensitive data with Aegis.
-#    \\ |#//                  <aegis.z2h.dev>
+#    \\ |#//                  <aegis.ist>
 #     .\_/.
 #
 
@@ -64,7 +64,7 @@ Trace = 6
 Both **Aegis Safe** and **workloads** use this environment variable.
 
 `AEGIS_WORKLOAD_SVID_PREFIX` is required for validation. If not provided,
-it will default to: `"spiffe://aegis.z2h.dev/workload/"`
+it will default to: `"spiffe://aegis.ist/workload/"`
 
 ### AEGIS_SENTINEL_SVID_PREFIX
 
@@ -73,7 +73,7 @@ Both **Aegis Safe** and **Aegis Sentinel** use this environment variable.
 `AEGIS_SENTINEL_SVID_PREFIX` is required for validation.
 
 If not provided, it will default to:
-`"spiffe://aegis.z2h.dev/workload/aegis-sentinel/ns/aegis-system/sa/aegis-sentinel/n/"`
+`"spiffe://aegis.ist/workload/aegis-sentinel/ns/aegis-system/sa/aegis-sentinel/n/"`
 
 ### AEGIS_SAFE_SVID_PREFIX
 
@@ -83,7 +83,7 @@ variable.
 `AEGIS_SAFE_SVID_PREFIX` is required for validation.
 
 If not provided, it will default to:
-`"spiffe://aegis.z2h.dev/workload/aegis-safe/ns/aegis-system/sa/aegis-safe/n/"`
+`"spiffe://aegis.ist/workload/aegis-safe/ns/aegis-system/sa/aegis-safe/n/"`
 
 ### AEGIS_SAFE_DATA_PATH
 
@@ -209,7 +209,7 @@ metadata:
   # The string after `aegis-secret-` must match the workload’s name.
   # For example, this is an Aegis-managed secret for `aegis-workload-demo`
   # with the SPIFFE ID 
-  # `"spiffe://aegis.z2h.dev/workload/aegis-workload-demo\
+  # `"spiffe://aegis.ist/workload/aegis-workload-demo\
   #  /ns/{{ .PodMeta.Namespace }}\
   #  /sa/{{ .PodSpec.ServiceAccountName }}\
   #  /n/{{ .PodMeta.Name }}"`

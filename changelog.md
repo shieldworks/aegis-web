@@ -3,7 +3,7 @@
 # .-'_.---._'-.
 # ||####|(__)||   Protect your secrets, protect your business.
 #   \\()|##//       Secure your sensitive data with Aegis.
-#    \\ |#//                  <aegis.z2h.dev>
+#    \\ |#//                  <aegis.ist>
 #     .\_/.
 #
 
@@ -30,6 +30,7 @@ page_nav:
 * Documentation updates to talk about how to use Aegis Sidecar to propagate 
   Aegis-Safe-managed secrets into Kubernetes.
 * Aegis has a new website: https://aegis.ist/
+* BREAKING: Trust root of entities changed from `z2h.dev` to `aegist.ist`.
 
 
 ## [v0.12.70] - 2023-02-17
