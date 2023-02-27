@@ -48,6 +48,36 @@ If you haven’t watched this introductory video yet, now might be a good time �
 
 [![Watch the video](/doks-theme/assets/images/capture.png)](https://vimeo.com/v0lkan/secrets)
 
+After watching it, [you might want to see this video][dynamic-secrets] that 
+demonstrates further flexibility of **Aegis** as a Secrets Manager.
+
+[dynamic-secrets]: https://vimeo.com/v0lkan/aegis-secrets "Aegis: Dynamically Updating Secrets"
+
+## Wait, Why Not Use Kubernetes `Secret`s?
+
+In Kubernetes, secrets can be stored and managed as a resource type called
+`Secret`. By default, Kubernetes can store key-value pairs
+of sensitive data within a specific namespace in the cluster.
+
+These secrets can be fed into containers as either *environment variables*
+or files using a Kubernetes *volume*. However, the default solution may not be
+enough to securely manage secrets, as it can be challenging to encrypt the
+`YAML` files that define the secrets and securely store them.
+
+With **Aegis**, you don’t have to store secrets in your source code.
+
+In addition, **Aegis**…
+
+* Has the ability to change secrets dynamically at runtime without having to
+  reboot your workloads,
+* Keeps encrypted backups of your secrets,
+* Records last creation and last update timestamps for your secrets,
+* Has a version history for your secrets,
+* Stores backups of your secrets encrypted at rest,
+* and more.
+
+These are not achievable by using Kubernetes `Secret`s only.
+
 ## Where **NOT** to Use Aegis
 
 **Aegis** is **not** a Database, nor is it a distributed caching layer. Of course,

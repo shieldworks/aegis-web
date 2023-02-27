@@ -29,6 +29,7 @@ page_nav:
 
 * Documentation updates to talk about how to use Aegis Sidecar to propagate 
   Aegis-Safe-managed secrets into Kubernetes.
+* Aegis has a new website: https://aegis.ist/
 
 
 ## [v0.12.70] - 2023-02-17
