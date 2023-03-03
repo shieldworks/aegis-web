@@ -542,7 +542,7 @@ aegis-workload-demo-544dd799d8-rpzqc   1/1     Running   0          5s
 It looks healthy. Let us view its logs too
 
 ```bash 
-kubectl logs 
+{% raw %}kubectl logs 
 
 # lines are wrapped to fit on the web page
 …
@@ -556,7 +556,7 @@ value: {"username":"Aegis", "password": "KeepYourSecrets"}
 2023/01/22 19:14:43 fetch
 secret: updated: "Sun Jan 22 18:18:14 +0000 2023", 
 created: "Sun Jan 22 18:09:47 +0000 2023", 
-value: {"username":"Aegis", "password": "KeepYourSecrets"}
+value: {"username":"Aegis", "password": "KeepYourSecrets"}{% endraw %}
 …
 ```
 
@@ -648,7 +648,7 @@ Then you can execute the following code to inject the secrets that the
 container needs.
 
 ```bash
-# ./hack/register.sh
+{% raw %}# ./hack/register.sh
 
 # Find a Sentinel node.
 SENTINEL=$(kubectl get po -n aegis-system \
@@ -662,7 +662,7 @@ kubectl exec "$SENTINEL" -n aegis-system -- aegis \
 -t '{"USERNAME":"{{.username}}", "PASSWORD":"{{.password}}", "VALUE": "{{.value}}"}' \
 -k
 
-# Sit back and relax.
+# Sit back and relax.{% endraw %}
 ```
 
 The `Pod` that your `Deployment` manages will not initialize until you register
@@ -683,7 +683,6 @@ visually explains the above concepts in greater detail:
 [![Watch the video](/doks-theme/assets/images/capture.png)](https://vimeo.com/v0lkan/aegis-secrets)
 
 [git-init-container]: https://github.com/zerotohero-dev/aegis-workload-demo-using-init-container "Aegis Workload Demo Using Init Container"
-
 
 ## Conclusion
 

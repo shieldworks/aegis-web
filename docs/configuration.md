@@ -203,7 +203,7 @@ should exist, and it should be initiated to a default data as follows before
 it can be synced by **Aegis Safe**:
 
 ```text
-apiVersion: v1
+{% raw %}apiVersion: v1
 kind: Secret
 metadata:
   # The string after `aegis-secret-` must match the workload’s name.
@@ -219,7 +219,7 @@ type: Opaque
 data:
   # '{}' (e30=) is a special placeholder to tell Safe that the Secret
   # is not initialized. DO NOT remove or change it.
-  KEY_TXT: "e30="
+  KEY_TXT: "e30="{% endraw %}
 ```
 
 Secondly this approach is **less** secure, and it is meant to be used for 

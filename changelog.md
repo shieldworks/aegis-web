@@ -25,6 +25,8 @@ page_nav:
 ### Added
 
 * Aegis has a new website: [aegis.ist](https://aegis.ist/).
+* Added documentation for **Aegis Sentinel** usage.
+* Fixed minor documentation errors.
 
 ### Changed
 
