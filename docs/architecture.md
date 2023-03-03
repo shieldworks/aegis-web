@@ -226,6 +226,24 @@ generate a brand new key pair and then store it in the `safe-age-key` secret.
 
 [csi-driver]: https://github.com/spiffe/spiffe-csi
 
+## Template Transformation and Kubernetes Secret Generation
+
+Here is a sequence diagram of how the and **Aegis Safe**-managed *secret* 
+is transformed into a **Kubernetes** `Secret` (*open the image in a 
+new tab for a larger version*):
+
+![Transforming Secrets](/assets/secret-transformation.png "Transforming Secrets")
+
+There are two parts to this:
+
+* Transforming secrets using a Go template transformation
+* Updating the relevant **Kubernetes** `Secret`
+
+You can check [**Aegis Sentinel** CLI Documentation](/docs/sentinel) for
+various ways this transformation can be done. In addition, you can check 
+[**Aegis** Secret Registration Tutorial](/docs/register) for more information
+about how the **Kubernetes** `Secret` object is generated and used in workloads.
+
 ## Conclusion
 
 This was a deeper overview of **Aegis** architecture. If you have further

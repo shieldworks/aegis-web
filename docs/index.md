@@ -157,7 +157,8 @@ Since you have **Aegis** up and running, here is a list of topics that you can
 explore next:
 
 * [How to Register Secrets to A Workload Using **Aegis**](/docs/register)
-* [How to Use **Aegis** Go SDK](/docs/sdk)
+* [**Aegis** Go SDK](/docs/sdk)
+* [**Aegis Sentinel** CLI Documentation](/docs/sentinel)
 * [A Deeper Dive into **Aegis** Architecture](/docs/architecture)
 
 In addition, these topics might pique your interest too:
@@ -166,10 +167,6 @@ In addition, these topics might pique your interest too:
 * [Who’s Behind **Aegis**](/maintainers)?
 * [What’s Coming Up Next](/timeline)?
 * [Can I See a Change Log](/changelog)?
-
-If you are an **Aegis** maintainer the following guideline will help you:
-
-* [Releasing a New Version](/release)
 
 To fine-tune your **Aegis** cluster, use them in production or learn
 more about the underlying technologies **Aegis** uses, the following

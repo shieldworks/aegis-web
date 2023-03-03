@@ -13,6 +13,10 @@ keywords: aegis, secrets management, secrets store, Kubernetes
 title: Aegis
 description: keep your secrets… secret
 buttons:
+- icon: arrow-right
+  content: Quickstart
+  url: '/docs'
+  external_url: false
 - icon: github
   content:  Source Code
   url: 'https://github.com/zerotohero-dev/aegis'
@@ -21,11 +25,6 @@ buttons:
   content:  Community
   url: '/contact#community'
   external_url: false
-- icon: chevron-right
-  content:  Documentation
-  url: '/docs'
-  external_url: false
-
 
 grid_navigation:
 - title: <strong>Aegis</strong> Quickstart
