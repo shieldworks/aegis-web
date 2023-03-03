@@ -13,13 +13,19 @@ keywords: aegis, secrets management, secrets store, Kubernetes
 title: Aegis
 description: keep your secrets… secret
 buttons:
-- content: <strong>Aegis</strong> Quickstart
-  url: '/docs/'
-  external_url: false
 - icon: github
-  content:  Star <strong>Aegis</strong> on GitHub
+  content:  Source Code
   url: 'https://github.com/zerotohero-dev/aegis'
   external_url: true
+- icon: slack
+  content:  Community
+  url: '/contact#community'
+  external_url: false
+- icon: chevron-right
+  content:  Documentation
+  url: '/docs'
+  external_url: false
+
 
 grid_navigation:
 - title: <strong>Aegis</strong> Quickstart
@@ -51,21 +57,14 @@ grid_navigation:
 
 <div style="margin-top:0.75em"></div>
 
-**Aegis** is a **Kubernetes-native**, lightweight secrets manager.
+**Aegis** is a **Kubernetes-native**, lightweight *secrets manager*.
+
+With **Aegis**, your sensitive data is always secure and protected.
 
 **Aegis** keeps your secrets… secret.
 
-With **Aegis**, your sensitive data is always 
-secure and protected.
-
-<div style="margin-top:3.75em"></div>
-
-<div>
-<a href="/contact" class="btn-home">contact</a> 
-<a href="/contact#i-want-to-be-a-contributor" class="btn-home">contribute</a> 
-<a href="/contact#community" class="btn-home">community</a> 
-</div>
 
 [contact]: /contact
 [contribute]: /contributing
 [coffee]: /coffee
+[slack-invite]: https://join.slack.com/t/aegis-6n41813/shared_invite/zt-1myzqdi6t-jTvuRd1zDLbHX0gN8VkCqg "Join aegis.slack.com"
