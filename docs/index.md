@@ -48,10 +48,10 @@ If you havenâ€™t watched this introductory video yet, now might be a good time ð
 
 [![Watch the video](/doks-theme/assets/images/capture.png)](https://vimeo.com/v0lkan/secrets)
 
-After watching it, [you might want to see this video][dynamic-secrets] that 
-demonstrates further flexibility of **Aegis** as a Secrets Manager.
+After watching it, you may want to watch the following video demonstrates 
+further flexibility of **Aegis** as a *Secrets Manager*:
 
-[dynamic-secrets]: https://vimeo.com/v0lkan/aegis-secrets "Aegis: Dynamically Updating Secrets"
+[![Watch the video](/doks-theme/assets/images/capture-dynamic.png)](https://vimeo.com/v0lkan/aegis-secrets)
 
 ## Wait, Why Not Use Kubernetes `Secret`s?
 

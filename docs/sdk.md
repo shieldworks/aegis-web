@@ -55,66 +55,99 @@ environment variable (*`/opt/aegis/secrets.json` by default*).
 
 [aegis-safe]: https://github.com/zerotohero-dev/aegis-safe
 
-## Examples
+## Usage Example
 
-[Check out the relevant sections of the **Registering Secrets** article][registering-secrets]
-for an example of [**Aegis Go SDK**][go-sdk] usage.
+Here is a demo workload that uses the `Fetch()` API to retrieve secrets from 
+**Aegis Safe**.
 
-[registering-secrets]: /docs/register
+```go
+package main
 
-<p>&nbsp;</p>
+import (
+	"fmt"
+	"github.com/zerotohero-dev/aegis-sdk-go/sentry"
+	"time"
+)
 
-----
+func main() {
+	for {
+		// Fetch the secret bound to this workload
+		// using Aegis Go SDK:
+		data, err := sentry.Fetch()
 
-<p>&nbsp;</p>
+		if err != nil {
+			fmt.Println("Failed. Will retry…")
+		} else {
+			fmt.Println("secret: '", data, "'")
+		}
 
-## **Aegis Safe** REST API
-
-The **Aegis Go SDK** is, at a high level, and abstraction over **Aegis Safe** 
-REST API.
-
-That said, knowing the internals of **Aegis Safe** API can be helpful in case
-you want to develop your own SDK in your programming language of choice.
-
-### `GET /workload/v1/secrets`
-
-`/workload/v1/secrets` can only be called from the **workloads**.
-
-
-```bash 
-# The workload is is inferred from the workload’s TLS certificate.
-
-http GET $aegisSafeHost/workload/v1/secrets
-
-{
-  "data": "content of the secret",
-  "created": "2022-12-12 00:00",
-  "updated": "2023-01-01 00:00",
+		time.Sleep(5 * time.Second)
+	}
 }
 ```
 
-### `POST /sentinel/v1/secrets`
+Here follows a possible Deployment descriptor for such a workload. 
 
-`/sentinel/v1/secrets` can only be called from **Aegis Sentinel**.
+Check out [Aegis demo workload manifests][demos] for additional examples.
 
-```bash
-http POST $aegisSafeHost/sentinel/v1/secrets
-   key="demo-workload" # the ID of the workload.
-   value="contents of the secret"
-   
-OK
+[demos]: https://github.com/zerotohero-dev/aegis/tree/main/install/k8s/demo-workload "Demo Workloads"
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: aegis-workload-demo
+  namespace: default
+automountServiceAccountToken: false
+---
+apiVersion: spire.spiffe.io/v1alpha1
+kind: ClusterSPIFFEID
+metadata:
+  name: aegis-workload-demo
+spec:
+  spiffeIDTemplate: "spiffe://aegis.ist/workload/aegis-workload-demo"
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: aegis-workload-demo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aegis-workload-demo
+  namespace: default
+  labels:
+    app.kubernetes.io/name: aegis-workload-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: aegis-workload-demo
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: aegis-workload-demo
+    spec:
+      serviceAccountName: aegis-workload-demo
+      containers:
+        - name: main
+          image: z2hdev/aegis-workload-demo-using-sdk:0.7.0
+          volumeMounts:
+          - name: spire-agent-socket
+            mountPath: /spire-agent-socket
+            readOnly: true
+          env:
+          - name: SPIFFE_ENDPOINT_SOCKET
+            value: unix:///spire-agent-socket/agent.sock
+      volumes:
+      - name: spire-agent-socket
+        hostPath:
+          path: /run/spire/sockets
+          type: Directory
 ```
 
-### `GET /sentinel/v1/secrets`
+You can also [check out the relevant sections of the 
+**Registering Secrets** article][registering-secrets] for an example of 
+**Aegis Go SDK** usage.
 
-`/sentinel/v1/secrets` lists all of the registered secrets to **Aegis Sentinel**.
+[registering-secrets]: /docs/register
 
-```bash
-http GET $aegisSafeHost/sentinel/v1/secrets
-
-{"secrets":[
-  {"name":"aegis-workload-demo",
-    "created":"Sun Feb 05 14:47:03 +0000 2023",
-    "updated":"Sun Feb 05 14:47:45 +0000 2023"}
-]}
-```
