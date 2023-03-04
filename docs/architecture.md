@@ -14,8 +14,8 @@ description: <strong>Aegis</strong> under the hood
 micro_nav: true
 page_nav:
   prev:
-    content: using <strong>Aegis</strong> go SDK
-    url: '/docs/sdk'
+    content: <strong>Aegis Sentinel</strong> CLI
+    url: '/docs/sentinel'
   next:
     content: configuring <strong>Aegis</strong>
     url: '/docs/configuration'
