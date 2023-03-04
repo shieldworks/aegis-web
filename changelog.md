@@ -27,23 +27,23 @@ page_nav:
 ### Added
 
 * Aegis has a new website: [aegis.ist](https://aegis.ist/).
-* Added documentation for **Aegis Sentinel** usage.
-* Added a documentation page for Aegis Sentinel CLI.
+* Added a documentation page for Aegis Sentinel CLI usage.
 * Template transformations now apply to the secret values that are
   reflected to the workloads as well.
 
 ### Fixed
 
 * Fixed minor errors in documentation.
+* Minor bug fixes.
 
 ### Changed
 
+* **BREAKING**: Trust root of entities changed from `z2h.dev` to `aegist.ist`.
 * Updated to Aegis Sentinel commands.
 * Documentation updates to talk about how to use Aegis Sidecar to propagate 
   Aegis-Safe-managed secrets into Kubernetes.
 * Documentation update: Changed contact, support, and security feedback emails
   to official `@aegis.ist` emails.
-* **BREAKING**: Trust root of entities changed from `z2h.dev` to `aegist.ist`.
 
 ## [v0.12.70] - 2023-02-17
 
