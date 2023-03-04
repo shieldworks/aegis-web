@@ -608,7 +608,7 @@ spec:
       serviceAccountName: aegis-workload-demo
       containers:
       - name: main
-        image: z2hdev/aegis-workload-demo-using-init-container:0.12.70
+        image: z2hdev/aegis-workload-demo-using-init-container:0.13.0
         
         # These environment variables are interpolated dynamically at runtime.
         env:
@@ -631,7 +631,7 @@ spec:
       initContainers:
       # Using Aegis Init Container.
       - name: init-container
-        image: z2hdev/aegis-init-container:0.12.70
+        image: z2hdev/aegis-init-container:0.13.0
         volumeMounts:
         # Volume mount for SPIRE unix domain socket.
         - name: spire-agent-socket

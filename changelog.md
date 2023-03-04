@@ -22,14 +22,23 @@ page_nav:
 
 ## Currently Working On
 
+## [v0.13.0] - 2023-03-03
+
 ### Added
 
 * Aegis has a new website: [aegis.ist](https://aegis.ist/).
 * Added documentation for **Aegis Sentinel** usage.
-* Fixed minor documentation errors.
+* Added a documentation page for Aegis Sentinel CLI.
+* Template transformations now apply to the secret values that are
+  reflected to the workloads as well.
+
+### Fixed
+
+* Fixed minor errors in documentation.
 
 ### Changed
 
+* Updated to Aegis Sentinel commands.
 * Documentation updates to talk about how to use Aegis Sidecar to propagate 
   Aegis-Safe-managed secrets into Kubernetes.
 * Documentation update: Changed contact, support, and security feedback emails
