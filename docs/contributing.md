@@ -84,7 +84,7 @@ environment to be able to locally develop **Aegis**:
 
 > **Can I Use Something Other than Minikube and Docker**?
 > 
-> Of course you can use any Kubernetes cluster to develop, deploy, and test
+> Of course, you can use any Kubernetes cluster to develop, deploy, and test
 > **Aegis**. 
 > 
 > Similarly, you can use any OCI-compliant container runtime. It does not

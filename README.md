@@ -23,4 +23,13 @@ high level design, contributing guidelines, and code of conduct.
 * **Contact**: <https://aegis.ist/contact/>
 * **Media Kit**: <https://aegist.ist/media/>
 
+## License 
+
+**Aegis** documentation is distributed under [CC-BY-4.0][cc-by-40]. 
+
+Non-documentation parts of this repository is distributed under the 
+[MIT License](LICENSE).
+
+[cc-by-40]: https://creativecommons.org/licenses/by/4.0/ "Attribution 4.0 International (CC BY 4.0)"
+
 [slack-invite]: https://join.slack.com/t/aegis-6n41813/shared_invite/zt-1myzqdi6t-jTvuRd1zDLbHX0gN8VkCqg "Join aegis.slack.com"
