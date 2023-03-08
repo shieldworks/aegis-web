@@ -181,8 +181,8 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
 > `minikube delete` on your terminal too. Although you might feel that this
 > step is optional, it is **not**; trust me 🙂.
 
-After installing a non-snap version of Docker and restarting your system, if 
-you can use **Minikube** Docker registry, then, perfect. If not, there are
+After installing a non-snap version of **Docker** and restarting your system, if 
+you can use **Minikube** *Docker registry*, then, perfect. If not, there are
 a few things that you might want to try. So if you are still having issues
 keep on reading.
 
@@ -191,10 +191,13 @@ Steps][post-installation] from the official Docker website a shot. Following
 that guideline **may** solve Docker-related permission issues that you might
 still be having.
 
-If you still have permission issues after following the official Docker post
-installation steps outlined above, try **restarting** your computer once more.
-Especially when it comes to Docker permissions, restarting can help, 
-and worst case it’s still worth giving a try.
+> **Restart, Maybe?**
+> 
+> If you still have permission issues after following the official Docker post
+> installation steps outlined above, try **restarting** your computer once more.
+>
+> Especially when it comes to Docker permissions, restarting can help, 
+> and worst case it’s still worth giving a try.
 
 [post-installation]: https://docs.docker.com/engine/install/linux-postinstall/
 
