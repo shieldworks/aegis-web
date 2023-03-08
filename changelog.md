@@ -22,6 +22,10 @@ page_nav:
 
 ## Currently Working On
 
+## Changed
+
+* Upgraded Aegis to use `SPIRE v1.6.1`.
+
 ## [v0.13.0] - 2023-03-03
 
 ### Added
