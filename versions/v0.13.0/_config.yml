@@ -1,6 +1,6 @@
 # Theme settings
 doks:
-    baseurl:
+    baseurl: /versions/v0.13.0
     color_theme: blue # Available themes: blue (default), green, purple, red and yellow
     header:
         logo:
@@ -44,5 +44,5 @@ sass:
 # Jekyll settings
 layouts_dir: ./doks-theme/_layouts
 includes_dir: ./doks-theme/_includes
-exclude: [ 'README.md', 'CHANGELOG.md']
+exclude: [ 'README.md', 'CHANGELOG.md' ]
 permalink: /:title/
