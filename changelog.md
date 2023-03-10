@@ -25,6 +25,8 @@ page_nav:
 ## Changed
 
 * Upgraded Aegis to use `SPIRE v1.6.1`.
+* **Aegis** now has versioned documentation: We will snapshot the documentation
+  at every important release.
 
 ## [v0.13.0] - 2023-03-03
 
