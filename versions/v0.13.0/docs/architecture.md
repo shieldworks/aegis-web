@@ -213,8 +213,8 @@ Here is what an **Aegis Safe** Pod looks like at a high level:
 * `/data` is the volume where secrets are stored in an encrypted format. You are
   **strongly encouraged** to use a **persistent volume** for production setups
   to retrieve the secrets if the Pod crashes and restarts.
-* `/key` is where the secret `safe-age-key` mounts. For security reasons, ensure
-  that **only** the pod **Aegis Safe** can read and write to `safe-age-key`
+* `/key` is where the secret `aegis-safe-age-key` mounts. For security reasons, ensure
+  that **only** the pod **Aegis Safe** can read and write to `aegis-safe-age-key`
   and no one else has access. In this diagram, this is achieved by assigning
   a `secret-readwriter` role to **Aegis Safe** and using that role to update
   the secret. Any pod that does not have the role will be unable to read or
@@ -222,7 +222,7 @@ Here is what an **Aegis Safe** Pod looks like at a high level:
 
 If the `main` container does not have a public/private key pair in memory, it
 will attempt to retrieve it from the `/key` volume. If that fails, it will
-generate a brand new key pair and then store it in the `safe-age-key` secret.
+generate a brand new key pair and then store it in the `aegis-safe-age-key` secret.
 
 [csi-driver]: https://github.com/spiffe/spiffe-csi
 

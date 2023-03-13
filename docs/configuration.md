@@ -98,6 +98,25 @@ that contains the encryption keys.
 
 If not given, it will default to `"/key/key.txt"`.
 
+### AEGIS_SAFE_AGE_KEY_SECRET_NAME
+
+`AEGIS_SAFE_AGE_KEY_SECRET_NAME` is how the age secret key is referenced by
+name inside **Aegis Safe**’s code. If not set, defaults to `"aegis-safe-age-key"`.
+
+If you change the value of this environment variable, make sure to change the 
+relevant `Secret` and `Deployment` YAML manifests too. The easiest way to do 
+this is to do a project wide search and find and replace places where reference
+`"aegis-safe-key"` to your new name of choice.
+
+### AEGIS_SAFE_SECRET_NAME_PREFIX
+
+`AEGIS_SAFE_SECRET_NAME_PREFIX` is the prefix that is used to prepend to the
+secret names that **Aegis Safe** stores in the cluster as `Secret` objects when
+the `-k` option in **Aegis Sentinel** is selected.
+
+If this variable is not set or is empty, the default value `"aegis-secret-"` 
+is used.
+
 ### AEGIS_SAFE_ENDPOINT_URL
 
 `AEGIS_SAFE_ENDPOINT_URL` is the **REST API** endpoint that **Aegis Safe**
@@ -157,11 +176,11 @@ independent of each other int two separate goroutines.
 ### AEGIS_SAFE_BACKING_STORE
 
 `AEGIS_SAFE_BACKING_STORE` is the type of the storage where the secrets
-will be encrypted and persisted.
+will be encrypted and persisted. This environment variable is used by
+**Aegis Sentinel** to let **Aegis Safe** know where to persist the secret.
 
-If not given, defaults to `"file"`.
-
-Other options are `"in-memory"` nad `"cluster"`.
+* If not given, defaults to `"file"`. 
+* Other options are `"in-memory"` and `"cluster"`.
 
 A `"file"` backing store means **Aegis Safe** persists an encrypted version
 of its state in a volume (*ideally a `PersistedVolume`*).
@@ -171,11 +190,13 @@ of the secrets it created to disk. When that option is selected, you will
 lose all of your secrets if **Aegis Safe** is evicted by the scheduler or
 manually restarted by an operator.
 
-> **Work In Progress**
-> 
-> The `"cluster"` mode means **Aegis Safe** will store encrypted backups
-> of its state as Kubernetes `Secret` objects. The `"cluster"` mode has
-> not been implemented yet, and it will `panic` if selected.
+<div class="callout callout--danger">
+<p><strong>Work In Progress</strong></p>
+<p>The <code>"cluster"</code> mode means <strong style="display:inline">Aegis Safe</strong> will store 
+encrypted backups of its state as Kubernetes <code>Secret</code> objects.</p>
+<p>The <code>"cluster"</code> mode has <strong style="display:inline">not</strong> been implemented yet, 
+and <strong style="display:inline">Aegis Safe</strong> will <code>panic</code> if this mode is selected.</p>
+</div>
 
 ### AEGIS_SAFE_SECRET_BACKUP_COUNT
 
@@ -215,7 +236,7 @@ metadata:
   #  /n/{{ .PodMeta.Name }}"`
   name: aegis-secret-aegis-workload-demo
   namespace: default
-type: Opaque
+type: Opaque{% endraw %}
 ```
 
 Secondly this approach is **less** secure, and it is meant to be used for 
