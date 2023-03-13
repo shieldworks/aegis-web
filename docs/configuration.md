@@ -216,10 +216,6 @@ metadata:
   name: aegis-secret-aegis-workload-demo
   namespace: default
 type: Opaque
-data:
-  # '{}' (e30=) is a special placeholder to tell Safe that the Secret
-  # is not initialized. DO NOT remove or change it.
-  KEY_TXT: "e30="{% endraw %}
 ```
 
 Secondly this approach is **less** secure, and it is meant to be used for 

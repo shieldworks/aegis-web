@@ -244,6 +244,20 @@ various ways this transformation can be done. In addition, you can check
 [**Aegis** Secret Registration Tutorial](/docs/register) for more information
 about how the **Kubernetes** `Secret` object is generated and used in workloads.
 
+## Liveness and Readiness Probes
+
+**Aegis Safe** and **Aegis Sentinel** use **liveness** and **readiness** probes.
+These probes are tiny web servers that serve at ports `8081` and `8082` by
+default, respectively.
+
+You can set `AEGIS_PROBE_LIVENESS_PORT` (*default `:8081`*) and 
+`AEGIS_PROBE_READINESS_PORT` (*default `:8082`*) environment variables to change
+the ports used for these probes.
+
+When the service is healthy, the liveness probe will return an `HTTP 200` success
+response. When the service is ready to receive traffic, the readiness
+probe will return an `HTTP 200` success response.
+
 ## Conclusion
 
 This was a deeper overview of **Aegis** architecture. If you have further

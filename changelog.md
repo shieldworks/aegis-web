@@ -25,8 +25,15 @@ page_nav:
 ## Changed
 
 * Upgraded Aegis to use `SPIRE v1.6.1`.
-* **Aegis** now has versioned documentation: We will snapshot the documentation
+* Aegis now has versioned documentation: We will snapshot the documentation
   at every important release.
+* Moved the audit logging functionality to `aegis-core` to make it reusable
+  between all Aegis modules.
+* **BREAKING**: The versioned copies of the secrets on the drive are suffixed
+  with `.backup` to grep them easily. The older items (that are not suffixed)
+  will be caught by the `List` API as new key/value pairs, resulting in 
+  extra entries that are not being used.
+* Documentation updates.
 
 ## [v0.13.0] - 2023-03-03
 
