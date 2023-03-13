@@ -71,6 +71,31 @@ repositories have been merged to `main`.
 make status
 ```
 
+Also check whether you are using the `minikube` version of the Docker registry.
+`make help` can help you in that.
+
+```bash 
+make help
+
+# Output
+#                          ---------------------------------------------------
+#             Docker Host: tcp://192.168.49.2:2376
+# Minikube Active dockerd: minikube
+#                          ---------------------------------------------------
+#                    PREP: make delete-k8s;make start-k8s;make clean;make sync;
+#                    TEST: make build-local;make deploy-local;make test-local;
+#                 RELEASE: make bump;make build;make tag
+#                          ---------------------------------------------------
+```
+If you see `Minikube Active dockerd` as `minikube` then your registry has been
+set up properly. If not, execute the following script to set up your regisryy
+and then execute `make help` to verify the changes:
+
+```bash 
+# shellcheck disable=SC2046
+eval $(minikube -p minikube docker-env)
+```
+
 ### 2. Fetch Assets
 
 ```bash

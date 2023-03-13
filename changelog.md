@@ -34,6 +34,7 @@ page_nav:
   will be caught by the `List` API as new key/value pairs, resulting in 
   extra entries that are not being used.
 * Documentation updates.
+* Updated the build scripts to be less error-prone.
 
 ## [v0.13.0] - 2023-03-03
 
