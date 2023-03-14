@@ -106,7 +106,7 @@ name inside **Aegis Safe**’s code. If not set, defaults to `"aegis-safe-age-ke
 If you change the value of this environment variable, make sure to change the 
 relevant `Secret` and `Deployment` YAML manifests too. The easiest way to do 
 this is to do a project wide search and find and replace places where reference
-`"aegis-safe-key"` to your new name of choice.
+`"aegis-safe-age-key"` to your new name of choice.
 
 ### AEGIS_SAFE_SECRET_NAME_PREFIX
 
