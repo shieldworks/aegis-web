@@ -95,18 +95,25 @@ hard, time-consuming, and error-prone endeavor.
 
 * [**Aegis SPIRE**][aegis-spire]: **Aegis** uses [SPIRE][spire] as its Identity
   Control Plane.
-* [**Aegis Safe**][aegis-safe]: **Safe** is the **secrets store** of **Aegis**.
-* [**Aegis Sentinel**][aegis-sentinel]: **Sentinel** acts as a bastion that an
+* [**Aegis Safe**][aegis-safe]: **Aegis Safe** is the **secrets store** of **Aegis**.
+* [**Aegis Sentinel**][aegis-sentinel]: **Aegis Sentinel** acts as a bastion that an
   operator (or a CI) can register secrets to workloads.
-* [**Aegis Sidecar**][aegis-sidecar]: **Sidecar** is a utility that can help
+* [**Aegis Sidecar**][aegis-sidecar]: **Aegis Sidecar** is a utility that can help
   workloads retrieve secrets dynamically at runtime.
-* [**Aegis Go SDK**][aegis-sdk-go]: **Go SDK** is a library that workloads can
+* [**Aegis Init Container**][aegis-init-container]: **Aegis Init Container** is
+  a container that can be used as an [init container][init-container] that
+  pauses the main container of a workload until the secrets that are going to 
+  be injected to the workload are ready.
+* [**Aegis Go SDK**][aegis-sdk-go]: **Aegis Go SDK** is a library that workloads can
   use to directly talk to **Safe** (instead of using the **Sidecar**).
 * [**Aegis Core**][aegis-core]: Common modules that other projects share.
 * [**Aegis Demo Workload (using Go SDK)**][aegis-workload-demo-using-sdk]: A
-  demo workload that uses the **Go SDK** to talk to **Safe**.
+  demo workload that uses the **Aegis Go SDK** to talk to **Aegis Safe**.
 * [**Aegis Demo Workload (using Aegis Sidecar)**][aegis-workload-demo-using-sidecar]:
   A demo workload dynamically injects secrets to itself using an **Aegis Sidecar**.
+* [**Aegis Demo Workload (using Aegis Init Container)**][aegis-workload-demo-using-init-container]:
+  A demo workload that uses **Aegis Init Container** to pause the main container
+  until the secrets it needs are ready.
 * [**Aegis Web**][aegis-web]: The source code of <https://aegis.ist>, which
   is the very website you read at the moment.
 
@@ -115,10 +122,13 @@ hard, time-consuming, and error-prone endeavor.
 [aegis-sdk-go]: https://github.com/zerotohero-dev/aegis-sdk-go
 [aegis-sentinel]: https://github.com/zerotohero-dev/aegis-sentinel
 [aegis-sidecar]: https://github.com/zerotohero-dev/aegis-sidecar
+[aegis-init-container]: https://github.com/zerotohero-dev/aegis-init-container
 [aegis-spire]: https://github.com/zerotohero-dev/aegis-spire
 [aegis-web]: https://github.com/zerotohero-dev/aegis-web
 [aegis-workload-demo-using-sdk]: https://github.com/zerotohero-dev/aegis-workload-demo-using-sdk
 [aegis-workload-demo-using-sidecar]: https://github.com/zerotohero-dev/aegis-workload-demo-using-sidecar
+[aegis-workload-demo-using-init-container]: https://github.com/zerotohero-dev/aegis-workload-demo-using-init-container
+[init-container]: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
 
 ## High-Level Architecture
 
