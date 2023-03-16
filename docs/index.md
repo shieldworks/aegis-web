@@ -53,6 +53,20 @@ further flexibility of **Aegis** as a *Secrets Manager*:
 
 [![Watch the video](/doks-theme/assets/images/capture-dynamic.png)](https://vimeo.com/v0lkan/aegis-secrets)
 
+## Terminology: A Tale of Two Secrets
+
+There are two kinds of secrets mentioned through out this documentation:
+
+* Secrets that are stored in **Aegis Safe**: When discussing these they will
+  be used like a regular word “secret” or, emphasized “**secret**”; however,
+  you will never see them in `monotype text`.
+* The other kind of secret is Kubernetes `Secret` objects. Those types
+  will be explicitly mentioned as “Kubernetes `Secret`s” in the documentation,
+  where `Secret` will be *PascalCase* and in `MonoTypeTextForm`.
+
+We hope this will clarify any confusion going forward.
+
+
 ## Wait, Why Not Use Kubernetes `Secret`s?
 
 In Kubernetes, secrets can be stored and managed as a resource type called
