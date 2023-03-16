@@ -57,7 +57,7 @@ further flexibility of **Aegis** as a *Secrets Manager*:
 
 There are two kinds of secrets mentioned through out this documentation:
 
-* Secrets that are stored in **Aegis Safe**: When discussing these they will
+* Secrets that are stored in **Aegis Safe**: When discussing these, they will
   be used like a regular word “secret” or, emphasized “**secret**”; however,
   you will never see them in `monotype text`.
 * The other kind of secret is Kubernetes `Secret` objects. Those types
