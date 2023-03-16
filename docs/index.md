@@ -109,7 +109,7 @@ cluster to securely use **Aegis**.
 
 ## Terminology: A Tale of Two Secrets
 
-There are two kinds of secrets mentioned through out this documentation:
+There are two kinds of secrets mentioned throughout this documentation:
 
 * Secrets that are stored in **Aegis Safe**: When discussing these, they will
   be used like a regular word “secret” or, emphasized “**secret**”; however,
