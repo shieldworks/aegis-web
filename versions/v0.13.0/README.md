@@ -19,7 +19,7 @@ high level design, contributing guidelines, and code of conduct.
 * **Homepage**: <https://aegis.ist>
 * **Documentation**: <https://aegis.ist/docs/>
 * **Changelog**: <https://aegis.ist/changelog/>
-* **Community**: [Join Aegis’ Slack Workspace][slack-invite]
+* **Community**: [**Join Aegis’ Slack Workspace**][slack-invite]
 * **Contact**: <https://aegis.ist/contact/>
 * **Media Kit**: <https://aegist.ist/media/>
 

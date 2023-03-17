@@ -24,7 +24,9 @@ Here are a few ways that you can get in touch:
 
 ## Community
 
-If you are a security enthusiast, [join Aegis’ Slack Workspace][slack]
+Open Source is better together.
+
+If you are a security enthusiast, [**join Aegis’ Slack Workspace**][slack]
 and let us change the world together 🤘.
 
 ## Comments and Suggestions
