@@ -37,6 +37,8 @@ page_nav:
 * Updated the build scripts to be less error-prone.
 * The namespace of Kubernetes `Secret`s created by Aegis Sentinel now default to
   `"default"` (*instead of `"aegis-system"`).
+* Moved **Aegis** repositories to a GitHub organization (ShieldWorks) for
+  ease of management.
 
 ## [v0.13.0] - 2023-03-03
 
