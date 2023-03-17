@@ -90,7 +90,7 @@ and with some custom coding/shaping of your data, you should be able to use it.
 are still ways to inject environment variables without Kubernetes `Secret`s 
 or `ConfigMap`s][david-copperfield].
 
-[david-copperfield]: https://github.com/zerotohero-dev/aegis/issues/231
+[david-copperfield]: https://github.com/shieldworks/aegis/issues/231
 
 However, **Aegis** also has the option to [persist the secrets stored in
 **Aegis Safe** as Kubernetes `Secret` objects][aegis-k]. This approach can 
@@ -207,7 +207,7 @@ It is a best practice to avoid `HostPath` volumes for production deployments.
 You are strongly encouraged to [choose a `PersistentVolume` that suits your 
 needs][k8s-pv] for production setups.
 
-[aegis-safe-deployment-yaml]: https://github.com/zerotohero-dev/aegis/blob/main/install/k8s/safe/Deployment.yaml
+[aegis-safe-deployment-yaml]: https://github.com/shieldworks/aegis/blob/main/install/k8s/safe/Deployment.yaml
 [k8s-pv]: https://kubernetes.io/docs/concepts/storage/volumes/
 
 ## Set CPU and Memory Limits

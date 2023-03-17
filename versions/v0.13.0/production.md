@@ -106,7 +106,7 @@ It is a best practice to avoid `HostPath` volumes for production deployments.
 For production setups, you are strongly encouraged to [choose a `PersistentVolume`
 that suits your needs][k8s-pv].
 
-[aegis-safe-deployment-yaml]: https://github.com/zerotohero-dev/aegis/blob/main/install/k8s/safe/Deployment.yaml
+[aegis-safe-deployment-yaml]: https://github.com/shieldworks/aegis/blob/main/install/k8s/safe/Deployment.yaml
 [k8s-pv]: https://kubernetes.io/docs/concepts/storage/volumes/
 
 ## Set CPU and Memory Limits

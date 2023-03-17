@@ -12,8 +12,8 @@ This is the source code for https://aegis.ist
 high level design, contributing guidelines, and code of conduct.
 
 [aegis-web]: https://aegis.ist/ "Aegis"
-[aegis]: https://github.com/zerotohero-dev/aegis "Aegis"
-[aegis-readme]: https://github.com/zerotohero-dev/aegis/blob/main/README.md "Aegis README"
+[aegis]: https://github.com/shieldworks/aegis "Aegis"
+[aegis-readme]: https://github.com/shieldworks/aegis/blob/main/README.md "Aegis README"
 
 ## A Note on Security
 

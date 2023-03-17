@@ -35,7 +35,7 @@ After you clone `aegis`, pull its sister repositories too by executing
 ```bash 
 mkdir $HOME/Desktop/WORKSPACE
 cd $HOME/Desktop/WORKSPACE
-git clone "https://github.com/zerotohero-dev/aegis.git"
+git clone "https://github.com/shieldworks/aegis.git"
 cd aegis
 ./hack/pull.sh
 ```
@@ -68,8 +68,8 @@ aegis-workload-demo-using-sidecar
 > [the contributing guidelines][contributing], and [the code of conduct][coc].
 
 [fork]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/about-forks
-[contributing]: https://github.com/zerotohero-dev/aegis/blob/main/CONTRIBUTING.md
-[coc]: https://github.com/zerotohero-dev/aegis/blob/main/CODE_OF_CONDUCT.md
+[contributing]: https://github.com/shieldworks/aegis/blob/main/CONTRIBUTING.md
+[coc]: https://github.com/shieldworks/aegis/blob/main/CODE_OF_CONDUCT.md
 
 ## Prerequisites
 
@@ -232,4 +232,4 @@ Just explore the [Makefile][makefile] and get a feeling of it.
 [Feel free to touch base](/contact#community) if you have any questions, comments,
 recommendations.
 
-[makefile]: https://github.com/zerotohero-dev/aegis/blob/main/Makefile
+[makefile]: https://github.com/shieldworks/aegis/blob/main/Makefile

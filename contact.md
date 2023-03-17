@@ -34,7 +34,7 @@ If you found a bug, have an idea that can make **Aegis** even better
 
 If you have a vulnerability to report, [please follow this guideline][vuln].
 
-[vuln]: https://github.com/zerotohero-dev/aegis/blob/main/SECURITY.md
+[vuln]: https://github.com/shieldworks/aegis/blob/main/SECURITY.md
 
 ## I Have This Crazy Idea…
 
@@ -50,8 +50,8 @@ Please read [the contribution guidelines][contributing] and
 [the code of conduct][code-of-conduct], and let us know if you need anything 
 else.
 
-[contributing]: https://github.com/zerotohero-dev/aegis/blob/main/CONTRIBUTING.md
-[code-of-conduct]: https://github.com/zerotohero-dev/aegis/blob/main/CODE_OF_CONDUCT.md
+[contributing]: https://github.com/shieldworks/aegis/blob/main/CONTRIBUTING.md
+[code-of-conduct]: https://github.com/shieldworks/aegis/blob/main/CODE_OF_CONDUCT.md
 
 ## Can I Buy You a Coffee?
 
@@ -72,7 +72,7 @@ To financially support **Aegis**, [visit my ko-fi page][ko-fi].
 
 Thanks so much for your interest: It means a lot 🙏.
 
-[ticket]: https://github.com/zerotohero-dev/aegis/issues/new/choose
+[ticket]: https://github.com/shieldworks/aegis/issues/new/choose
 [slack]: https://join.slack.com/t/aegis-6n41813/shared_invite/zt-1myzqdi6t-jTvuRd1zDLbHX0gN8VkCqg
 [email]: mailto:feedback@aegis.ist
 [ko-fi]: https://ko-fi.com/volkanozcelik

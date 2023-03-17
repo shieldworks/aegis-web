@@ -23,7 +23,7 @@ page_nav:
 
 This is the documentation for [Aegis Go SDK][go-sdk].
 
-[go-sdk]: https://github.com/zerotohero-dev/aegis-sdk-go
+[go-sdk]: https://github.com/shieldworks/aegis-sdk-go
 
 
 ## Package `sentry`
@@ -53,7 +53,7 @@ behind the scenes to get its work done. Once it fetches the secrets,
 it saves them to the location defined in the `AEGIS_SIDECAR_SECRETS_PATH` 
 environment variable (*`/opt/aegis/secrets.json` by default*).
 
-[aegis-safe]: https://github.com/zerotohero-dev/aegis-safe
+[aegis-safe]: https://github.com/shieldworks/aegis-safe
 
 ## Usage Example
 
@@ -65,7 +65,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/zerotohero-dev/aegis-sdk-go/sentry"
+	"github.com/shieldworks/aegis-sdk-go/sentry"
 	"time"
 )
 
@@ -90,7 +90,7 @@ Here follows a possible Deployment descriptor for such a workload.
 
 Check out [Aegis demo workload manifests][demos] for additional examples.
 
-[demos]: https://github.com/zerotohero-dev/aegis/tree/main/install/k8s/demo-workload "Demo Workloads"
+[demos]: https://github.com/shieldworks/aegis/tree/main/install/k8s/demo-workload "Demo Workloads"
 
 ```yaml
 apiVersion: v1

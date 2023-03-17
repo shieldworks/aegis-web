@@ -23,4 +23,4 @@ You can see the project’s progress [in these **Aegis** boards][mdp].
 The boards outline what are the current outstanding work items, and what is
 currently being worked on.
 
-[mdp]: https://github.com/zerotohero-dev/aegis/projects?query=is%3Aopen
+[mdp]: https://github.com/shieldworks/aegis/projects?query=is%3Aopen

@@ -38,9 +38,9 @@ and protect against data breaches.
 
 [Check out **Aegis**’s *GitHub* for details][aegis-github].
 
-[aegis]: https://github.com/zerotohero-dev/aegis
+[aegis]: https://github.com/shieldworks/aegis
 [spire]: https://spiffe.io/
-[aegis-github]: https://github.com/zerotohero-dev/aegis
+[aegis-github]: https://github.com/shieldworks/aegis
 
 ## See **Aegis** in Action
 
@@ -132,7 +132,7 @@ export $WORKSPACE=$HOME/Desktop/WORKSPACE
 
 cd $WORKSPACE
 
-git clone https://github.com/zerotohero-dev/aegis
+git clone https://github.com/shieldworks/aegis
 cd aegis
 
 ./hack/install.sh

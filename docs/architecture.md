@@ -63,10 +63,10 @@ about how **SPIRE** works internally.
 [`aegis-sentinel`][sentinel] is a pod you can shell in and do administrative tasks such as
 registering secrets for workloads.
 
-[aegis-spire]: https://github.com/zerotohero-dev/aegis-spire
-[safe]: https://github.com/zerotohero-dev/aegis-safe
-[sidecar]: https://github.com/zerotohero-dev/aegis-sidecar
-[sentinel]: https://github.com/zerotohero-dev/aegis-sentinel
+[aegis-spire]: https://github.com/shieldworks/aegis-spire
+[safe]: https://github.com/shieldworks/aegis-safe
+[sidecar]: https://github.com/shieldworks/aegis-sidecar
+[sentinel]: https://github.com/shieldworks/aegis-sentinel
 
 Here is a simplified overview of how various actors on an **Aegis** system
 interact with each other:
@@ -117,17 +117,17 @@ hard, time-consuming, and error-prone endeavor.
 * [**Aegis Web**][aegis-web]: The source code of <https://aegis.ist>, which
   is the very website you read at the moment.
 
-[aegis-core]: https://github.com/zerotohero-dev/aegis-core
-[aegis-safe]: https://github.com/zerotohero-dev/aegis-safe
-[aegis-sdk-go]: https://github.com/zerotohero-dev/aegis-sdk-go
-[aegis-sentinel]: https://github.com/zerotohero-dev/aegis-sentinel
-[aegis-sidecar]: https://github.com/zerotohero-dev/aegis-sidecar
-[aegis-init-container]: https://github.com/zerotohero-dev/aegis-init-container
-[aegis-spire]: https://github.com/zerotohero-dev/aegis-spire
-[aegis-web]: https://github.com/zerotohero-dev/aegis-web
-[aegis-workload-demo-using-sdk]: https://github.com/zerotohero-dev/aegis-workload-demo-using-sdk
-[aegis-workload-demo-using-sidecar]: https://github.com/zerotohero-dev/aegis-workload-demo-using-sidecar
-[aegis-workload-demo-using-init-container]: https://github.com/zerotohero-dev/aegis-workload-demo-using-init-container
+[aegis-core]: https://github.com/shieldworks/aegis-core
+[aegis-safe]: https://github.com/shieldworks/aegis-safe
+[aegis-sdk-go]: https://github.com/shieldworks/aegis-sdk-go
+[aegis-sentinel]: https://github.com/shieldworks/aegis-sentinel
+[aegis-sidecar]: https://github.com/shieldworks/aegis-sidecar
+[aegis-init-container]: https://github.com/shieldworks/aegis-init-container
+[aegis-spire]: https://github.com/shieldworks/aegis-spire
+[aegis-web]: https://github.com/shieldworks/aegis-web
+[aegis-workload-demo-using-sdk]: https://github.com/shieldworks/aegis-workload-demo-using-sdk
+[aegis-workload-demo-using-sidecar]: https://github.com/shieldworks/aegis-workload-demo-using-sidecar
+[aegis-workload-demo-using-init-container]: https://github.com/shieldworks/aegis-workload-demo-using-init-container
 [init-container]: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
 
 ## High-Level Architecture

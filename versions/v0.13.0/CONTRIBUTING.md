@@ -38,19 +38,19 @@ Then clone `aegis` and its friends:
 cd $HOME/WORKSPACE
 
 # Clone the main Aegis repo.
-git clone git@github.com:zerotohero-dev/aegis.git
+git clone git@github.com:shieldworks/aegis.git
 
 # Clone other aegis-* repositories.
 # The exact command will differ if you are working on a forked repository.
-git clone git@github.com:zerotohero-dev/aegis-spire.git
-git clone git@github.com:zerotohero-dev/aegis-core.git
-git clone git@github.com:zerotohero-dev/aegis-sdk-go.git
-git clone git@github.com:zerotohero-dev/aegis-safe.git
-git clone git@github.com:zerotohero-dev/aegis-sentinel.git
-git clone git@github.com:zerotohero-dev/aegis-sidecar.git
-git clone git@github.com:zerotohero-dev/aegis-workload-demo-using-sidecar.git
-git clone git@github.com:zerotohero-dev/aegis-workload-demo-using-sdk.git
-git clone git@github.com:zerotohero-dev/aegis-web.git
+git clone git@github.com:shieldworks/aegis-spire.git
+git clone git@github.com:shieldworks/aegis-core.git
+git clone git@github.com:shieldworks/aegis-sdk-go.git
+git clone git@github.com:shieldworks/aegis-safe.git
+git clone git@github.com:shieldworks/aegis-sentinel.git
+git clone git@github.com:shieldworks/aegis-sidecar.git
+git clone git@github.com:shieldworks/aegis-workload-demo-using-sidecar.git
+git clone git@github.com:shieldworks/aegis-workload-demo-using-sdk.git
+git clone git@github.com:shieldworks/aegis-web.git
 ```
 
 Alternatively, if you have contributor access, you can execute `make pull`

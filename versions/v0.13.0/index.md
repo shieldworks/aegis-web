@@ -19,7 +19,7 @@ buttons:
   external_url: false
 - icon: github
   content:  Source Code
-  url: 'https://github.com/zerotohero-dev/aegis'
+  url: 'https://github.com/shieldworks/aegis'
   external_url: true
 - icon: slack
   content:  Community

@@ -30,8 +30,8 @@ We will first discuss how to register a secret to a workload using
 [**Aegis Sidecar**][sidecar], and then we will cover a more direct approach using
 the [**Aegis Go SDK**][sdk-go].
 
-[sidecar]: https://github.com/zerotohero-dev/aegis-sidecar
-[sdk-go]: https://github.com/zerotohero-dev/aegis-sdk-go
+[sidecar]: https://github.com/shieldworks/aegis-sidecar
+[sdk-go]: https://github.com/shieldworks/aegis-sdk-go
 
 ## Prerequisites
 
@@ -39,7 +39,7 @@ To complete this tutorial, you will need the following:
 
 * A **Kubernetes** cluster that you have sufficient admin rights.
 * **Aegis** up and running on that cluster.
-* [The `zerotohero-dev/aegis` repository][repo] cloned inside a workspace
+* [The `shieldworks/aegis` repository][repo] cloned inside a workspace
   folder (such as `/home/jane-doe/Desktop/WORKSPACE/aegis`)
 
 > **How Do I Set Up Aegis**?
@@ -47,7 +47,7 @@ To complete this tutorial, you will need the following:
 > To set up **Aegis**, [follow the instructions in this quickstart guide][quickstart].
 
 [quickstart]: /docs/
-[repo]: https://github.com/zerotohero-dev/aegis
+[repo]: https://github.com/shieldworks/aegis
 
 ## High-Level Overview
 
@@ -85,7 +85,7 @@ All the above workload-to-safe and sentinel-to-safe communication are
 encrypted through **mTLS** using the **X.509 SVID**s that **SPIRE** 
 dispatches to all the actors.
 
-[go-sdk]: https://github.com/zerotohero-dev/aegis-sdk-go
+[go-sdk]: https://github.com/shieldworks/aegis-sdk-go
 
 After this high-level overview of your system, let’s create a workload.
 
@@ -161,7 +161,7 @@ automountServiceAccountToken: false
 > have been omitted to use defaults. You can find extensively-commented
 > versions of these manifests [inside this installation folder][install-k8s].
 
-[install-k8s]: https://github.com/zerotohero-dev/aegis/tree/main/install/k8s
+[install-k8s]: https://github.com/shieldworks/aegis/tree/main/install/k8s
 
 You’ll see that there are two images in this deployment:
 
@@ -203,7 +203,7 @@ func main() {
 > [Check out the **Sidecar Demo** Git repository][git-sidecar]
 > to view the source for this use case.
 
-[git-sidecar]: https://github.com/zerotohero-dev/aegis-workload-demo-using-sidecar "Aegis Workload Demo Using Sidecar"
+[git-sidecar]: https://github.com/shieldworks/aegis-workload-demo-using-sidecar "Aegis Workload Demo Using Sidecar"
 
 Our demo app tries to read a secret file every 5 seconds forever.
 
@@ -261,7 +261,7 @@ the secrets (*because the workload is registered*) or deny dispatching them
 Now that we have these manifests, we can apply them to deploy our workload.
 
 Instead of creating things from scratch, I will use the ones that already exist
-inside the `zerotohero-dev/aegis` repo:
+inside the `shieldworks/aegis` repo:
 
 ```bash
 cd $WORKSPACE/aegis
@@ -431,7 +431,7 @@ on your project’s requirements.
 > [Check out the **SDK Demo** Git repository][git-sdk]
 > to view the source for this use case.
 
-[git-sdk]: https://github.com/zerotohero-dev/aegis-workload-demo-using-sdk "Aegis Workload Demo Using SDK"
+[git-sdk]: https://github.com/shieldworks/aegis-workload-demo-using-sdk "Aegis Workload Demo Using SDK"
 
 That part taken care of; let’s deploy a workload that does not use a sidecar.
 
@@ -483,7 +483,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/zerotohero-dev/aegis-sdk-go/sentry"
+	"github.com/shieldworks/aegis-sdk-go/sentry"
 	"log"
 	"time"
 )
@@ -515,7 +515,7 @@ func main() {
 ```
 
 Where all the heavy lifting is done by 
-`github.com/zerotohero-dev/aegis-sdk-go/sentry`.
+`github.com/shieldworks/aegis-sdk-go/sentry`.
 
 The `sentry.Fetch()` operation will fetch the most recent secret from 
 **Aegis Safe** and returns a go `struct` that our workload application 
@@ -682,7 +682,7 @@ visually explains the above concepts in greater detail:
 
 [![Watch the video](/doks-theme/assets/images/capture.png)](https://vimeo.com/v0lkan/aegis-secrets)
 
-[git-init-container]: https://github.com/zerotohero-dev/aegis-workload-demo-using-init-container "Aegis Workload Demo Using Init Container"
+[git-init-container]: https://github.com/shieldworks/aegis-workload-demo-using-init-container "Aegis Workload Demo Using Init Container"
 
 ## Conclusion
 
