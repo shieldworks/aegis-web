@@ -25,8 +25,8 @@ page_nav:
 ## Changed
 
 * Upgraded Aegis to use `SPIRE v1.6.1`.
-* Aegis now has versioned documentation: We will snapshot the documentation
-  at every important release.
+* Aegis now has versioned documentation: We will take a snapshot of the 
+  documentation at every important release.
 * Moved the audit logging functionality to `aegis-core` to make it reusable
   between all Aegis modules.
 * **BREAKING**: The versioned copies of the secrets on the drive are suffixed
@@ -39,6 +39,9 @@ page_nav:
   `"default"` (*instead of `"aegis-system"`).
 * Moved **Aegis** repositories to a GitHub organization (ShieldWorks) for
   ease of management.
+* **BREAKING**: Removed the insecure random string generator methods from the
+  core API. Now, there is only one `RandomString()` method that generates
+  a cryptographically secure and unique random string.
 
 ## [v0.13.0] - 2023-03-03
 
