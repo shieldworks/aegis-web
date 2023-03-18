@@ -105,69 +105,75 @@ to consume, then take regular precautions around those secrets,
 such as [*implementing restrictive RBACs*][rbac], and even [considering using
 a KMS to encrypt `etcd` at rest][kms] if your security posture requires it.
 
-> **Do I Really Need to Encrypt `etcd`?**
->
-> **tl;dr:** 
+### **Do I Really Need to Encrypt `etcd`?**
+
+#### tl;dr: 
+
+Using plain Kubernetes `Secret`s is good enough, and it is not the 
+end of the world if you keep your `etcd` unencrypted.
+
+> **Aegis Keeps Your Secrets Safe**
 > 
-> Using plain Kubernetes `Secrets` is good enough, and it is not the 
-> end of the world if you keep your `etcd` unencrypted.
-> 
-> **Details**
-> 
-> This is an excellent question. And as in any profound answer to 
-> good questions, the answer is: “*it depends*” 🙂.
-> 
-> `Secret`s are, by default, stored unencrypted in `etcd`. So if an adversary
-> can read `etcd` in any way, it’s game over.
-> 
-> **Threat Analysis**
-> 
-> Here are some ways this could happen:
-> 
-> 1. Root access to a control plane node.
-> 2. Root access to a worker node.
-> 3. Access to the actual physical server (*i.e., physically removing the disk*)
-> 4. Possible zero days attacks.
-> 
-> For `1`, and `2`, server hardening, running secure Linux instances, patching, 
-> and preventing privileged pods from running in the cluster are the usual ways
-> to mitigate the threat. Unfortunately, it is a relatively complex attack vector 
-> to guard against. Yet, once your node is compromised, you have **a lot**
-> of things to worry about. In that case, `etcd` exposure will be just one of 
-> many, *many*, **many** concerns that you’ll have to worry about.
->
-> For `3`, assuming your servers are in a data center, there should already be
-> physical security to secure your servers. So the attack is **unlikely**
-> to happen. In addition, your disks are likely encrypted, so unless the attacker
-> can shell into the operating system, your data is already safe: Encrypting
-> `etcd` once more will not provide any additional advantage in this particular
-> case, given the disk is encrypted, and root login is improbable.
-> 
-> For `4.`, the simpler your setup is, the lesser moving parts you have, and the 
-> lesser the likelihood of bumping into a zero-day. And Kubernetes `Secret`s 
-> are as simple as it gets.
-> 
-> Even when you encrypt `etcd` at rest using a **KMS** (*which is the most robust
-> method proposed [in the Kubernetes guides][kms]*), an attacker can still 
-> impersonate `etcd` and decrypt the secrets: As long as you provide the correct 
-> encrypted DEK to KMS, the KMS will more than happy to decrypt that DEK with 
-> its KEK and provide a plain text secret to the attacker.
->
-> **Secure Your House Before Securing Your Jewelry**
-> 
-> So, **yes**, securing `etcd` will marginally increase your security posture.
-> Yet, it does not make too much of a difference unless you have **already** 
-> secured your virtual infrastructure **and** physical data center. And 
-> if you haven’t secured your virtual and physical assets, then you are in big 
-> trouble at day zero, even before you set up your cluster, so encrypting 
-> `etcd` will not save you the slightest from losing other valuable data 
-> elsewhere anyway.
-> 
-> **Security Is a Layered Cake**
-> 
-> That being said, we are humans, and $#!% does happen: If a node is compromised
-> due to a misconfiguration, it would be nice to make the job harder for the 
-> attacker. 
+> If you use **Aegis** to store your sensitive data, your secrets
+> will be securely stored in **Aegis Safe** (*instead of `etcd`*), 
+> so you will have even fewer reasons to encrypt `etcd` 😉.
+ 
+#### Details
+
+This is an excellent question. And as in any profound answer to 
+good questions, the answer is: “*it depends*” 🙂.
+ 
+`Secret`s are, by default, stored unencrypted in `etcd`. So if an adversary
+can read `etcd` in any way, it’s game over.
+
+##### Threat Analysis
+
+Here are some ways this could happen:
+ 
+1. Root access to a control plane node.
+2. Root access to a worker node.
+3. Access to the actual physical server (*i.e., physically removing the disk*)
+4. Possible zero days attacks.
+
+For `1`, and `2`, server hardening, running secure Linux instances, patching, 
+and preventing privileged pods from running in the cluster are the usual ways
+to mitigate the threat. Unfortunately, it is a relatively complex attack vector 
+to guard against. Yet, once your node is compromised, you have **a lot**
+of things to worry about. In that case, `etcd` exposure will be just one of 
+many, *many*, **many** concerns that you’ll have to worry about.
+
+For `3`, assuming your servers are in a data center, there should already be
+physical security to secure your servers. So the attack is **unlikely**
+to happen. In addition, your disks are likely encrypted, so unless the attacker
+can shell into the operating system, your data is already safe: Encrypting
+`etcd` once more will not provide any additional advantage in this particular
+case, given the disk is encrypted, and root login is improbable.
+ 
+For `4.`, the simpler your setup is, the lesser moving parts you have, and the 
+lesser the likelihood of bumping into a zero-day. And Kubernetes `Secret`s 
+are as simple as it gets.
+ 
+Even when you encrypt `etcd` at rest using a **KMS** (*which is the most robust
+method proposed [in the Kubernetes guides][kms]*), an attacker can still 
+impersonate `etcd` and decrypt the secrets: As long as you provide the correct 
+encrypted DEK to KMS, the KMS will more than happy to decrypt that DEK with 
+its KEK and provide a plain text secret to the attacker.
+
+##### Secure Your House Before Securing Your Jewelry
+
+So, **yes**, securing `etcd` will marginally increase your security posture.
+Yet, it does not make too much of a difference unless you have **already** 
+secured your virtual infrastructure **and** physical data center. And 
+if you haven’t secured your virtual and physical assets, then you are in big 
+trouble at day zero, even before you set up your cluster, so encrypting 
+`etcd` will not save you the slightest from losing other valuable data 
+elsewhere anyway.
+
+##### Security Is a Layered Cake
+
+That being said, we are humans, and $#!% does happen: If a node is compromised
+due to a misconfiguration, it would be nice to make the job harder for the 
+attacker. 
 
 [rbac]: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
 [kms]: https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/
@@ -274,7 +280,7 @@ a starting point for **Aegis**-managed containers:
 
 Since **Aegis** is a *Kubernetes-native* framework, its security is strongly
 related to how you secure your cluster. You should be safe if you keep your 
-cluster and the`aegis-system` namespace secure and follow 
+cluster and the `aegis-system` namespace secure and follow 
 “*the principle of least privilege*” as a guideline.
 
 **Aegis** is a lightweight secrets manager; however, that does not mean it
