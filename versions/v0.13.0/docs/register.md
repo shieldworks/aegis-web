@@ -116,13 +116,13 @@ spec:
       serviceAccountName: aegis-workload-demo
       containers:
       - name: main
-        image: z2hdev/aegis-workload-demo-using-sidecar:0.9.1
+        image: aegishub/aegis-workload-demo-using-sidecar:0.9.1
         volumeMounts:
         # `main` shares this volume with `sidecar`.
         - mountPath: /opt/aegis
           name: aegis-secrets-volume
       - name: sidecar
-        image: z2hdev/aegis-sidecar:0.9.1
+        image: aegishub/aegis-sidecar:0.9.1
         volumeMounts:
         # /opt/aegis/secrets.json is the place the secrets will be at.
         - mountPath: /opt/aegis
@@ -165,8 +165,8 @@ automountServiceAccountToken: false
 
 You’ll see that there are two images in this deployment:
 
-* `z2hdev/aegis-workload-demo`: This is the container that has the business logic.
-* `z2hdev/aegis-sidecar`: This **Aegis**-managed container injects 
+* `aegishub/aegis-workload-demo`: This is the container that has the business logic.
+* `aegishub/aegis-sidecar`: This **Aegis**-managed container injects 
   secrets to a place that our demo container can consume.
 
 Here is the source code of the demo container’s app for the sake of completeness:
@@ -460,7 +460,7 @@ spec:
       serviceAccountName: aegis-workload-demo
       containers:
       - name: main
-        image: z2hdev/aegis-workload-demo-using-sdk:0.9.8
+        image: aegishub/aegis-workload-demo-using-sdk:0.9.8
         volumeMounts:
         - name: spire-agent-socket
           mountPath: /spire-agent-socket
@@ -476,7 +476,7 @@ The `Identity.yaml` and `Service.yaml` will be the same as the demo workload
 with a sidecar. And, as a reminder, you can find those files
 [inside this **GitHub** folder][install-k8s] as well.
 
-Here’s how the source code of `z2hdev/aegis-workload-demo-using-sdk` looks like:
+Here’s how the source code of `aegishub/aegis-workload-demo-using-sdk` looks like:
 
 ```go 
 package main
@@ -608,7 +608,7 @@ spec:
       serviceAccountName: aegis-workload-demo
       containers:
       - name: main
-        image: z2hdev/aegis-workload-demo-using-init-container:0.13.0
+        image: aegishub/aegis-workload-demo-using-init-container:0.13.0
         
         # These environment variables are interpolated dynamically at runtime.
         env:
@@ -631,7 +631,7 @@ spec:
       initContainers:
       # Using Aegis Init Container.
       - name: init-container
-        image: z2hdev/aegis-init-container:0.13.0
+        image: aegishub/aegis-init-container:0.13.0
         volumeMounts:
         # Volume mount for SPIRE unix domain socket.
         - name: spire-agent-socket

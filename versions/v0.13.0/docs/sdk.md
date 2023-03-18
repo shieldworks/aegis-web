@@ -130,7 +130,7 @@ spec:
       serviceAccountName: aegis-workload-demo
       containers:
         - name: main
-          image: z2hdev/aegis-workload-demo-using-sdk:0.7.0
+          image: aegishub/aegis-workload-demo-using-sdk:0.7.0
           volumeMounts:
           - name: spire-agent-socket
             mountPath: /spire-agent-socket
