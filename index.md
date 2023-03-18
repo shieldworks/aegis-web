@@ -56,12 +56,17 @@ grid_navigation:
 
 <div style="margin-top:0.75em"></div>
 
-**Aegis** is a **Kubernetes-native**, lightweight *secrets manager*.
+**Aegis** is a **Kubernetes-native**, lightweight **Secrets Manager**.
 
 With **Aegis**, your sensitive data is always secure and protected.
 
 **Aegis** keeps your secrets… secret.
 
+<div style='padding:56.25% 0 0 0;position:relative;'>
+  <iframe src='https://vimeo.com/showcase/10074951/embed' 
+    allowfullscreen frameborder='0' 
+    style='position:absolute;top:0;left:0;width:100%;height:100%;'></iframe>
+</div>
 
 [contact]: /contact
 [contribute]: /contributing
