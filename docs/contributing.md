@@ -131,7 +131,7 @@ without being the root user, then one resolution can be to remove the snap
 version of docker and install it from the source:
 
 ```bash 
-sudo apt update
+{% raw %}sudo apt update
 sudo apt-get install \
     apt-transport-https \
     ca-certificates \
@@ -146,7 +146,7 @@ sudo add-apt-repository \
    $(lsb_release -cs) \
    stable"
 sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io
+sudo apt-get install docker-ce docker-ce-cli containerd.io{% endraw %}
 ```
 
 > **Restart Your System**
