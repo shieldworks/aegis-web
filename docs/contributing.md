@@ -76,8 +76,8 @@ cd aegis
 Running `make help` at the project root will provide you with a list of
 logically grouped commands:
 
-```text0
-# aegis (main) $ make help
+```text
+{% raw %}# aegis (main) $ make help
                          ---------------------------------------------------
                          eval (minikube -p minikube docker-env)
             Docker Host: 
@@ -98,7 +98,7 @@ Minikube Active dockerd:
                          make example-init-container-deploy
                          ---------------------------------------------------
                 CLEANUP: make clean
-                         ---------------------------------------------------
+                         ---------------------------------------------------{ %endraw %}
 
 ```
 
