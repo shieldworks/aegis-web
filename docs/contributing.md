@@ -102,6 +102,8 @@ Minikube Active dockerd:
 
 ```
 
+## Building, Deploying, and Testing
+
 Note that depending on the version of **Aegis** you use, what you see can
 be slightly different.
 
