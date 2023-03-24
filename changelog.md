@@ -20,6 +20,20 @@ page_nav:
 
 # Aegis Changelog
 
+## Recent
+
+* Creating an error log when Aegis Safe secrets queue overflows. That can be
+  useful to create alarms, as it is an important metric of Aegis Safe’s
+  performance.
+* Created a `stats` endpoint to query Aegis Safe’s health from Aegis Sentinel.
+* Moved all Aegis projects under a single (mono)repo for ease of maintenance.
+  This way, all the examples and documentation can remain under the same repo;
+  eliminating the need to jump between several codebases. Plus, it makes 
+  static analysis, coverage reporting, vulnerability scanning, detecting 
+  unused functions, repetitive code blocks, etc, etc. so much easier: 
+  All good things.
+* Cleanup and improvement in build scripts.
+
 ## [v0.14.0] - 2023-03-18
 
 ### Added
