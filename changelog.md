@@ -8,193 +8,205 @@
 #
 
 layout: default
-keywords: Aegis, Changelog
-title: Aegis Changelog
-description: what happened so far
+keywords: Aegis, release, maintenance, development
+title: Local Development
+description: how to develop <strong>Aegis</strong> locally
 micro_nav: true
 page_nav:
-  prev:
-    content: Miscellaneous
-    url: '/misc'
+prev:
+content: registering secrets
+url: '/docs/register'
+next:
+content: using <strong>Aegis</strong> go SDK
+url: '/docs/sdk'
 ---
 
-# Aegis Changelog
+## Introduction
 
-## Recent
+This section contains instructions to test and develop **Aegis** locally.
 
-* Creating an error log when Aegis Safe secrets queue overflows. That can be
-  useful to create alarms, as it is an important metric of Aegis Safe’s
-  performance.
-* Created a `stats` endpoint to query Aegis Safe’s health from Aegis Sentinel.
-* Moved all Aegis projects under a single (mono)repo for ease of maintenance.
-  This way, all the examples and documentation can remain under the same repo;
-  eliminating the need to jump between several codebases. Plus, it makes 
-  static analysis, coverage reporting, vulnerability scanning, detecting 
-  unused functions, repetitive code blocks, etc, etc. so much easier: 
-  All good things.
-* Cleanup and improvement in build scripts.
+## Prerequisites
 
-## [v0.14.0] - 2023-03-18
+Other than the source code, you need the following set up for your development
+environment to be able to locally develop **Aegis**:
 
-### Added
+* [Docker][docker] installed and running for the local user.
+* [Minikube][minikube] installed on your system.
+* [Make][make] installed on your system.
+* [Git][git] installed on your system.
 
-* Upgraded Aegis to use `SPIRE v1.6.1`.
-* Aegis now has versioned documentation: We will take a snapshot of the
-  documentation at every important release.
-* Significant documentation updates.
+[minikube]: https://minikube.sigs.k8s.io/docs/
+[make]: https://www.gnu.org/software/make/
+[git]: https://git-scm.com/
 
-### Changed
+> **Can I Use Something Other than Minikube and Docker**?
+>
+> Of course, you can use any Kubernetes cluster to develop, deploy, and test
+> **Aegis**.
+>
+> Similarly, you can use any OCI-compliant container runtime. It does not
+> have to be Docker.
+>
+> We are giving **Minikube** and **Docker** as an example because they are
+> easier to set up; and when you stumble upon, it is easy to find supporting
+> documentation about these to help you out.
 
-* Updated the build scripts to be less error-prone.
-* The namespace of Kubernetes `Secret`s created by Aegis Sentinel now default to
-  `"default"` (*instead of `"aegis-system"`).
-* Moved the audit logging functionality to `aegis-core` to make it reusable
-  between all Aegis modules.
-* Moved **Aegis** repositories to a GitHub organization (ShieldWorks) for
-  ease of management: <https://github.com/shieldworks>.
-* **BREAKING**: Removed the insecure random string generator methods from the
-  core API. Now, there is only one `RandomString()` method that generates
-  a cryptographically secure and unique random string.
-* **BREAKING**: The versioned copies of the secrets on the drive are suffixed
-  with `.backup` to grep them easily. The older items (that are not suffixed)
-  will be caught by the `List` API as new key/value pairs, resulting in
-  extra entries that are not being used.
+## Cloning Aegis
 
-## [v0.13.0] - 2023-03-03
+Create a workspace folder and clone **Aegis** into it.
 
-### Added
+```bash 
+mkdir $HOME/Desktop/WORKSPACE
+cd $HOME/Desktop/WORKSPACE
+git clone "https://github.com/shieldworks/aegis.git"
+cd aegis
+```
 
-* Aegis has a new website: [aegis.ist](https://aegis.ist/).
-* Added a documentation page for Aegis Sentinel CLI usage.
-* Template transformations now apply to the secret values that are
-  reflected to the workloads as well.
+> **Want to Create a Pull Request**?
+>
+> If you are contributing to the source code, make sure you read
+> [the contributing guidelines][contributing], and [the code of conduct][coc].
 
-### Fixed
+[fork]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/about-forks
+[contributing]: https://github.com/shieldworks/aegis/blob/main/CONTRIBUTING.md
+[coc]: https://github.com/shieldworks/aegis/blob/main/CODE_OF_CONDUCT.md
 
-* Fixed minor errors in documentation.
-* Minor bug fixes.
+## Getting Help
 
-### Changed
+Running `make help` at the project root will provide you with a list of
+logically grouped commands:
 
-* **BREAKING**: Trust root of entities changed from `z2h.dev` to `aegist.ist`.
-* Updated to Aegis Sentinel commands.
-* Documentation updates to talk about how to use Aegis Sidecar to propagate 
-  Aegis-Safe-managed secrets into Kubernetes.
-* Documentation update: Changed contact, support, and security feedback emails
-  to official `@aegis.ist` emails.
+```text0
+# aegis (main) $ make help
+                         ---------------------------------------------------
+                         eval (minikube -p minikube docker-env)
+            Docker Host: 
+Minikube Active dockerd: 
+                         ---------------------------------------------------
+                   PREP: make k8s-delete;make k8s-start;
+                   TEST: make build-local;make deploy-local;make test-local;
+ TEST (docker/aegishub): make build;make deploy;make test
+                RELEASE: make bump;make build;make tag
+                         ---------------------------------------------------
+      EXAMPLE (SIDECAR): make example-sidecar-deploy-local |
+                         make example-sidecar-deploy
+                         ---------------------------------------------------
+          EXAMPLE (SDK): make example-sdk-deploy-local |
+                         make example-sdk-deploy
+                         ---------------------------------------------------
+       EXAMPLE (INIT C): make example-init-container-deploy-local |
+                         make example-init-container-deploy
+                         ---------------------------------------------------
+                CLEANUP: make clean
+                         ---------------------------------------------------
 
-## [v0.12.70] - 2023-02-17
+```
 
-### Added
+Note that depending on the version of **Aegis** you use, what you see can
+be slightly different.
 
-* Ability to wait for the secret to initialize first, using Aegis Init Container.
-* Ability to use go templates to transform secrets. In this version, the 
-  transformation only applies to the generated Kubernetes `Secret`s. In the
-  upcoming versions, Aegis Safe API will also honor the transformations when
-  returning the secret values.
+Now let’s explain some of these steps (*and for the remainder, you can read
+the `Makefile` at the project root):
 
-### Changed
+* `make k8s-delete`: Deletes your minikube cluster.
+* `make k8s-start`: Starts an existing cluster, or creates a brand new one.
+* `make build-local`: Builds all the projects locally and pushes them to
+  the local container registry.
+* `make deploy-local`: Deploys **Aegis** locally with the artifacts generated
+  at the `build-local` step.
+* `make test-local`: Runs integration tests to make sure that the changes
+  that were made doesn’t break anything.
 
-* Upgraded all builder images to Go `v1.20.1`.
+If you run these commands in the above order, you’ll be able to **build**,
+**deploy**, and **test** your work locally.
 
-### Fixed
+[docker]: https://www.docker.com/
 
-* Fixed a channel overflow bug that was blocking secret operations when an
-  error occurs.
+## Minikube Quirks
 
-## [v0.12.55] - 2023-02-15
+If you are using **Ubuntu**, it would be helpful to know that **Minikube** and
+**snap** version of **Docker** do not play well together. If you are having
+registry-related issues, or if you are not able to execute a `docker images`
+without being the root user, then one resolution can be to remove the snap
+version of docker and install it from the source:
 
-### Added
+```bash 
+sudo apt update
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \ 
+    sudo apt-key add -
+sudo apt-key fingerprint 0EBFCD88
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+```
 
-* Added ability to use actual Kubernetes `Secret` object to save the values
-  of the registered secrets—this is (*mostly*) for legacy support.
-* Added an option to use the cluster as a backing store (*work in progress*)
-* Implemented additional configuration options through environment variables
-* Created a script to list the status of all Aegis projects (*especially
-  useful when doing deployments and release cuts*)
+> **Restart Your System**
+>
+> After doing this, you might need to restart your system and execute
+> `minikube delete` on your terminal too. Although you might feel that this
+> step is optional, it is **not**; trust me 🙂.
 
-### Changed
+After installing a non-snap version of **Docker** and restarting your system, if
+you can use **Minikube** *Docker registry*, then, perfect. If not, there are
+a few things that you might want to try. So if you are still having issues
+keep on reading.
 
-* There are breaking changes in certain environment variable names. The 
-  documentation ha been updated to reflect these changes.
+Before trying anything else, it might be worth giving [Docker Post Installation
+Steps][post-installation] from the official Docker website a shot. Following
+that guideline **may** solve Docker-related permission issues that you might
+still be having.
 
-## [v0.12.30] - 2023-02-05
+> **Restart, Maybe?**
+>
+> If you still have permission issues after following the official Docker post
+> installation steps outlined above, try **restarting** your computer once more.
+>
+> Especially when it comes to Docker permissions, restarting can help,
+> and worst case it’s still worth giving a try.
 
-### Added
+[post-installation]: https://docs.docker.com/engine/install/linux-postinstall/
 
-* Added contributing guidelines.
-* Added local development instructions.
-* Added default values to sample `yaml` manifests.
-* Added the ability to list secrets to Aegis Sentinel.
-* Other documentation updates.
+Still no luck? Keep on reading.
 
-### Changed
+Depending on your operating system, and the Minikube version that you use
+it might take a while to find a way to push images to Minikube’s internal
+Docker registry. [The relevant section about the Minikube handbook][minikube-push]
+covers a lot of details, and can be helpful; however, it is also really easy
+skip or overlook certain steps.
 
-* Improvements to local development workflow.
-* **BREAKING**: Changes in Aegis Safe REST API that required changes in
-  demo workload implementations, and Aegis Sentinel.
+If you have `docker push` issues, or you have problem your Kubernetes Pods
+acquiring images from the local registry, try these:
 
-## [v0.11.20] - 2023-02-03
+* Execute `eval $(minikube docker-env)` before pushing things to **Docker**. This
+  is one of the first instructions [on the “*push*” section of the Minikube
+  handbook][minikube-push], yet it is still very easy to inadvertently skip it.
+* Make sure you have the registry addon enabled (`minikube addons list`).
+* You might have luck directly pushing the image:
+  `docker build --tag $(minikube ip):5000/test-img`; followed by:
+  `docker push $(minikube ip):5000/test-img`.
+* There are also `minikube image load` and `minikube image build` commands
+  that might be helpful.
 
-### Added
+[minikube-push]: https://minikube.sigs.k8s.io/docs/handbook/pushing/
 
-* Added a [media kit ](/media).
-* Added more configuration options through environment variables.
+## Enjoy 🎉
 
-### Changed
+Just explore the [Makefile][makefile] and get a feeling of it.
 
-* Aegis Sidecar now exponentially backs off if it cannot fetch secrets
-  in a timely manner.
-* **BREAKING**: All time units in environment variables 
-  are now milliseconds, instead of seconds.
+[Feel free to touch base](/contact#community) if you have any questions, comments,
+recommendations.
 
-## [v0.11.5] - 2023-02-01
+[makefile]: https://github.com/shieldworks/aegis/blob/main/Makefile
 
-### Added
-
-* Improved the website’s information architecture.
-* Added audit logs to Safe API methods.
-* When a secret persist error occurs, it is logged.
-* Improvements in development workflow (*enabling local registries*)
-
-### Changed
-
-* Retry persisting secrets to disk one more time before erring out.
-* Added a channel mechanism to funnel disk errors instead of suppressing them.
-
-## [v1.11.0] - 2023-01-28
-
-### Current State
-
-As per this release, Aegis is able to securely dispatch secrets to workloads
-within a single cluster; it encrypts and backs up secrets to a volume; and
-if it crashes, it recovers its state from the backups. The code is stable
-enough and the solution can be used at a production capacity.
-
-That’s also why we started a changelog: Before this point in time, it
-was a figurative cambrian soup, and it was too chaotic to even keep a changelog.
-
-From this point on, we will record the changes, deprecations,
-removals, fixes, and security patches more carefully.
-
-### Added
-
-* Added a script to do functional test before every release cut.
-* Whenever a secret is saved, the old secret is backed up.
-* Ability to delete secrets.
-* In-memory mode: Secrets can optionally NOT be persisted on disk and kept
-  only in memory. This is not the default behavior and needs to be set
-  using an environment variable.
-
-### Changed
-
-* Usability improvements to the website.
-* Added more tutorials and articles to the website to explain how Aegis works.
-* Aegis Safe responds with RFC3339 instead of RubyDate. RFC3339 is also what Go
-  uses when serializing dates into JSON.
-* Added a buffered channel to save secrets on disk to improve performance
-  especially for slower disks.
-* Better logs.
 
 <!--
 Added
