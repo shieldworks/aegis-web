@@ -72,6 +72,23 @@ The only entity allowed to have read/write (*but not delete*) access to
 `aegis-safe-age-key` should be the **Aegis Safe** Pod inside the `aegis-system` 
 namespace with an `aegis-safe` service account.
 
+> **With Great Power Comes Great Responsibility**
+> 
+> It is worth noting that a **Cluster Administrator** due to their elevated
+> privileges can read/write to any Kubernetes `Secret` in the cluster.
+> 
+> This includes access to the `aegis-safe-age-key` secret. Therefore, it is 
+> highly recommended that you grant the `cluster-admin` role to a **very** 
+> small group of trusted individuals only.
+> 
+> Although, access to `aegis-safe-age-key` does not give the attacker direct
+> access to the secrets, due to their sheer power, a determined Cluster 
+> Administrator can still read the secrets by accessing the `/data` volume.
+> 
+> Their actions will be recorded in the audit logs, so they can, and will be 
+> held responsible; however, it is still a bad idea to have more than an 
+> absolute minimum number of Cluster Administrators in your cluster.
+
 Kubernetes Secrets are, by default, stored **unencrypted** in the API server’s 
 underlying data store (`etcd`). Anyone with API access and sufficient RBAC
 credentials can retrieve or modify a `Secret`, as can anyone with access 
