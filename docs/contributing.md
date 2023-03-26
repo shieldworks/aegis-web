@@ -13,17 +13,28 @@ title: Local Development
 description: how to develop <strong>Aegis</strong> locally
 micro_nav: true
 page_nav:
-prev:
-content: registering secrets
-url: '/docs/register'
-next:
-content: using <strong>Aegis</strong> go SDK
-url: '/docs/sdk'
+  prev:
+    content: registering secrets
+    url: '/docs/register'
+  next:
+    content: using <strong>Aegis</strong> go SDK
+    url: '/docs/sdk'
 ---
 
 ## Introduction
 
 This section contains instructions to test and develop **Aegis** locally.
+
+## Video
+
+Here’s a video that shows how to develop **Aegis** locally:
+
+<div style="padding:56.25% 0 0 0;position:relative;"><iframe 
+  src="https://player.vimeo.com/video/811710600?h=a186b73be4&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+  frameborder="0" allow="autoplay; fullscreen; picture-in-picture" 
+  allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" 
+  title="Installing Aegis from the Source Code"></iframe></div>
+<script src="https://player.vimeo.com/api/player.js"></script>
 
 ## Prerequisites
 
