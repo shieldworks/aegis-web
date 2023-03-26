@@ -33,6 +33,9 @@ page_nav:
   unused functions, repetitive code blocks, etc, etc. so much easier: 
   All good things.
 * Simplified the development and publishing flows.
+* **BREAKING**: Removed `"cluster"` as a backing store option. It does not
+  make sense to back up secrets onto etcd. It makes the architecture 
+  complicated, impacts the security posture without providing much added value.
 
 ## [v0.14.0] - 2023-03-18
 
