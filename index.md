@@ -51,7 +51,6 @@ grid_navigation:
   excerpt: What we are planning to do in the near (<em>and far</em>) future.
   cta: see what’s cooking
   url: '/timeline'
- 
 ---
 
 <div style="margin-top:0.75em"></div>
@@ -81,10 +80,13 @@ no possibility fo secrets leaking into logs, or heaven forbid git repos because
 
 <p>With <strong>Aegis</strong> that’s exactly what you get.</p>
 
-<p><span style="background:#EDC910;display:inline-block;padding:0.5em;"><strong>Aegis</strong> makes this possible 
+<p><span style="background:#EDC910;display:inline-block;padding:0.5em;"
+><strong>Aegis</strong> makes this possible 
 by leveraging battle-tested and proven technologies including 
-<a href="https://spiffe.io" style="color:#000000;border-bottom: 4px #000000 solid;">SPIFFE/SPIRE</a> and 
-<a href="https://age-encryption.org/" style="color:#000000; border-bottom:4px #000000 solid;">Age Encryption</a>.</span></p>
+<a href="https://spiffe.io" style="color:#000000;border-bottom: 
+4px #000000 solid;">SPIFFE/SPIRE</a> and 
+<a href="https://age-encryption.org/" style="color:#000000; 
+border-bottom:4px #000000 solid;">Age Encryption</a>.</span></p>
 
 <p>When a Pod requests a secret, <strong>Aegis</strong> provides a 
 <strong>short-lived</strong> X.509 certificate to confirm its identity. This 

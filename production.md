@@ -233,6 +233,18 @@ needs][k8s-pv] for production setups.
 [aegis-safe-deployment-yaml]: https://github.com/shieldworks/aegis/blob/main/install/k8s/safe/Deployment.yaml
 [k8s-pv]: https://kubernetes.io/docs/concepts/storage/volumes/
 
+## Update Aegis’ Log Levels
+
+**Aegis Safe** and **Aegis Sidecar** are configured to log at `TRACE` level by
+default. This is to help you debug issues with **Aegis**. However, this can
+cause a lot of noise in your logs. Once you are confident that **Aegis**
+works as expected, you can reduce the log level to `INFO` or `WARN`.
+
+For this, you will need to modify the `AEGIS_LOG_LEVEL` environment variable
+in the **Aegis Safe** and **Aegis Sidecar** Deployment manifests.
+
+See [**Configuring Aegis**](/docs/configuration) for details.
+
 ## Set CPU and Memory Limits
 
 Benchmark your system usage and set **CPU** and **Memory** limits to the

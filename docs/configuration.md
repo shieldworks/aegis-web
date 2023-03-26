@@ -27,6 +27,10 @@ page_nav:
 
 The following section contain a breakdown of all of these environment variables.
 
+> **Looking for Aegis Production Tips**?
+> 
+> For **production setup**, check out [**Aegis Production Deployment**](/production).
+
 ## Environment Variables
 
 ### SPIFFE_ENDPOINT_SOCKET
@@ -180,7 +184,7 @@ will be encrypted and persisted. This environment variable is used by
 **Aegis Sentinel** to let **Aegis Safe** know where to persist the secret.
 
 * If not given, defaults to `"file"`. 
-* Other options are `"in-memory"` and `"cluster"`.
+* The other option is  `"in-memory"`.
 
 A `"file"` backing store means **Aegis Safe** persists an encrypted version
 of its state in a volume (*ideally a `PersistedVolume`*).
@@ -189,14 +193,6 @@ An `"in-memory"` backing store means **Aegis Safe** does not persist backups
 of the secrets it created to disk. When that option is selected, you will
 lose all of your secrets if **Aegis Safe** is evicted by the scheduler or
 manually restarted by an operator.
-
-<div class="callout callout--danger">
-<p><strong>Work In Progress</strong></p>
-<p>The <code>"cluster"</code> mode means <strong style="display:inline">Aegis Safe</strong> will store 
-encrypted backups of its state as Kubernetes <code>Secret</code> objects.</p>
-<p>The <code>"cluster"</code> mode has <strong style="display:inline">not</strong> been implemented yet, 
-and <strong style="display:inline">Aegis Safe</strong> will <code>panic</code> if this mode is selected.</p>
-</div>
 
 ### AEGIS_SAFE_SECRET_BACKUP_COUNT
 
