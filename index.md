@@ -99,7 +99,7 @@ specific secret for a very brief time.</p>
 no other Pod can use it.</p>
 
 <p><span style="background:#EDC910;display:inline-block;padding:0.5em;">There are 
-no service keys, no usernames, no passwords, no tokens, no SSH keys, no API 
+no service keys, no usernames, no passwords, tokens, SSH keys, API 
 keys…, no nothing.</span></p>
 
 <p>It’s like <strong>magic</strong>.</p>
