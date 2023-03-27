@@ -21,10 +21,11 @@ page_nav:
     url: '/docs/sentinel'
 ---
 
+[Edit this page on **GitHub** ✏️](https://github.com/ShieldWorks/aegis-web/blob/main/docs/sdk.md)
+
 This is the documentation for [Aegis Go SDK][go-sdk].
 
-[go-sdk]: https://github.com/shieldworks/aegis-sdk-go
-
+[go-sdk]: https://github.com/shieldworks/aegis/tree/main/sdk
 
 ## Package `sentry`
 

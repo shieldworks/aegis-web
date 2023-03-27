@@ -18,6 +18,8 @@ page_nav:
     url: '/misc'
 ---
 
+[Edit this page on **GitHub** ✏️](https://github.com/ShieldWorks/aegis-web/blob/main/maintainers.md)
+
 As of now, I, [Volkan Özçelik][me], am the sole maintainer of **Aegis**.
 
 [me]: https://github.com/v0lkan "Volkan Özçelik"

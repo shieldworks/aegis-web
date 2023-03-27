@@ -21,9 +21,13 @@ page_nav:
     url: '/docs/architecture'
 ---
 
+[Edit this page on **GitHub** ✏️](https://github.com/ShieldWorks/aegis-web/blob/main/docs/sentinel.md)
+
 ## Introduction
 
-This section contains usage examples and documentation for **Aegis Sentinel**.
+This section contains usage examples and documentation for [**Aegis Sentinel**][sentinel].
+
+[sentinel]: https://github.com/ShieldWorks/aegis/tree/main/app/sentinel
 
 ## Finding **Aegis Sentinel**
 

@@ -18,6 +18,9 @@ page_nav:
     url: '/misc'
 ---
 
+[Edit this page on **GitHub** ✏️](https://github.com/ShieldWorks/aegis-web/blob/main/release.md)
+
+
 ## Configuring Minikube Local Registry for Linux
 
 Switch to the **Aegis** project folder

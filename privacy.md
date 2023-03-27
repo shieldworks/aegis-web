@@ -18,6 +18,9 @@ page_nav:
     url: '/misc'
 ---
 
+[Edit this page on **GitHub** ✏️](https://github.com/ShieldWorks/aegis-web/blob/main/privacy.md)
+
+
 > This is the shortest privacy policy you’ll possibly read.
 >
 > I hate writing boring copyright stuff, so please don’t make me write more.

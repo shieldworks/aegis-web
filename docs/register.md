@@ -21,6 +21,8 @@ page_nav:
     url: '/docs/contributing'
 ---
 
+[Edit this page on **GitHub** ✏️](https://github.com/ShieldWorks/aegis-web/blob/main/docs/register.md)
+
 ## Introduction
 
 In this tutorial, you will register secrets to Kubernetes workloads

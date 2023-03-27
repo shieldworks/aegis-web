@@ -21,6 +21,8 @@ page_nav:
     url: '/docs/philosophy'
 ---
 
+[Edit this page on **GitHub** ✏️](https://github.com/ShieldWorks/aegis-web/blob/main/docs/configuration.md)
+
 ## Introduction
 
 **Aegis** system components can be configured using environment variables.

@@ -18,9 +18,12 @@ page_nav:
     url: '/misc'
 ---
 
+[Edit this page on **GitHub** ✏️](https://github.com/ShieldWorks/aegis-web/blob/main/timelinemd)
+
+
 You can see the project’s progress [in these **Aegis** boards][mdp].
 
 The boards outline what are the current outstanding work items, and what is
 currently being worked on.
 
-[mdp]: https://github.com/shieldworks/aegis/projects?query=is%3Aopen
+[mdp]: https://github.com/orgs/shieldworks/projects/1/views/4

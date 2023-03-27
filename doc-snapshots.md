@@ -13,6 +13,9 @@ title: Aegis Documentation Snapshots
 description: each significant release has its own documentation
 ---
 
+[Edit this page on **GitHub** ✏️](https://github.com/ShieldWorks/aegis-web/blob/main/doc-snapshots.md)
+
+
 Here are the **Aegis** documentations captured in time for specific releases:
 
 * [Latest](https://aegis.ist/)

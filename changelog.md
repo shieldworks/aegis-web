@@ -18,6 +18,9 @@ page_nav:
     url: '/misc'
 ---
 
+[Edit this page on **GitHub** ✏️](https://github.com/ShieldWorks/aegis-web/blob/main/changelog.md)
+
+
 # Aegis Changelog
 
 ## Recent
@@ -38,6 +41,7 @@ page_nav:
 * **BREAKING**: Removed `"cluster"` as a backing store option. It does not
   make sense to back up secrets onto etcd. It makes the architecture 
   complicated, impacts the security posture without providing much added value.
+* Added links to the documentation pages to make them editable on GitHub.
 
 ## [v0.14.0] - 2023-03-18
 

@@ -18,6 +18,9 @@ page_nav:
     url: '/misc'
 ---
 
+[Edit this page on **GitHub** ✏️](https://github.com/ShieldWorks/aegis-web/blob/main/contact.md)
+
+
 Hi, thank you for wanting to contact us ❤️.
 
 Here are a few ways that you can get in touch:

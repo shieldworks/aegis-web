@@ -18,6 +18,9 @@ page_nav:
     url: '/misc'
 ---
 
+[Edit this page on **GitHub** ✏️](https://github.com/ShieldWorks/aegis-web/blob/main/media.md)
+
+
 The following images are the *official* **Aegis** logos. 
 
 Feel free to use them in your material when referring to **Aegis**.

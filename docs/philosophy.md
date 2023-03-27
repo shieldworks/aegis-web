@@ -13,6 +13,8 @@ page_nav:
     url: '/contact/#community'
 ---
 
+[Edit this page on **GitHub** ✏️](https://github.com/ShieldWorks/aegis-web/blob/main/docs/philosophy.md)
+
 ## Introduction
 
 We follow the **guidelines** outlined in the next few sections as an 

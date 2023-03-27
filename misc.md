@@ -18,6 +18,9 @@ page_nav:
     url: '/docs'
 ---
 
+[Edit this page on **GitHub** ✏️](https://github.com/ShieldWorks/aegis-web/blob/main/misch.md)
+
+
 Here are some of the topics and questions that we listed here separately since 
 they don’t quite fit the narrative of the rest of the documentation.
 

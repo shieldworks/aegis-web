@@ -41,7 +41,7 @@ the ones above will likely work just fine.
 
 ## Back Up Your Cluster Regularly
 
-**Aegis** is designed to be resilient;however, losing access to your sensitive 
+**Aegis** is designed to be resilient; however, losing access to your sensitive 
 data is possible by inadvertently deleting a Kubernetes `Secret` that you are 
 not supposed to delete. Or, your backing store that contains the secrets can get 
 corrupted for any reason. 

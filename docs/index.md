@@ -21,6 +21,8 @@ page_nav:
     url: '/docs/register'
 ---
 
+[Edit this page on **GitHub** ✏️](https://github.com/ShieldWorks/aegis-web/blob/main/docs/index.md)
+
 ## What Is **Aegis**?
 
 [**Aegis**][aegis] is a **Kubernetes-native**, lightweight secrets manager 

@@ -21,6 +21,8 @@ page_nav:
     url: '/docs/sdk'
 ---
 
+[Edit this page on **GitHub** ✏️](https://github.com/ShieldWorks/aegis-web/blob/main/docs/contributing.md)
+
 ## Introduction
 
 This section contains instructions to test and develop **Aegis** locally.

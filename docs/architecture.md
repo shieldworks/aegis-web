@@ -21,6 +21,8 @@ page_nav:
     url: '/docs/configuration'
 ---
 
+[Edit this page on **GitHub** ✏️](https://github.com/ShieldWorks/aegis-web/blob/main/docs/architecture.md)
+
 ## Introduction
 
 This section discusses **Aegis** architecture and building blocks in greater
@@ -63,10 +65,10 @@ about how **SPIRE** works internally.
 [`aegis-sentinel`][sentinel] is a pod you can shell in and do administrative tasks such as
 registering secrets for workloads.
 
-[aegis-spire]: https://github.com/shieldworks/aegis-spire
-[safe]: https://github.com/shieldworks/aegis-safe
-[sidecar]: https://github.com/shieldworks/aegis-sidecar
-[sentinel]: https://github.com/shieldworks/aegis-sentinel
+[aegis-spire]: https://github.com/ShieldWorks/aegis/tree/main/k8s/spire
+[safe]: https://github.com/shieldworks/tree/main/app/safe
+[sidecar]: https://github.com/shieldworks/tree/main/app/sidecar
+[sentinel]: https://github.com/shieldworks/tree/main/app/sentinel
 
 Here is a simplified overview of how various actors on an **Aegis** system
 interact with each other:

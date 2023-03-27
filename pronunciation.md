@@ -18,6 +18,9 @@ page_nav:
     url: '/misc'
 ---
 
+[Edit this page on **GitHub** ✏️](https://github.com/ShieldWorks/aegis-web/blob/main/pronunciationmd)
+
+
 “Aegis” is a word of Greek origin and is pronounced `EE-jiss`.
 
 [Here’s a YouTube pronunciation guide][pronounce].
