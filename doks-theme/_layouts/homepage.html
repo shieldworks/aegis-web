@@ -79,14 +79,66 @@ box-shadow:rgba(0, 0, 0, 0.75) 0px -33px 8px -28px inset;
 						<div class="col-md-2"></div>
 					</div>
 
+
+
 			</div><!-- /.container -->
 		</div><!-- /.hero-subheader -->
 
+		<div class="container">
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+		<div style="color:#FFF4D5;padding:1em;margin:3em 1em 6em 1em;
+">
+			<p><strong style="color:#EDC910">Imagine this</strong>: An entire environment with <strong style="color:#EDC910">ZERO</strong>
+				service keys, usernames, passwords, tokens, or credentials.</p>
 
+			<p>☝️ That would mean there will be no need for credential rotation,
+				no possibility fo secrets leaking into logs, or heaven forbid git repos because
+				<strong style="color:#EDC910">there are no secrets</strong>.</p>
 
+			<p>With <strong style="color:#EDC910"> Aegis</strong> that’s exactly what you get.</p>
+
+			<p><span style="background:#EDC910;color:#000000;display:inline-block;padding:0.5em;"
+			><strong>Aegis</strong> makes this possible
+by leveraging battle-tested and proven technologies including
+<a href="https://spiffe.io" style="color:#000000;border-bottom:
+4px #000000 solid;">SPIFFE/SPIRE</a> and
+<a href="https://age-encryption.org/" style="color:#000000;
+border-bottom:4px #000000 solid;">Age Encryption</a>.</span></p>
+
+			<p>When a Pod requests a secret, <strong style="color:#EDC910">Aegis</strong> provides a
+				<strong style="color:#EDC910">short-lived</strong> X.509 certificate to confirm its identity. This
+				certificate is <strong style="color:#EDC910">unique</strong> to each Pod and ensures secure access to
+				the assigned resource.</p>
+
+			<p>The certificate is frequently rotated, limiting damage in the
+				extremely unlikely event of a compromise, as it only grants access to a
+				specific secret for a very brief time.</p>
+
+			<p>In addition, when the Pod is down or deleted, the certificate is useless because
+				no other Pod can use it.</p>
+
+			<p><span style="background:#EDC910;color:#000000;display:inline-block;padding:0.5em;">There are
+no service keys, no usernames, no passwords, tokens, SSH keys, API
+keys…, no nothing.</span></p>
+
+			<p>It’s like <strong style="color:#EDC910">magic</strong>.</p>
+
+			<p>It 👏 Is 👏 <strong style="color:#EDC910">Aegis</strong>.</p>
+		</div>
+				</div>
+
+				<div class="col-md-2"></div>
+
+			</div></div>
+
+		<div style="display:none">
+			<a rel="me" href="https://hachyderm.io/@volkan">Mastodon profile verification</a>
+		</div>
 
 		{% if page.grid_navigation %}
-			<div class="section section--darker-theme-color-bg">
+			<div class="section section--darker-theme-color-bg" style="background:#0f1924">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
@@ -117,62 +169,74 @@ border-width: 1px;
 						</div><!-- /.col -->
 					</div><!-- /.row -->
 
-					<div class="row">
+					<div class="row" style="max-width:650px;margin:0 auto;">
 						<div class="col-md-12">
 							<div class="nav-grid">
 								<div class="row">
+									<h1 style="font-weight: 900; color:#ffffff;text-align: center;">Community ❤️ Aegis</h1>
 
-										<div class="col-sm-6 col-lg-6" >
-											<div style="background:#A9C2BC;border-radius:16px;padding:20px;margin:10px;min-height:160px">
-											“I’ve long wondered how we could radically re-make secrets
-											management if SPIFFE was already in place. Wonder no longer!”
-											— <strong>Andrew Jessup,
-											<em>Director of Product Management, HPE Security Engineering</em></strong>
-											</div>
+									<div class="col-sm-12 col-lg-12" >
+										<div style="border:1px #608cbc solid;background:#08182b;color:#ffffff;border-radius:16px;padding:20px;margin:10px;">
+											“This technology is the first thing I’ve seen that manages secrets in a Kubernetes-native, and manages them really well.
+											Aegis avoids the need to deploy and maintain a bloated non-cloud-native vault, which is a huge win.”
+											<br><span style="color:rgba(246,208,0,.99)">—</span> <strong style="color:#608cbc">Ramiro Salas,
+											<em>Staff Engineer, VMware</em></strong>
 										</div>
+									</div>
 
-									<div class="col-sm-6 col-lg-6"  >
-										<div style="background:#CCE3C6;border-radius:16px;padding:20px;margin:10px;min-height:160px">
+									<div class="col-sm-12 col-lg-12"  >
+										<div style="border:1px #608cbc solid;background:#05031A;color:#ffffff;border-radius:16px;padding:20px;margin:10px;">
 											“One more cloud native project that leverages SPIFFE for authentication! Woohoo! More SPIFFE!”
-											— <strong>Eli Nesterov,
+											<br><span style="color:rgba(246,208,0,.99)">—</span> <strong style="color:#608cbc" >Eli Nesterov,
 											<em>Co-founder of one of the best stealth security startups</em></strong>
 										</div>
 									</div>
 
-									<div class="col-sm-6 col-lg-6"  >
-										<div style="background:#CCE3C6;border-radius:16px;padding:20px;margin:10px;min-height:230px">
+									<div class="col-sm-12 col-lg-12" >
+										<div style="border:1px #608cbc solid;background:#08182b;color:#ffffff;border-radius:16px;padding:20px;margin:10px;">
+										“I’ve long wondered how we could radically re-make secrets
+										management if SPIFFE was already in place. Wonder no longer!”
+											<br><span style="color:rgba(246,208,0,.99)">—</span> <strong style="color:#608cbc">Andrew Jessup,
+										<em>Director of Product Management, HPE Security Engineering</em></strong>
+										</div>
+									</div>
+
+									<div class="col-sm-12 col-lg-12"  >
+										<div style="border:1px #608cbc solid;background:#05031A;color:#ffffff;border-radius:16px;padding:20px;margin:10px;">
 										“Secrets management is a relatively mature technology, however its role in the
 										cloud native landscape has been dramatically evolving. Aegis is a ground-up
 										re-imagination, solving the problem in a way that is congruent with
 										the future of cloud computing.”
-										— <strong>Evan Gilman,
+											<br><span style="color:rgba(246,208,0,.99)">—</span> <strong style="color:#608cbc">Evan Gilman,
 										<em>Author of Zero Trust Networks (O’Reilly), SPIRE core maintainer</em></strong>
 										</div>
 									</div>
 
-									<div class="col-sm-6 col-lg-6" >
-										<div style="background:#A9C2BC;border-radius:16px;padding:20px;margin:10px;min-height:230px">
+									<div class="col-sm-12 col-lg-12"  >
+										<div style="border:1px #608cbc solid;background:#08182b;color:#ffffff;border-radius:16px;padding:20px;margin:10px;">
+											“That eye is creepy. It says ‘I see you and I care only slightly; beware because I am aware!’.”
+											<br><span style="color:rgba(246,208,0,.99)">—</span> <strong style="color:#608cbc">Barrdat,
+											<em>the turtle 🐢</em></strong>
+										</div>
+									</div>
+
+									<div class="col-sm-12 col-lg-12" >
+										<div style="border:1px #608cbc solid;background:#05031A;color:#ffffff;border-radius:16px;padding:20px;margin:10px;">
 											“With Aegis, dispatching my secrets in my infra is a breeze.
 											It requires minimal effort to maintain, freeing me up to focus on more important tasks.
 											In fact, it runs so smoothly that I sometimes forget it even exists.
 											Aegis gives me peace of mind.”
-											— <strong>Hamza Erbay,
+											<br><span style="color:rgba(246,208,0,.99)">—</span> <strong style="color:#608cbc">Hamza Erbay,
 											<em>Staff Engineer, Udemy</em></strong>
 										</div>
 									</div>
 
-									<div class="col-sm-6 col-lg-6"  >
-										<div style="background:#A9C2BC;border-radius:16px;padding:20px;margin:10px;min-height:160px">
-										“That eye is creepy. It says ‘I see you and I care only slightly; beware because I am aware!’.”
-										<br>— <strong>Barrdat,
-										<em>the turtle</em></strong>
-										</div>
-									</div>
 
-									<div class="col-sm-6 col-lg-6" >
-										<div style="background:#CCE3C6;border-radius:16px;padding:20px;margin:10px;min-height:160px">
+
+									<div class="col-sm-12 col-lg-12" >
+										<div style="border:1px #608cbc solid;background:#08182b;color:#ffffff;border-radius:16px;padding:20px;margin:10px;">
 											“Aegis is like a vault for your secrets, but instead of a big strong guy named Chuck guarding it, it is just some secure code.”
-											— <strong>İlter Köse,
+											<br><span style="color:rgba(246,208,0,.99)">—</span> <strong style="color:#608cbc">İlter Köse,
 											<em>Software Engineer, MOIA</em></strong>
 										</div>
 									</div>

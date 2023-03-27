@@ -67,47 +67,7 @@ With **Aegis**, your sensitive data is always secure and protected.
     style='position:absolute;top:0;left:0;width:100%;height:100%;'></iframe>
 </div>
 
-<div style="background:#FFF4D5;color:#1D1600;padding:1em;margin:3em 1em;
-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;border-radius:2px;
 
-">
-<p><strong>Imagine this</strong>: An entire environment with <strong>ZERO</strong> 
-service keys, usernames, passwords, tokens, or credentials.</p>
-
-<p>☝️ That would mean there will be no need for credential rotation, 
-no possibility fo secrets leaking into logs, or heaven forbid git repos because 
-<strong>there are no secrets</strong>.</p>
-
-<p>With <strong>Aegis</strong> that’s exactly what you get.</p>
-
-<p><span style="background:#EDC910;display:inline-block;padding:0.5em;"
-><strong>Aegis</strong> makes this possible 
-by leveraging battle-tested and proven technologies including 
-<a href="https://spiffe.io" style="color:#000000;border-bottom: 
-4px #000000 solid;">SPIFFE/SPIRE</a> and 
-<a href="https://age-encryption.org/" style="color:#000000; 
-border-bottom:4px #000000 solid;">Age Encryption</a>.</span></p>
-
-<p>When a Pod requests a secret, <strong>Aegis</strong> provides a 
-<strong>short-lived</strong> X.509 certificate to confirm its identity. This 
-certificate is <strong>unique to each Pod</strong> and ensures secure access to 
-the assigned resource.</p>
-
-<p>The certificate is frequently rotated, limiting damage in the 
-extremely unlikely event of a compromise, as it only grants access to a 
-specific secret for a very brief time.</p>
-
-<p>In addition, when the Pod is down or deleted, the certificate is useless because
-no other Pod can use it.</p>
-
-<p><span style="background:#EDC910;display:inline-block;padding:0.5em;">There are 
-no service keys, no usernames, no passwords, tokens, SSH keys, API 
-keys…, no nothing.</span></p>
-
-<p>It’s like <strong>magic</strong>.</p>
-
-<p>It 👏 Is 👏 <strong>Aegis</strong>.</p>
-</div>
 
 [spiffe]: https://spiffe.io/
 [age]: https://age-encryption.org/
