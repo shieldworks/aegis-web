@@ -21,7 +21,11 @@ page_nav:
     url: '/docs/contributing'
 ---
 
-[Edit this page on **GitHub** ✏️](https://github.com/ShieldWorks/aegis-web/blob/main/docs/register.md)
+<p style="text-align:right;position:relative;top:-40px;"
+><a href="https://github.com/ShieldWorks/aegis-web/blob/main/docs/register.md"
+style="border-bottom: none;background:#e0e0e0;padding:0.5em;display:inline-block;
+border-radius:8px;">
+Edit this page on <strong>GitHub</strong> ✏️</a></p>
 
 ## Introduction
 
