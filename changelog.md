@@ -32,6 +32,8 @@ page_nav:
   static analysis, coverage reporting, vulnerability scanning, detecting 
   unused functions, repetitive code blocks, etc, etc. so much easier: 
   All good things.
+* Design changes on the website to make it more eye-friendly. Improvements
+  to the readability of the documentation.
 * Simplified the development and publishing flows.
 * **BREAKING**: Removed `"cluster"` as a backing store option. It does not
   make sense to back up secrets onto etcd. It makes the architecture 
