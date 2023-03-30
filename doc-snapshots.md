@@ -17,10 +17,11 @@ description: each significant release has its own documentation
 ><a href="https://github.com/ShieldWorks/aegis-web/blob/main/doc-snapshots.md"
 style="border-bottom: none;background:#e0e0e0;padding:0.5em;display:inline-block;
 border-radius:8px;">
-Edit this page on <strong>GitHub</strong> ✏️</a></p>
+edit this page on <strong>GitHub</strong> ✏️</a></p>
 
 Here are the **Aegis** documentations captured in time for specific releases:
 
 * [Latest](https://aegis.ist/)
+* [v0.15.6](https://aegis.ist/versions/v0.15.6)
 * [v0.14.0](https://aegis.ist/versions/v0.14.0)
 * [v0.13.0](https://aegis.ist/versions/v0.13.0)

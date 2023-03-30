@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{% include site-head.html %}
+	</head>
+	<body class="{{ site.doks.color_theme }} error-404">
+		<div class="align-container">
+			<div class="align-inner">
+				<h1 class="error-404__title">{{ page.page_content.title }}</h1>
+				{% if page.page_content.message %}
+					<p>{{ page.page_content.message }}</p>
+				{% endif %}
+
+				<p>
+					In the meantime, you might find these pages useful:
+				</p>
+
+				<ul style="background:#ffffff;text-align:left;padding: 1em;max-width: 500px;margin:0 auto;margin-bottom:3em;border-radius:16px;
+box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+">
+					<li><a style="border-bottom:0;display:block;text-align:center;text-decoration:underline;" href="https://aegis.ist/docs/architecture/"><strong>Aegis</strong> Deep Dive</a></li>
+					<li><a style="border-bottom:0;display:block;text-align:center;text-decoration:underline;" href="https://aegis.ist/docs/"><strong>Aegis</strong> Quickstart Guide</a></li>
+					<li><a style="border-bottom:0;display:block;text-align:center;text-decoration:underline;" href="https://aegis.ist/docs/contributing/">Developing <strong>Aegis</strong> Locally</a></li>
+					<li><a style="border-bottom:0;display:block;text-align:center;text-decoration:underline;" href="https://aegis.ist/production">Deploying <strong>Aegis</strong> on Production</a></li>
+					<li><a style="border-bottom:0;display:block;text-align:center;text-decoration:underline;" href="https://aegis.ist/changelog"><strong>Aegis</strong> Changelog</a></li>
+				</ul>
+
+				<a href="{% if jekyll.environment == 'production' %}{{ site.doks.baseurl }}{% endif %}/" class="btn btn--dark btn--rounded btn--w-icon btn--w-icon-left">
+					<i class="icon icon--home"></i>
+					Go back home
+				</a>
+			</div><!-- /.align-inner -->
+		</div><!-- /.align-container -->
+	</body>
+</html>
