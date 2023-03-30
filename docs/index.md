@@ -59,6 +59,12 @@ further flexibility of **Aegis** as a *Secrets Manager*:
 
 [![Watch the video](/doks-theme/assets/images/capture-dynamic.png)](https://vimeo.com/v0lkan/aegis-secrets)
 
+> **Who Else Wants More of These Videos?**
+> 
+> If you want to see more videos like these, [check out this showcase][vimeo].
+
+[vimeo]: https://vimeo.com/showcase/10074951
+
 ## Wait, Why Not Use Kubernetes `Secret`s?
 
 In Kubernetes, secrets can be stored and managed as a resource type called
