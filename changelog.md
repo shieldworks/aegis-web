@@ -28,7 +28,9 @@ edit this page on <strong>GitHub</strong> ✏️</a></p>
 
 ## Recent
 
-* WIP
+* Aegis Sentinel can now encrypt values. You can then use those encrypted
+  values instead of plain text value to store as secrets for an added 
+  layer of security.
 
 ## [v0.15.6] - 2023-03-30
 
