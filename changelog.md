@@ -31,6 +31,10 @@ edit this page on <strong>GitHub</strong> ✏️</a></p>
 * Aegis Sentinel can now encrypt values. You can then use those encrypted
   values instead of plain text value to store as secrets for an added 
   layer of security.
+* Documentation updates in the source code to make contributions easier,
+  and the code easier to understand.
+* All logs require a `correlationId` to make it easier to track the
+  requests and responses.
 
 ## [v0.15.6] - 2023-03-30
 

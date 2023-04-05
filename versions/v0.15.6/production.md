@@ -179,7 +179,7 @@ are as simple as it gets.
 Even when you encrypt `etcd` at rest using a **KMS** (*which is the most robust
 method proposed [in the Kubernetes guides][kms]*), an attacker can still 
 impersonate `etcd` and decrypt the secrets: As long as you provide the correct 
-encrypted DEK to KMS, the KMS will more than happy to decrypt that DEK with 
+encrypted DEK to KMS, the KMS will be more than happy to decrypt that DEK with 
 its KEK and provide a plain text secret to the attacker.
 
 ##### Secure Your House Before Securing Your Jewelry
