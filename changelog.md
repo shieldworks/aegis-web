@@ -20,7 +20,7 @@ page_nav:
 
 <p style="text-align:right;position:relative;top:-40px;"
 ><a href="https://github.com/ShieldWorks/aegis-web/blob/main/changelog.md"
-style="border-bottom: none;background:#e0e0e0;padding:0.5em;display:inline-block;
+ style="border-bottom: none;background:#e0e0e0;padding:0.5em;display:inline-block;
 border-radius:8px;">
 edit this page on <strong>GitHub</strong> ✏️</a></p>
 

@@ -133,7 +133,7 @@ Here are some ways this could happen:
 1. Root access to a control plane node.
 2. Root access to a worker node.
 3. Access to the actual physical server (*i.e., physically removing the disk*).
-4. Possible zero days attacks.
+4. Possible zero day attacks.
 
 For `1`, and `2`, server hardening, running secure Linux instances, patching, 
 and preventing privileged pods from running in the cluster are the usual ways
