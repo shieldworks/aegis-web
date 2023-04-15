@@ -54,14 +54,9 @@ If you havenâ€™t watched this introductory video yet, now might be a good time ð
 
 [![Watch the video](/doks-theme/assets/images/capture.png)](https://vimeo.com/v0lkan/secrets)
 
-After watching it, you may want to watch the following video demonstrates 
-further flexibility of **Aegis** as a *Secrets Manager*:
-
-[![Watch the video](/doks-theme/assets/images/capture-dynamic.png)](https://vimeo.com/v0lkan/aegis-secrets)
-
 > **Who Else Wants More of These Videos?**
 > 
-> If you want to see more videos like these, [check out this showcase][vimeo].
+> [Check out this showcase that includes other **Aegis** use cases][vimeo].
 
 [vimeo]: https://vimeo.com/showcase/10074951
 
