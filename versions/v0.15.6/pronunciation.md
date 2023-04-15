@@ -32,7 +32,7 @@ edit this page on <strong>GitHub</strong> ✏️</a></p>
 
 **Aegis** has two definitions:
 
-1. (Classical Mythology) The shield or breastplate of Zeus or Athena, bearing
+1. (*Classical Mythology*) The shield or breastplate of Zeus or Athena, bearing
    at its center the head of the Gorgon.
 2. Protection; support.
 
