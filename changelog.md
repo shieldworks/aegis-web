@@ -35,6 +35,15 @@ edit this page on <strong>GitHub</strong> ✏️</a></p>
   and the code easier to understand.
 * All logs require a `correlationId` to make it easier to track the
   requests and responses.
+* Aegis now supports associating multiple secrets with a workload. This is
+  useful especially when you have many secrets for the workload, and you
+  want to encrypt them in chunks.
+* **BREAKING**: Log levels have changes. Now the lowest level is 0 (OFF) and
+  the highest level is 7 (TRACE).
+* **BREAKING**: Made the secret deletion more explicit with the `-d` flag.
+* **BREAKING**: Removed the ability to change log levels dynamically. Piggybacking
+  on the secret payload was a hacky solution. We will implement a more robust
+  solution in the future.
 
 ## [v0.15.6] - 2023-03-30
 

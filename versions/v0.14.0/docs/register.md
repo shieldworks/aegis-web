@@ -200,10 +200,11 @@ func main() {
 
 > **Read The Source Luke**
 >
-> [Check out the **Sidecar Demo** Git repository][git-sidecar]
+> [Check out the **Sidecar Demo** Git folder][git-sidecar]
 > to view the source for this use case.
 
-[git-sidecar]: https://github.com/shieldworks/aegis-workload-demo-using-sidecar "Aegis Workload Demo Using Sidecar"
+[git-sidecar]: https://github.com/shieldworks/aegis/tree/main/examples/workload-using-sidecar "Aegis Workload Demo Using Sidecar"
+
 
 Our demo app tries to read a secret file every 5 seconds forever.
 
