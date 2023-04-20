@@ -9,20 +9,25 @@
 
 layout: default
 keywords: Aegis, timeline, projects, deadlines, milestones
-title: Aegis Documentation Snapshots
-description: each significant release has its own documentation
+title: What’s Coming Up Next?
+description: we are cooking cool stuff in the kitchen 🧁
+micro_nav: true
+page_nav:
+  prev:
+    content: Miscellaneous
+    url: '/misc'
 ---
 
 <p style="text-align:right;position:relative;top:-40px;"
-><a href="https://github.com/ShieldWorks/aegis-web/blob/main/doc-snapshots.md"
+><a href="https://github.com/ShieldWorks/aegis-web/blob/main/timeline.md"
 style="border-bottom: none;background:#e0e0e0;padding:0.5em;display:inline-block;
 border-radius:8px;">
 edit this page on <strong>GitHub</strong> ✏️</a></p>
 
-Here are the **Aegis** documentations captured in time for specific releases:
 
-* [Latest](https://aegis.ist/)
-* [v0.15.7](https://aegis.ist/versions/v0.15.7)
-* [v0.15.6](https://aegis.ist/versions/v0.15.6)
-* [v0.14.0](https://aegis.ist/versions/v0.14.0)
-* [v0.13.0](https://aegis.ist/versions/v0.13.0)
+You can see the project’s progress [in these **Aegis** boards][mdp].
+
+The boards outline what are the current outstanding work items, and what is
+currently being worked on.
+
+[mdp]: https://github.com/orgs/shieldworks/projects/1/views/4
