@@ -31,16 +31,27 @@ edit this page on <strong>GitHub</strong> ✏️</a></p>
 * There are inconsistencies in the documentation due to recent changes that
   need an update. We will fix them as soon as possible.
 
-# [v0.15.7] - 2021-04-19
+## [v0.15.8] - 2023-04-21
+
+This was a maintenance release that includes a few important hotfixes.
+
+### Fixed
+
+* Aegis Safe queues were not cleaning due to a bootstrapping bug. Fixed that.
+* Aegis Safe was crashing when deleting a secret that does not exist. Fixed that.
+* Template transformation bugs for certain kinds of input data. Right now 
+  template transformation works for any `map[string]any`.
+
+## [v0.15.7] - 2023-04-19
 
 This was a prerelease to test the “multiple secrets” feature and create a 
 demo workload that can be utilized in certain CI/CD scenarios. There will be a 
-follow-up minor release to clean-up some of the dust and make the documentation
+follow-up minor release to clean up some of the dust and make the documentation
 aligned with the current state of the source code.
 
 Here is a list of changes:
 
-## Added
+### Added
 
 * Aegis Sentinel can now encrypt values. You can then use those encrypted
   values instead of plain text value to store as secrets for an added 
@@ -51,7 +62,7 @@ Here is a list of changes:
   requests and responses.
 * Added a new use case to demonstrate the ability to add multiple secrets.
 
-## Changed
+### Changed
 
 * Aegis now supports associating multiple secrets with a workload. This is
   useful especially when you have many secrets for the workload, and you
