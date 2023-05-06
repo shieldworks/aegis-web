@@ -53,11 +53,9 @@ grid_navigation:
   url: '/timeline'
 ---
 
-<div style="margin-top:0.75em"></div>
+**Aegis** is a **cloud-native**, lightweight **Secrets Manager**.
 
-**Aegis** is a **Kubernetes-native**, lightweight **Secrets Manager**.
-
-With **Aegis**, your sensitive data is always secure and protected.
+With **Aegis**, your data is secure and protected.
 
 **Aegis** keeps your secrets… secret.
 

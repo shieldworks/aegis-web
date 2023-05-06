@@ -23,6 +23,12 @@ body {
 	background: #020C18;
 }
 
+.align-container {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+
 /* ----- Everything ----- */
 * {
 	&,
