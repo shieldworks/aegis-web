@@ -3,9 +3,12 @@
 	<head>
 		{% include site-head.html %}
 	</head>
-	<body class="{{ site.doks.color_theme }}">
+	<body class="{{ site.doks.color_theme }}" style="
+background: #030a12 linear-gradient(45deg, #08182b 7%, #174379 48%, #08182b 100%);
+">
 		{% include site-version.html %}
-		<div class="hero-subheader{% if page.grid_navigation %} hero-subheader--before-out{% endif %}" style="background: #BABDC2;
+		<div class="hero-subheader{% if page.grid_navigation %} hero-subheader--before-out{% endif %}" style="
+		background: #BABDC2 linear-gradient(19deg, #999999 10%, #fff 100%);
 box-shadow:rgba(0, 0, 0, 0.75) 0 -33px 8px -28px inset;
 ">
 			<div class="container">
@@ -145,6 +148,8 @@ keys…, no nothing.</span></p>
 
 		{% if page.grid_navigation %}
 			<div class="section section--darker-theme-color-bg" style="background:#0f1924;
+			background: #020c18 linear-gradient(43deg, #020c18 0%, #8E0B50 46%, #EDC910 100%);
+
 box-shadow:rgba(0, 0, 0, 0.75) 0px 36px 17px -24px inset
 
 
