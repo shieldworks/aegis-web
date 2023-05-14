@@ -24,11 +24,6 @@ edit this page on <strong>GitHub</strong> ✏️</a></p>
 We follow the **guidelines** outlined in the next few sections as an 
 architectural baseline.
 
-Since **Aegis** is still in development, some of these goals discussed in the
-following sections may still need to be fully implemented. Regardless,
-they are the **guiding principles** we steer towards while shaping the future
-of **Aegis**.
-
 ## Do One Thing Well
 
 At a 5000-feet level, **Aegis** is a secure Key-Value store.

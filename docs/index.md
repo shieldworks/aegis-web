@@ -60,18 +60,46 @@ If you haven’t watched this introductory video yet, now might be a good time �
 
 [vimeo]: https://vimeo.com/showcase/10074951
 
-## Wait, Why Not Use Kubernetes `Secret`s?
+**Aegis** offers a *centralized* and *secure* secrets store for your clusters.
 
-In Kubernetes, secrets can be stored and managed as a resource type called
-`Secret`. By default, Kubernetes can store key-value pairs
-of sensitive data within a specific namespace in the cluster.
+## Terminology: A Tale of Two Secrets
 
-These secrets can be fed into containers as either *environment variables*
-or files using a Kubernetes *volume*. However, the default solution may not be
-enough to securely manage secrets, as it can be challenging to encrypt the
-`YAML` files that define the secrets and securely store them.
+There are two kinds of “*secret*”s mentioned throughout this documentation:
 
-With **Aegis**, you don’t have to store secrets in your source code.
+* Secrets that are stored in **Aegis Safe**: When discussing these, they will
+  be used like a regular word “secret” or, emphasized “**secret**”; however,
+  you will never see them in `monotype text`.
+* The other kind of secret is Kubernetes `Secret` objects. Those types
+  will be explicitly mentioned as “Kubernetes `Secret`s” in the documentation.
+
+We hope this will clarify any confusion going forward.
+
+## Wait, What’s Wrong With Kubernetes `Secret`s?
+
+Kubernetes `Secret`s have legitimate use cases; however,
+the out-of-the-box security provided by Kubernetes `Secret`s might not always
+meet the stringent security and flexibility demands of modern applications.
+
+In the Kubernetes ecosystem, the handling of secrets is facilitated through a 
+specialized resource known as a `Secret`. The `Secret` resource allows Kubernetes 
+to manage and store key-value pairs of sensitive data within a designated 
+namespace in the cluster.
+
+Kubernetes `Secrets` can be widespread across the cluster into various namespaces
+which makes the management and access control to them tricky. In addition, 
+when you update a Kubernetes `Secret` it is hard to make the workloads be aware 
+of the change. Moreover, due to namespace isolation, you cannot define a cluster-wide
+or cross-cluster-federated secrets: You have to tie your secrets to a single 
+namespace, which, at times, can be limiting.
+
+## The **Aegis** Difference
+
+Cloud-native secret management can be more secure, centralized, and easy-to-use.
+This is where **Aegis**, comes into play: 
+
+> **Aegis** offers a *secure*, *user-friendly*, *cloud-native* secrets store that’s 
+> robust yet *lightweight*, requiring almost zero DevOps skills for installation
+> and maintenance.
 
 In addition, **Aegis**…
 
@@ -81,6 +109,9 @@ In addition, **Aegis**…
 * Records last creation and last update timestamps for your secrets,
 * Has a version history for your secrets,
 * Stores backups of your secrets encrypted at rest,
+* Enables GoLang transformations on your secrets,
+* Can interpolate your stored secrets onto Kubernetes `Secret`s,
+* Enables federation of your secrets across namespaces and clusters,
 * and more.
 
 These are not achievable by using Kubernetes `Secret`s only.
@@ -100,52 +131,32 @@ etc.
 
 ## How Do I Get the Root Token? Where Do I Store It?
 
-Unlike some other secret vaults, you do not need an admin token
-to operate **Aegis** 🙂.
-
-Benefits of this approach is: It helps the Ops team `#sleepmore`, since
-everything is automated, and you won’t have to manually unlock **Aegis** upon
-a system crash, for example.
+Unlike other “*vault*”-style secrets stores, **Aegis** requires no admin token 
+for operation—a clear advantage that lets your Ops team `#sleepmore` due to 
+automation and eliminates manual unlocking after system crashes.
 
 However, there’s no free lunch, and as the operator of a production system,
 your homework is to secure access to your cluster. [Check out the **Production 
-Deployment Guidelines**][production] for further instructions about hardening your 
-cluster to securely use **Aegis**.
+Deployment Guidelines**][production] for further instructions about hardening 
+your cluster to securely use **Aegis**.
 
-[production]: /docs/production
-
-## Terminology: A Tale of Two Secrets
-
-There are two kinds of secrets mentioned throughout this documentation:
-
-* Secrets that are stored in **Aegis Safe**: When discussing these, they will
-  be used like a regular word “secret” or, emphasized “**secret**”; however,
-  you will never see them in `monotype text`.
-* The other kind of secret is Kubernetes `Secret` objects. Those types
-  will be explicitly mentioned as “Kubernetes `Secret`s” in the documentation.
-
-We hope this will clarify any confusion going forward.
+[production]: /production
 
 ## Installation
 
 First, ensure that you have sufficient administrative rights on your 
 **Kubernetes** cluster. Then create a workspace folder 
 (*such as `$HOME/Desktop/WORKSPACE`*) and clone the project.
-And finally execute `./hack/install.sh` as follows.
+And finally execute `./hack/deploy.sh` as follows.
 
 ```bash 
 mkdir $HOME/Desktop/WORKSPACE
 export $WORKSPACE=$HOME/Desktop/WORKSPACE
 
-cd $WORKSPACE
-
-git clone https://github.com/shieldworks/aegis
-cd aegis
-
-./hack/install.sh
+./hack/deploy.sh
 ```
 
-## Verifying Installation
+## Verifying the Installation
 
 To verify installation, check out the `aegis-system` namespace:
 
@@ -175,10 +186,14 @@ cd $WORKSPACE/aegis
 Since you have **Aegis** up and running, here is a list of topics that you can 
 explore next:
 
-* [How to Register Secrets to A Workload Using **Aegis**](/docs/register)
-* [**Aegis** Go SDK](/docs/sdk)
-* [**Aegis Sentinel** CLI Documentation](/docs/sentinel)
 * [A Deeper Dive into **Aegis** Architecture](/docs/architecture)
+* [**Aegis** Design Decisions](/docs/philosophy)
+* [How to Register Secrets to A Workload Using **Aegis**](/docs/register)
+* [**Aegis Sentinel** CLI Documentation](/docs/sentinel)
+* [**Aegis** Go SDK](/docs/sdk)
+* [Configuring **Aegis**](/docs/configuration)
+* [Local Development](/docs/contributing)
+* [**Aegis** Production Deployment Guidelines](/production)
 
 In addition, these topics might pique your interest too:
 
@@ -187,21 +202,9 @@ In addition, these topics might pique your interest too:
 * [What’s Coming Up Next](/timeline)?
 * [Can I See a Change Log](/changelog)?
 
-To fine-tune your **Aegis** cluster, use them in production or learn
-more about the underlying technologies **Aegis** uses, the following
-links can help:
+## We’d Love to Hear Back From You
 
-* [**Aegis** Production Deployment Guidelines](/production)
-* [Configuring **Aegis**](/docs/configuration)
-* [**Aegis** Design Decisions](/docs/philosophy)
-* [Core Technologies **Aegis** Leverages](/docs/architecture/#technologies-used)
-
-If you want to develop **Aegis** on your local development environment,
-there is a guide for that too:
-
-* [Local Development](/docs/contributing)
-
-If you have comments, suggestions, and ideas to share; or if you have found
+If you have comments, suggestions, and ideas to share; if you have found
 a bug; or if you want to contribute to **Aegis**, these links might be what
 you are looking for:
 

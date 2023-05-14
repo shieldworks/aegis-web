@@ -14,8 +14,8 @@ description: <strong>Aegis</strong> under the hood
 micro_nav: true
 page_nav:
   prev:
-    content: <strong>Aegis Sentinel</strong> CLI
-    url: '/docs/sentinel'
+    content: <strong>Aegis</strong> Showcase
+    url: '/docs/use-case-showcase'
   next:
     content: configuring <strong>Aegis</strong>
     url: '/docs/configuration'
@@ -85,9 +85,6 @@ Without the following technologies, implementing **Aegis** would have been a ver
 hard, time-consuming, and error-prone endeavor.
 
 * [SPIFFE and **SPIRE**][spire] for establishing an Identity Control Plane.
-* [Mozilla **Sops**][sops] (*in design phase*) to enable integration with cloud
-  secrets stores, such as AWS KMS, GCP KMS, Azure KeyVault, and even HashiCorp
-  Vault.
 * [**Age** Encryption][age] to enable out-of-memory encrypted
   backup of the secrets stored for disaster recovery.
 

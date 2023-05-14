@@ -53,12 +53,6 @@ grid_navigation:
   url: '/timeline'
 ---
 
-**Aegis** is a **cloud-native**, lightweight **Secrets Manager**.
-
-With **Aegis**, your data is secure and protected.
-
-**Aegis** keeps your secrets… secret.
-
 <div style='padding:56.25% 0 0 0;position:relative;'>
   <iframe src='https://vimeo.com/showcase/10074951/embed' 
     allowfullscreen frameborder='0' 

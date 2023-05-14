@@ -56,17 +56,19 @@ it is not dynamic. While you can dynamically configure this at runtime for
 **Aegis Safe** without having to restart **Aegis Safe**, for **Aegis Sidecar** 
 you’ll have to restart the **workload**’s pod for any changes to take effect.
 
-`1`: logs are off, `6`: highest verbosity. default: `3`
+`0`: logs are off, `7`: highest verbosity. default: `3`
 
 Here are what various log levels correspond to:
 
 ```text
-Off   = 1
+Off   = 0
+Fatal = 1
 Error = 2
 Warn  = 3
 Info  = 4
-Debug = 5
-Trace = 6
+Audit = 5
+Debug = 6
+Trace = 7
 ```
 
 ### AEGIS_WORKLOAD_SVID_PREFIX
@@ -132,41 +134,45 @@ is used.
 `AEGIS_SAFE_ENDPOINT_URL` is the **REST API** endpoint that **Aegis Safe**
 exposes from its `Service`.
 
+**Aegis Sentinel**, **Aegis Sidecar** and
+**workloads** need this URL configured.
+
 If not provided, it will default to:
 `"https://aegis-safe.aegis-system.svc.cluster.local:8443/"`.
 
-**Aegis Sentinel**, **Aegis Sidecar** and 
-**workloads** need this URL configured.
-
 ### AEGIS_PROBE_LIVENESS_PORT
+
+**Aegis Safe** and **Aegis Sentinel** use this configuration.
 
 `AEGIS_PROBE_LIVENESS_PORT` is the port where the liveness probe
 will serve.
 
 Defaults to `:8081`.
 
-**Aegis Safe** and **Aegis Sentinel** use this configuration.
-
 ### AEGIS_PROBE_READINESS_PORT
+
+**Aegis Safe** uses this configuration.
 
 `AEGIS_PROBE_READINESS_PORT` is the port where the readiness probe
 will serve.
 
 Defaults to `:8082`.
 
-**Aegis Safe** uses this configuration.
-
 ### AEGIS_SAFE_SVID_RETRIEVAL_TIMEOUT
+
+**Aegis Safe** uses this configuration.
 
 `AEGIS_SAFE_SVID_RETRIEVAL_TIMEOUT` is how long (*in milliseconds*) **Aegis Safe**
 will wait for an *SPIRE X.509 SVID* bundle before giving up and crashing.
 
 The default value is `30000` milliseconds.
 
-### AEGIS_TLS_PORT
+### AEGIS_SAFE_TLS_PORT
 
-`AEGIS_TLS_PORT` is the port that **Aegis Safe** and **Aegis Notary** 
-serve their API endpoints.
+`AEGIS_SAFE_TLS_PORT` is the port that **Aegis Safe** serves its API endpoints.
+
+When you change this port, you will likely need to make changes in more 
+than one manifest, and restart or redeploy **Aegis** and **SPIRE**.
 
 Defaults to `":8443"`.
 
@@ -185,9 +191,13 @@ independent of each other int two separate goroutines.
 
 ### AEGIS_SAFE_BACKING_STORE
 
+This environment variable is used by **Aegis Sentinel** to let **Aegis Safe**
+know where to persist the secret. To reiterate, this environment variable shall
+be defined for **Aegis Sentinel** deployment; defining it for **Aegis Safe**
+has no effect.
+
 `AEGIS_SAFE_BACKING_STORE` is the type of the storage where the secrets
-will be encrypted and persisted. This environment variable is used by
-**Aegis Sentinel** to let **Aegis Safe** know where to persist the secret.
+will be encrypted and persisted. 
 
 * If not given, defaults to `"file"`. 
 * The other option is  `"in-memory"`.
@@ -265,12 +275,16 @@ Defaults to `300000` milliseconds, if not provided.
 
 ### AEGIS_SIDECAR_EXPONENTIAL_BACKOFF_MULTIPLIER
 
+**Aegis Sidecar** uses this environment variable.
+
 `AEGIS_SIDECAR_EXPONENTIAL_BACKOFF_MULTIPLIER` configures how fast the algorithm
 backs off when there is a failure. Defaults to `2`, which means when there are
 enough failures to trigger a backoff, the next wait interval will be twice the
 current one.
 
 ### AEGIS_SIDECAR_SUCCESS_THRESHOLD
+
+**Aegis Sidecar** uses this environment variable.
 
 `AEGIS_SIDECAR_SUCCESS_THRESHOLD` configures the number of successful poll 
 results before reducing the poll interval. Defaults to `3`.
@@ -279,6 +293,8 @@ The next interval is calculated by dividing the current interval with
 `AEGIS_SIDECAR_EXPONENTIAL_BACKOFF_MULTIPLIER`.
 
 ### AEGIS_SIDECAR_ERROR_THRESHOLD
+
+**Aegis Sidecar** uses this environment variable.
 
 `AEGIS_SIDECAR_ERROR_THRESHOLD` configures the number of fetch failures before
 increasing the poll interval. Defaults to `2`.

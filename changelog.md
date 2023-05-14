@@ -30,6 +30,9 @@ edit this page on <strong>GitHub</strong> ✏️</a></p>
 
 * There are inconsistencies in the documentation due to recent changes that
   need an update. We will fix them as soon as possible.
+* Documentation overhaul: Added an index page, modified the video player on
+  the home page to make it easier to watch, added more use cases.
+* Minor bug fixes.
 
 ## [v0.15.8] - 2023-04-21
 

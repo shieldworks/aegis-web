@@ -71,10 +71,10 @@ kubectl exec $SENTINEL -n aegis-system -- aegis --help
 Output:
 
 ```text 
-usage: aegis [-h|--help] [-l|--list] [-k|--use-k8s] [-n|--namespace "<value>"]
-             [-b|--store "<value>"] [-w|--workload "<value>"] [-s|--secret
-             "<value>"] [-t|--template "<value>"] [-f|--format "<value>"]
-             [-e|--encrypt]
+usage: aegis [-h|--help] [-l|--list] [-k|--use-k8s] [-d|--delete] [-a|--append]
+             [-n|--namespace "<value>"] [-b|--store "<value>"] [-w|--workload
+             "<value>"] [-s|--secret "<value>"] [-t|--template "<value>"]
+             [-f|--format "<value>"] [-e|--encrypt]
 
              Assigns secrets to workloads.
 
@@ -84,17 +84,25 @@ Arguments:
   -l  --list       lists all registered workloads.. Default: false
   -k  --use-k8s    update an associated Kubernetes secret upon save. Overrides
                    AEGIS_SAFE_USE_KUBERNETES_SECRETS.. Default: false
+  -d  --delete     delete the secret associated with the workload.. Default:
+                   false
+  -a  --append     append the secret to the existing secret collection
+                   associated with the workload.. Default: false
   -n  --namespace  the namespace of the Kubernetes Secret to create.. Default:
-                   aegis-system
+                   default
   -b  --store      backing store type (file|memory|cluster). Overrides
                    AEGIS_SAFE_BACKING_STORE.
   -w  --workload   name of the workload (i.e. the '$name' segment of its
                    ClusterSPIFFEID
                    ('spiffe://trustDomain/workload/$name/…')).
   -s  --secret     the secret to store for the workload.
-  -t  --template   The template transformation to use. 
-  -f  --format     The format to transform the secrets (yaml|json|none; 
-                   default: none)
+  -t  --template   the template used to transform the secret stored.
+  -f  --format     the format to display the secrets in. Has effect only when
+                   `-t` is provided. Valid values: yaml, json, and none.
+                   Defaults to none.
+  -e  --encrypt    returns an encrypted version of the secret if used with
+                   `-s`; decrypts the secret before registering it to the
+                   workload if used with `-s` and `-w`.
 ```
 
 ## Registering a Secret for a Workload
@@ -190,10 +198,10 @@ You can create a YAML secret value without the `-t` flag too. In that case
 **Aegis Safe** will assume an identity transformation:
 
 ```bash 
-kubectl exec "$SENTINEL" -n aegis-system -- aegis \
+{% raw %}kubectl exec "$SENTINEL" -n aegis-system -- aegis \
 -w "aegis-workload-demo" \
 -s '{"username": "root", "password": "SuperSecret", "value": "AegisRocks"}' \
--f yaml
+-f yaml{% endraw %}
 ```
 
 The above command will result in the following secret value to the workload

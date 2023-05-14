@@ -94,16 +94,15 @@ Running `make help` at the project root will provide you with a list of
 logically grouped commands:
 
 ```text
-{% raw %}# aegis (main) $ make help
+{% raw %}# make help
+
                          ---------------------------------------------------
-                         eval (minikube -p minikube docker-env)
+                         eval $ (minikube -p minikube docker-env)
             Docker Host: 
 Minikube Active dockerd: 
                          ---------------------------------------------------
                    PREP: make k8s-delete;make k8s-start;
                    TEST: make build-local;make deploy-local;make test-local;
- TEST (docker/aegishub): make build;make deploy;make test
-                RELEASE: make bump;make build;make tag
                          ---------------------------------------------------
       EXAMPLE (SIDECAR): make example-sidecar-deploy-local |
                          make example-sidecar-deploy
@@ -111,11 +110,19 @@ Minikube Active dockerd:
           EXAMPLE (SDK): make example-sdk-deploy-local |
                          make example-sdk-deploy
                          ---------------------------------------------------
+    EXAMPLE (N SECRETS): make example-multiple-secrets-deploy-local |
+                         make example-multiple-secrets-deploy
+                         ---------------------------------------------------
        EXAMPLE (INIT C): make example-init-container-deploy-local |
                          make example-init-container-deploy
                          ---------------------------------------------------
                 CLEANUP: make clean
-                         ---------------------------------------------------{% endraw %}
+                         ---------------------------------------------------
+                RELEASE: make k8s-delete;make bump;make build;
+         TEST (release): make k8s-start;make deploy;make test;
+                    TAG: make tag
+                         ---------------------------------------------------
+{% endraw %}
 
 ```
 

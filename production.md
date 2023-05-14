@@ -32,18 +32,86 @@ This article will overview them.
 
 ## Version Compatibility
 
-By the time of this writing,
-**Aegis** has been tested with the following Kubernetes version:
+We test **Aegis** with the recent stable version of Kubernetes and Minikube.
 
-```text
-Client Version: v1.26.2
-Kustomize Version: v4.5.7
-Server Version: v1.26.1
-Minikube Version: v1.29.0
+As long as there isn’t a change in the **major** version number your
+Kubernetes client and server you use, things will likely work just fine.
+
+## Resource Requirements
+
+**Aegis** is designed from the ground up to work in environments with limited 
+resources, such as edge computing and IoT.
+
+That being said, **Aegis**, by design, is a memory-intensive application. 
+However, even when you throw all your secrets at it, **Aegis Safe**’s peak 
+memory consumption will be in the order or 10-20 megabytes of RAM. The CPU 
+consumption will be within reasonable limits too.
+
+However, it’s crucial to understand that every system and user profile is unique. 
+Factors such as the number and size of secrets, concurrent processes, and system 
+specifications can influence these averages. Therefore, it is always advisable to 
+benchmark **Aegis** and **SPIRE** on your own system under your specific usage 
+conditions to accurately gauge the resource requirements to ensure optimal 
+performance.
+
+Benchmark your system usage and set **CPU** and **Memory** limits to the
+**Aegis Safe** pod.
+
+We recommend you to:
+
+* Set a memory **request** and **limit** for **Aegis Safe**,
+* Set a CPU **request**; but **not** set a CPU limit for **Aegis Safe** 
+  (*i.e., the **Aegis Safe** pod will ask for a baseline CPU;
+  yet burst for more upon need*).
+
+As in any secrets management solution, your compute and memory requirements
+will depend on several factors, such as:
+
+* The number of workloads in the cluster
+* The number of secrets **Safe** (*Aegis’ Secrets Store*) has to manage
+  (*see [architecture details][architecture] for more context*)
+* The number of workloads interacting with **Safe**
+  (*see [architecture details][architecture] for more context*)
+* **Sidecar** poll frequency (*see [architecture details][architecture] for 
+  more context*)
+* etc.
+
+[architecture]: /docs/architecture
+
+We recommend you benchmark with a realistic production-like
+cluster and allocate your resources accordingly.
+
+That being said, here are the resource allocation reported by `kubectl top`
+for a demo setup on a single-node minikube cluster to give an idea:
+
+```text 
+NAMESPACE     WORKLOAD            CPU(cores) MEMORY(bytes)
+aegis-system  aegis-safe          1m         9Mi
+aegis-system  aegis-sentinel      1m         3Mi
+default       aegis-workload-demo 2m         7Mi
+spire-system  spire-agent         4m         35Mi
+spire-system  spire-server        6m         41Mi
 ```
 
-Any Kubernetes setup with components with versions greater than or equal to 
-the ones above will likely work just fine.
+Note that 1000m is 1 full CPU core.
+
+Based on these findings, the following resource and limit allocations can be
+a starting point for **Aegis**-managed containers:
+
+```text
+  # Resource allocation will highly depend on the system.
+  # Benchmark your deployment, monitor your resource utilization,
+  # and adjust these values accordingly.
+  resources:
+    requests:
+      memory: "128Mi"
+      cpu: "250m"
+    limits:
+      memory: "128Mi"
+      # We recommend “NOT” setting a CPU limit.
+      # As long as you have configured your CPU “requests”
+      # correctly, everything would work fine.
+```
 
 ## Back Up Your Cluster Regularly
 
@@ -250,66 +318,6 @@ For this, you will need to modify the `AEGIS_LOG_LEVEL` environment variable
 in the **Aegis Safe** and **Aegis Sidecar** Deployment manifests.
 
 See [**Configuring Aegis**](/docs/configuration) for details.
-
-## Set CPU and Memory Limits
-
-Benchmark your system usage and set **CPU** and **Memory** limits to the
-**Aegis Safe** pod.
-
-It is recommended to…
-
-* Set a memory **request** and **limit**,
-* Set a CPU **request**; but **not** set a CPU limit (*i.e., 
-  the **Aegis Safe** pod will ask for a baseline CPU
-  and burst for more upon need*).
-
-As in any secrets management solution, your compute and memory requirements
-will depend on several factors, such as:
-
-* The number of workloads in the cluster
-* The number of secrets **Safe** (*Aegis’ Secrets Store*) has to manage
-  (*see [architecture details][architecture] for more context*)
-* The number of workloads interacting with **Safe**
-  (*see [architecture details][architecture] for more context*)
-* **Sidecar** poll frequency (*see [architecture details][architecture] for more context*)
-* etc.
-
-[architecture]: /docs/architecture 
-
-We recommend you benchmark with a realistic production-like
-cluster and allocate your resources accordingly.
-
-That being said, here are the resource allocation reported by `kubectl top`
-for a demo setup on a single-node minikube cluster to give an idea:
-
-```text 
-NAMESPACE     WORKLOAD            CPU(cores) MEMORY(bytes)
-aegis-system  aegis-safe          1m         9Mi
-aegis-system  aegis-sentinel      1m         3Mi
-default       aegis-workload-demo 2m         7Mi
-spire-system  spire-agent         4m         35Mi
-spire-system  spire-server        6m         41Mi
-```
-
-Note that 1000m is 1 full CPU core.
-
-Based on these findings, the following resource and limit allocations can be
-a starting point for **Aegis**-managed containers:
-
-```text
-  # Resource allocation will highly depend on the system.
-  # Benchmark your deployment, monitor your resource utilization,
-  # and adjust these values accordingly.
-  resources:
-    requests:
-      memory: "128Mi"
-      cpu: "250m"
-    limits:
-      memory: "128Mi"
-      # We recommend “NOT” setting a CPU limit.
-      # As long as you have configured your CPU “requests”
-      # correctly, everything would work fine.
-```
 
 ## Conclusion
 
