@@ -105,6 +105,9 @@ Arguments:
                    workload if used with `-s` and `-w`.
 ```
 
+Note that based on your **Aegis Sentinel** version the output of the above
+command can be slightly different.
+
 ## Registering a Secret for a Workload
 
 Given our workload has the SPIFFE ID 
@@ -112,11 +115,62 @@ Given our workload has the SPIFFE ID
 
 ```bash
 kubectl exec $SENTINEL -n aegis-system -- aegis \
--w billing
--s "very secret value"
+  -w billing \
+  -s "very secret value"
 ```
 
 will register the secret `"very secret value"` to `billing`.
+
+## Registering Multiple Secrets
+
+You can use the `-a` (*append*) argument to register more than one secret
+to a workload.
+
+```bash
+kubectl exec $SENTINEL -n aegis-system -- aegis \
+  -w billing \
+  -s "first part of the token" \
+  -a
+
+kubectl exec $SENTINEL -n aegis-system -- aegis \
+  -w billing \
+  -s "second part of the token" \
+  -a
+```
+
+## Encrypting a Secret
+
+Use the `-e` flag to encrypt a secret.
+
+```bash
+kubectl exec $SENTINEL -n aegis-system -- aegis \
+  -s "very secret value" \
+  -e 
+
+# The above command outputs an encrypted string that can be
+# securely stored anywhere, including source control systems.
+```
+
+## Registering an Encrypted Secret
+
+Again, `-e` flag can be used to register an encrypted secret to a workload:
+
+```bash
+kubectl exec $SENTINEL -n aegis-system -- aegis \
+  -w billing \
+  -s $ENCRYPTED_SECRET \
+  -e
+```
+
+## Deleting a Secret
+
+To delete the secret associated to a workload, use the `-d` flag:
+
+```bash
+kubectl exec $SENTINEL -n aegis-system -- aegis \
+  -w billing \
+  -d
+```
 
 ## Choosing a Backing Store
 
@@ -131,9 +185,9 @@ The following commands stores the secret to the backing volume
 
 ```bash
 kubectl exec $SENTINEL -n aegis-system -- aegis \
--w billing
--s "very secret value"
--b file
+  -w billing \
+  -s "very secret value" \
+  -b file
 ```
 
 This one, will **not** store the secret on file; the secret will only be 
@@ -141,9 +195,9 @@ persisted in memory, and will be lost if **Aegis Sentinel** needs to restart:
 
 ```bash
 kubectl exec $SENTINEL -n aegis-system -- aegis \
--w billing
--s "very secret value"
--b memory
+  -w billing \
+  -s "very secret value" \
+  -b memory
 ```
 
 The following will stored the secret on the cluster itself as a Kubernetes
@@ -152,9 +206,9 @@ of **Aegis Safe** before storing it on the Secret.
 
 ```bash
 kubectl exec $SENTINEL -n aegis-system -- aegis \
--w billing
--s "very secret value"
--b cluster
+  -w billing \
+  -s "very secret value" \
+  -b cluster
 ```
 
 ## Template Transformations
@@ -163,9 +217,9 @@ You can transform how the stored secret is displayed to the consuming workloads:
 
 ```bash 
 {% raw %}kubectl exec "$SENTINEL" -n aegis-system -- aegis \
--w "aegis-workload-demo" \
--s '{"username": "root", "password": "SuperSecret", "value": "AegisRocks"}' \
--t '{"USER":"{{.username}}", "PASS":"{{.password}}", "VALUE": "{{.value}}"}'{% endraw %}
+  -w "aegis-workload-demo" \
+  -s '{"username": "root", "password": "SuperSecret", "value": "AegisRocks"}' \
+  -t '{"USER":"{{.username}}", "PASS":"{{.password}}", "VALUE": "{{.value}}"}'{% endraw %}
 ```
 
 When the workload fetches the secret through the workload API, this is what
@@ -179,10 +233,10 @@ Instead of this default transformation, you can output it as `yaml` too:
 
 ```bash 
 {% raw %}kubectl exec "$SENTINEL" -n aegis-system -- aegis \
--w "aegis-workload-demo" \
--s '{"username": "root", "password": "SuperSecret", "value": "AegisRocks"}' \
--t '{"USER":"{{.username}}", "PASS":"{{.password}}", "VALUE": "{{.value}}"}' \
--f yaml{% endraw %}
+  -w "aegis-workload-demo" \
+  -s '{"username": "root", "password": "SuperSecret", "value": "AegisRocks"}' \
+  -t '{"USER":"{{.username}}", "PASS":"{{.password}}", "VALUE": "{{.value}}"}' \
+  -f yaml{% endraw %}
 ```
 
 The above command will result in the following secret value to the workload 
@@ -194,14 +248,18 @@ PASS: SuperSecret
 VALUE: AegisRocks
 ```
 
+> **`"json"` Is the Default Value**
+> 
+> If you don’t specify the `-f` flag, it will default to `"json"`.
+
 You can create a YAML secret value without the `-t` flag too. In that case
 **Aegis Safe** will assume an identity transformation:
 
 ```bash 
 {% raw %}kubectl exec "$SENTINEL" -n aegis-system -- aegis \
--w "aegis-workload-demo" \
--s '{"username": "root", "password": "SuperSecret", "value": "AegisRocks"}' \
--f yaml{% endraw %}
+  -w "aegis-workload-demo" \
+  -s '{"username": "root", "password": "SuperSecret", "value": "AegisRocks"}' \
+  -f yaml{% endraw %}
 ```
 
 The above command will result in the following secret value to the workload
@@ -214,24 +272,9 @@ value: AegisRocks
 ```
 
 If you provide `-f json` as the format argument, the secret will have to be
-a strict JSON, or an error will occur.
-
-For `-f none` (*default*), any arbitrary transformation is possible:
-
-```bash
-{% raw %}kubectl exec "$SENTINEL" -n aegis-system -- aegis \
--w "aegis-workload-demo" \
--s '{"username": "root", "password": "SuperSecret", "value": "AegisRocks"}' \
--t 'USER»»»{{.username}}' \
--f none{% endraw %}
-```
-
-The above command will provide the following secret value to the workload
-(*which is neither YAML, nor JSON; it is a free form text*):
-
-```text 
-USER»»»root
-```
+a strict JSON. Otherwise, **Aegis Sentinel** will try to come up with a 
+reasonable value, and not raise an error; however the output will likely be
+in a format that the workload is not expecting.
 
 > **Gotcha**
 > 
@@ -242,8 +285,8 @@ The following is also possible:
 
 ```bash 
 {% raw %}kubectl exec "$SENTINEL" -n aegis-system -- aegis \
--w "aegis-workload-demo" \
--s 'USER»»»{{.username}}'{% endraw %}
+  -w "aegis-workload-demo" \
+  -s 'USER»»»{{.username}}'{% endraw %}
 ```
 
 and will result in the following as the secret value for the workload:
@@ -256,33 +299,24 @@ Or, equivalently:
 
 ```bash 
 {% raw %}kubectl exec "$SENTINEL" -n aegis-system -- aegis \
--w "aegis-workload-demo" \
--s 'USER»»»{{.username}}' \
--f none{% endraw %}
+  -w "aegis-workload-demo" \
+  -s 'USER»»»{{.username}}' \
+  -f json{% endraw %}
 ```
 
-Will give:
+Will provide the following to the workload:
 
 ```text 
 USER»»»root
 ```
 
-However, the following will raise an error:
+Similarly, the following will **not** raise an error:
 
 ```bash 
 {% raw %}kubectl exec "$SENTINEL" -n aegis-system -- aegis \
--w "aegis-workload-demo" \
--s 'USER»»»{{.username}}' \
--f yaml{% endraw %}
-```
-
-Or, similarly, this will raise an error:
-
-```bash 
-{% raw %}kubectl exec "$SENTINEL" -n aegis-system -- aegis \
--w "aegis-workload-demo" \
--s 'USER»»»{{.username}}' \
--f json{% endraw %}
+  -w "aegis-workload-demo" \
+  -s 'USER»»»{{.username}}' \
+  -f yaml{% endraw %}
 ```
 
 To transform the value to *YAML*, or *JSON*, `-s` has to be a **valid** *JSON*.
@@ -296,11 +330,11 @@ Let’s take the following as an example:
 
 ```bash
 {% raw %}kubectl exec "$SENTINEL" -n aegis-system -- aegis \
--w "billing" \
--n "finance" \
--s '{"username": "root", "password": "SuperSecret"}' \
--t '{"USERNAME":"{{.username}}", "PASSWORD":"{{.password}}"' \
--k{% endraw %}
+  -w "billing" \
+  -n "finance" \
+  -s '{"username": "root", "password": "SuperSecret"}' \
+  -t '{"USERNAME":"{{.username}}", "PASSWORD":"{{.password}}"' \
+  -k{% endraw %}
 ```
 
 The `-k` flag hints **Aegis Safe** that the secret will be synced with a 
