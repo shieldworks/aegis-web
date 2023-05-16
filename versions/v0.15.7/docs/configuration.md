@@ -230,13 +230,13 @@ it can be synced by **Aegis Safe**:
 kind: Secret
 metadata:
   # The string after `aegis-secret-` must match the workload’s name.
-  # For example, this is an Aegis-managed secret for `aegis-workload-demo`
+  # For example, this is an Aegis-managed secret for `example`
   # with the SPIFFE ID 
-  # `"spiffe://aegis.ist/workload/aegis-workload-demo\
+  # `"spiffe://aegis.ist/workload/example\
   #  /ns/{{ .PodMeta.Namespace }}\
   #  /sa/{{ .PodSpec.ServiceAccountName }}\
   #  /n/{{ .PodMeta.Name }}"`
-  name: aegis-secret-aegis-workload-demo
+  name: aegis-secret-example
   namespace: default
 type: Opaque{% endraw %}
 ```

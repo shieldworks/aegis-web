@@ -53,8 +53,8 @@ aegis-sentinel
 aegis-sidecar
 aegis-spire
 aegis-web
-aegis-workload-demo-using-sdk
-aegis-workload-demo-using-sidecar
+example-using-sdk
+example-using-sidecar
 ```
 
 > **Creating a Pull Request**?

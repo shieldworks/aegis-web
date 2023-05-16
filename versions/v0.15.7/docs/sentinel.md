@@ -155,7 +155,7 @@ You can transform how the stored secret is displayed to the consuming workloads:
 
 ```bash 
 {% raw %}kubectl exec "$SENTINEL" -n aegis-system -- aegis \
--w "aegis-workload-demo" \
+-w "example" \
 -s '{"username": "root", "password": "SuperSecret", "value": "AegisRocks"}' \
 -t '{"USER":"{{.username}}", "PASS":"{{.password}}", "VALUE": "{{.value}}"}'{% endraw %}
 ```
@@ -171,7 +171,7 @@ Instead of this default transformation, you can output it as `yaml` too:
 
 ```bash 
 {% raw %}kubectl exec "$SENTINEL" -n aegis-system -- aegis \
--w "aegis-workload-demo" \
+-w "example" \
 -s '{"username": "root", "password": "SuperSecret", "value": "AegisRocks"}' \
 -t '{"USER":"{{.username}}", "PASS":"{{.password}}", "VALUE": "{{.value}}"}' \
 -f yaml{% endraw %}
@@ -191,7 +191,7 @@ You can create a YAML secret value without the `-t` flag too. In that case
 
 ```bash 
 kubectl exec "$SENTINEL" -n aegis-system -- aegis \
--w "aegis-workload-demo" \
+-w "example" \
 -s '{"username": "root", "password": "SuperSecret", "value": "AegisRocks"}' \
 -f yaml
 ```
@@ -212,7 +212,7 @@ For `-f none` (*default*), any arbitrary transformation is possible:
 
 ```bash
 {% raw %}kubectl exec "$SENTINEL" -n aegis-system -- aegis \
--w "aegis-workload-demo" \
+-w "example" \
 -s '{"username": "root", "password": "SuperSecret", "value": "AegisRocks"}' \
 -t 'USER»»»{{.username}}' \
 -f none{% endraw %}
@@ -234,7 +234,7 @@ The following is also possible:
 
 ```bash 
 {% raw %}kubectl exec "$SENTINEL" -n aegis-system -- aegis \
--w "aegis-workload-demo" \
+-w "example" \
 -s 'USER»»»{{.username}}'{% endraw %}
 ```
 
@@ -248,7 +248,7 @@ Or, equivalently:
 
 ```bash 
 {% raw %}kubectl exec "$SENTINEL" -n aegis-system -- aegis \
--w "aegis-workload-demo" \
+-w "example" \
 -s 'USER»»»{{.username}}' \
 -f none{% endraw %}
 ```
@@ -263,7 +263,7 @@ However, the following will raise an error:
 
 ```bash 
 {% raw %}kubectl exec "$SENTINEL" -n aegis-system -- aegis \
--w "aegis-workload-demo" \
+-w "example" \
 -s 'USER»»»{{.username}}' \
 -f yaml{% endraw %}
 ```
@@ -272,7 +272,7 @@ Or, similarly, this will raise an error:
 
 ```bash 
 {% raw %}kubectl exec "$SENTINEL" -n aegis-system -- aegis \
--w "aegis-workload-demo" \
+-w "example" \
 -s 'USER»»»{{.username}}' \
 -f json{% endraw %}
 ```

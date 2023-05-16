@@ -33,7 +33,7 @@ prove helpful when you want to extend, augment, or optimize **Aegis**.
 Also, if you want to [contribute to the **Aegis** source code][contributor],
 knowing what happens under the hood will serve you well.
 
-[contributor]: http://localhost:4000/contact/#i-want-to-be-a-contributor
+[contributor]: https://aegis.ist/contact/#i-want-to-be-a-contributor
 
 ## Components of Aegis
 
@@ -103,9 +103,9 @@ hard, time-consuming, and error-prone endeavor.
 * [**Aegis Go SDK**][aegis-sdk-go]: **Go SDK** is a library that workloads can
   use to directly talk to **Safe** (instead of using the **Sidecar**).
 * [**Aegis Core**][aegis-core]: Common modules that other projects share.
-* [**Aegis Demo Workload (using Go SDK)**][aegis-workload-demo-using-sdk]: A
+* [**Aegis Demo Workload (using Go SDK)**][example-using-sdk]: A
   demo workload that uses the **Go SDK** to talk to **Safe**.
-* [**Aegis Demo Workload (using Aegis Sidecar)**][aegis-workload-demo-using-sidecar]:
+* [**Aegis Demo Workload (using Aegis Sidecar)**][example-using-sidecar]:
   A demo workload dynamically injects secrets to itself using an **Aegis Sidecar**.
 * [**Aegis Web**][aegis-web]: The source code of <https://aegis.ist>, which
   is the very website you read at the moment.
@@ -117,8 +117,8 @@ hard, time-consuming, and error-prone endeavor.
 [aegis-sidecar]: https://github.com/shieldworks/aegis-sidecar
 [aegis-spire]: https://github.com/shieldworks/aegis-spire
 [aegis-web]: https://github.com/shieldworks/aegis-web
-[aegis-workload-demo-using-sdk]: https://github.com/shieldworks/aegis-workload-demo-using-sdk
-[aegis-workload-demo-using-sidecar]: https://github.com/shieldworks/aegis-workload-demo-using-sidecar
+[example-using-sdk]: https://github.com/shieldworks/example-using-sdk
+[example-using-sidecar]: https://github.com/shieldworks/example-using-sidecar
 
 ## High-Level Architecture
 

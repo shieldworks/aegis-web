@@ -14,11 +14,11 @@ description: navigation map to everything
 micro_nav: true
 page_nav:
   prev:
-    content: local development
-    url: '/docs/contributing'
+    content: <strong>Aegis</strong> home
+    url: '/'
   next:
-    content: <strong>Aegis</strong> Sentinel CLI
-    url: '/docs/sentinel'
+    content: <strong>Aegis</strong> quickstart
+    url: '/docs/'
 ---
 
 Here’s your handy guide to everything on this site. 

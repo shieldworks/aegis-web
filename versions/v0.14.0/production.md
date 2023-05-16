@@ -251,7 +251,7 @@ for a demo setup on a single-node minikube cluster to give an idea:
 NAMESPACE     WORKLOAD            CPU(cores) MEMORY(bytes)
 aegis-system  aegis-safe          1m         9Mi
 aegis-system  aegis-sentinel      1m         3Mi
-default       aegis-workload-demo 2m         7Mi
+default       example 2m         7Mi
 spire-system  spire-agent         4m         35Mi
 spire-system  spire-server        6m         41Mi
 ```

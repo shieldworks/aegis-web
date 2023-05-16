@@ -50,13 +50,14 @@ SENTINEL=$(kubectl get po -n aegis-system \
 SAFE=$(kubectl get po -n aegis-system \
   | grep "aegis-safe-" | awk '{print $1}')
 WORKLOAD=$(kubectl get po -n default \
-  | grep "aegis-workload-demo-" | awk '{print $1}')
+  | grep "example-" | awk '{print $1}')
 INSPECTOR=$(kubectl get po -n default \
   | grep "aegis-inspector-" | awk '{print $1}')
 
 # Delete secrets assigned to the workload:
-alias delete-secret="kubectl exec $SENTINEL -n aegis-system -- aegis \
-  -w aegis-workload-demo -s x -d"
+alias delete-secret="kubectl exec $SENTINEL \
+  -n aegis-system -- aegis \
+  -w example -s x -d"
 
 alias inspect="kubectl exec $INSPECTOR -- ./env"
 ```
@@ -91,7 +92,7 @@ we’ll be explicit and provide this argument at all times.
 
 ```bash
 {% raw %}kubectl exec $SENTINEL -n aegis-system -- aegis \
-  -w aegis-workload-demo \
+  -w example \
   -s '{"username": "admin", "password": "AegisRocks!"}' \
   -f json
 
@@ -104,7 +105,7 @@ inspect
 
 ```bash 
 {% raw %}kubectl exec $SENTINEL -n aegis-system -- aegis \
-  -w aegis-workload-demo \
+  -w example \
   -s '{"username": "admin", "password": "AegisRocks!"}' \
   -f yaml
 
@@ -121,7 +122,7 @@ in `username"`: That is not valid JSON.
 
 ```bash
 {% raw %}kubectl exec $SENTINEL -n aegis-system -- aegis \
-  -w aegis-workload-demo \
+  -w example \
   -s '{username": "admin", "password": "AegisRocks!"}' \
   -f json
 
@@ -136,7 +137,7 @@ Since the JSON cannot be parsed, the output will not be a YAML:
 
 ```bash 
 {% raw %}kubectl exec $SENTINEL -n aegis-system -- aegis \
-  -w aegis-workload-demo \
+  -w example \
   -s '{username": "admin", "password": "AegisRocks!"}' \
   -f yaml
 
@@ -149,7 +150,7 @@ inspect
 
 ```bash
 {% raw %}kubectl exec $SENTINEL -n aegis-system -- aegis \
-  -w aegis-workload-demo \
+  -w example \
   -s '{"username": "admin", "password": "AegisRocks!"}' \
   -t '{"USR":"{{.username}}", "PWD":"{{.password}}"}' \
   -f json
@@ -163,7 +164,7 @@ inspect
 
 ```bash
 {% raw %}kubectl exec $SENTINEL -n aegis-system -- aegis \
-  -w aegis-workload-demo \
+  -w example \
   -s '{"username": "admin", "password": "AegisRocks!"}' \
   -t '{"USR":"{{.username}}", "PWD":"{{.password}}"}' \
   -f yaml
@@ -181,7 +182,7 @@ possible. **Aegis** will still try its best to provide something.
 
 ```bash
 {% raw %}kubectl exec $SENTINEL -n aegis-system -- aegis \
-  -w aegis-workload-demo \
+  -w example \
   -s '{username": "admin", "password": "AegisRocks!"}' \
   -t '{"USR":"{{.username}}", "PWD":"{{.password}}"}' \
   -f json
@@ -197,7 +198,7 @@ Since template is not valid, the template transformation will not happen.
 
 ```bash
 {% raw %}kubectl exec $SENTINEL -n aegis-system -- aegis \
-  -w aegis-workload-demo \
+  -w example \
   -s '{"username": "admin", "password": "AegisRocks!"}' \
   -t '{USR":"{{.username}}", "PWD":"{{.password}}"}' \
   -f json
@@ -213,7 +214,7 @@ inspect
 
 ```bash
 {% raw %}kubectl exec $SENTINEL -n aegis-system -- aegis \
-  -w aegis-workload-demo \
+  -w example \
   -s '{username": "admin", "password": "AegisRocks!"}' \
   -t '{USR":"{{.username}}", "PWD":"{{.password}}"}' \
   -f json
@@ -227,7 +228,7 @@ inspect
 
 ```bash
 {% raw %}kubectl exec $SENTINEL -n aegis-system -- aegis \
-  -w aegis-workload-demo \
+  -w example \
   -s '{username": "admin", "password": "AegisRocks!"}' \
   -t '{"USR":"{{.username}}", "PWD":"{{.password}}"}' \
   -f yaml
@@ -241,7 +242,7 @@ inspect
 
 ```bash
 {% raw %}kubectl exec $SENTINEL -n aegis-system -- aegis \
-  -w aegis-workload-demo \
+  -w example \
   -s '{"username": "admin", "password": "AegisRocks!"}' \
   -t '{USR":"{{.username}}", "PWD":"{{.password}}"}' \
   -f yaml
@@ -255,7 +256,7 @@ inspect
 
 ```bash
 {% raw %}kubectl exec $SENTINEL -n aegis-system -- aegis \
-  -w aegis-workload-demo \
+  -w example \
   -s '{username": "admin", "password": "AegisRocks!"}' \
   -t '{USR":"{{.username}}", "PWD":"{{.password}}"}' \
   -f yaml

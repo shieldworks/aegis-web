@@ -39,7 +39,7 @@ prove helpful when you want to extend, augment, or optimize **Aegis**.
 Also, if you want to [contribute to the **Aegis** source code][contributor],
 knowing what happens under the hood will serve you well.
 
-[contributor]: http://localhost:4000/contact/#i-want-to-be-a-contributor
+[contributor]: https://aegis.ist/contact/#i-want-to-be-a-contributor
 
 ## Components of Aegis
 

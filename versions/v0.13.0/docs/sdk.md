@@ -96,41 +96,41 @@ Check out [Aegis demo workload manifests][demos] for additional examples.
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: aegis-workload-demo
+  name: example
   namespace: default
 automountServiceAccountToken: false
 ---
 apiVersion: spire.spiffe.io/v1alpha1
 kind: ClusterSPIFFEID
 metadata:
-  name: aegis-workload-demo
+  name: example
 spec:
-  spiffeIDTemplate: "spiffe://aegis.ist/workload/aegis-workload-demo"
+  spiffeIDTemplate: "spiffe://aegis.ist/workload/example"
   podSelector:
     matchLabels:
-      app.kubernetes.io/name: aegis-workload-demo
+      app.kubernetes.io/name: example
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: aegis-workload-demo
+  name: example
   namespace: default
   labels:
-    app.kubernetes.io/name: aegis-workload-demo
+    app.kubernetes.io/name: example
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: aegis-workload-demo
+      app.kubernetes.io/name: example
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: aegis-workload-demo
+        app.kubernetes.io/name: example
     spec:
-      serviceAccountName: aegis-workload-demo
+      serviceAccountName: example
       containers:
         - name: main
-          image: aegishub/aegis-workload-demo-using-sdk:0.7.0
+          image: aegishub/example-using-sdk:0.7.0
           volumeMounts:
           - name: spire-agent-socket
             mountPath: /spire-agent-socket

@@ -33,7 +33,7 @@ prove helpful when you want to extend, augment, or optimize **Aegis**.
 Also, if you want to [contribute to the **Aegis** source code][contributor],
 knowing what happens under the hood will serve you well.
 
-[contributor]: http://localhost:4000/contact/#i-want-to-be-a-contributor
+[contributor]: http://aegis.ist/contact/#i-want-to-be-a-contributor
 
 ## Components of Aegis
 
@@ -107,11 +107,11 @@ hard, time-consuming, and error-prone endeavor.
 * [**Aegis Go SDK**][aegis-sdk-go]: **Aegis Go SDK** is a library that workloads can
   use to directly talk to **Safe** (instead of using the **Sidecar**).
 * [**Aegis Core**][aegis-core]: Common modules that other projects share.
-* [**Aegis Demo Workload (using Go SDK)**][aegis-workload-demo-using-sdk]: A
+* [**Aegis Demo Workload (using Go SDK)**][example-using-sdk]: A
   demo workload that uses the **Aegis Go SDK** to talk to **Aegis Safe**.
-* [**Aegis Demo Workload (using Aegis Sidecar)**][aegis-workload-demo-using-sidecar]:
+* [**Aegis Demo Workload (using Aegis Sidecar)**][example-using-sidecar]:
   A demo workload dynamically injects secrets to itself using an **Aegis Sidecar**.
-* [**Aegis Demo Workload (using Aegis Init Container)**][aegis-workload-demo-using-init-container]:
+* [**Aegis Demo Workload (using Aegis Init Container)**][example-using-init-container]:
   A demo workload that uses **Aegis Init Container** to pause the main container
   until the secrets it needs are ready.
 * [**Aegis Web**][aegis-web]: The source code of <https://aegis.ist>, which
@@ -125,9 +125,9 @@ hard, time-consuming, and error-prone endeavor.
 [aegis-init-container]: https://github.com/shieldworks/aegis-init-container
 [aegis-spire]: https://github.com/shieldworks/aegis-spire
 [aegis-web]: https://github.com/shieldworks/aegis-web
-[aegis-workload-demo-using-sdk]: https://github.com/shieldworks/aegis-workload-demo-using-sdk
-[aegis-workload-demo-using-sidecar]: https://github.com/shieldworks/aegis-workload-demo-using-sidecar
-[aegis-workload-demo-using-init-container]: https://github.com/shieldworks/aegis-workload-demo-using-init-container
+[example-using-sdk]: https://github.com/shieldworks/example-using-sdk
+[example-using-sidecar]: https://github.com/shieldworks/example-using-sidecar
+[example-using-init-container]: https://github.com/shieldworks/example-using-init-container
 [init-container]: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
 
 ## High-Level Architecture

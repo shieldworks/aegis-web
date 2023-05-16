@@ -99,24 +99,24 @@ Here is the deployment manifest of a demo workload that can consume secrets:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: aegis-workload-demo
+  name: example
   namespace: default
   labels:
-    app.kubernetes.io/name: aegis-workload-demo
+    app.kubernetes.io/name: example
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: aegis-workload-demo
+      app.kubernetes.io/name: example
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: aegis-workload-demo
+        app.kubernetes.io/name: example
     spec:
-      serviceAccountName: aegis-workload-demo
+      serviceAccountName: example
       containers:
       - name: main
-        image: aegishub/aegis-workload-demo-using-sidecar:0.9.1
+        image: aegishub/example-using-sidecar:0.9.1
         volumeMounts:
         # `main` shares this volume with `sidecar`.
         - mountPath: /opt/aegis
@@ -150,7 +150,7 @@ spec:
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: aegis-workload-demo
+  name: example
   namespace: default
 automountServiceAccountToken: false
 ```
@@ -165,7 +165,7 @@ automountServiceAccountToken: false
 
 You’ll see that there are two images in this deployment:
 
-* `aegishub/aegis-workload-demo`: This is the container that has the business logic.
+* `aegishub/example`: This is the container that has the business logic.
 * `aegishub/aegis-sidecar`: This **Aegis**-managed container injects 
   secrets to a place that our demo container can consume.
 
@@ -220,16 +220,16 @@ the workload:
 {% raw %}apiVersion: spire.spiffe.io/v1alpha1
 kind: ClusterSPIFFEID
 metadata:
-  name: aegis-workload-demo
+  name: example
 spec:
   spiffeIDTemplate: "spiffe://aegis.ist\
-    /workload/aegis-workload-demo\
+    /workload/example\
     /ns/{{ .PodMeta.Namespace }}\
     /sa/{{ .PodSpec.ServiceAccountName }}\
     /n/{{ .PodMeta.Name }}"
   podSelector:
     matchLabels:
-      app.kubernetes.io/name: aegis-workload-demo
+      app.kubernetes.io/name: example
   workloadSelectorTemplates:
   - "k8s:ns:{{ .PodMeta.Namespace }}"
   - "k8s:sa:{{ .PodSpec.ServiceAccountName }}"{% endraw %}
@@ -276,13 +276,13 @@ Then `kubectl get po` will give you something like this:
 kubectl get po
 
 NAME                                  READY   STATUS    RESTARTS   AGE
-aegis-workload-demo-fd4c8bf8b-6fcq2   2/2     Running   0          9s
+example-fd4c8bf8b-6fcq2   2/2     Running   0          9s
 ```
 
 Let’s check the logs of our pod:
 
 ```bash 
-kubectl get logs aegis-workload-demo-fd4c8bf8b-6fcq2
+kubectl get logs example-fd4c8bf8b-6fcq2
 
 Failed to read the secrets file. Will retry in 5 seconds…
 Failed to read the secrets file. Will retry in 5 seconds…
@@ -332,13 +332,13 @@ If you remember from the beginning of this tutorial, our demo workload had
 a SPIFFE ID that matched the following template:
 
 ```text
-{% raw %}spiffe://aegis.ist/workload/aegis-workload-demo
+{% raw %}spiffe://aegis.ist/workload/example
 /ns/{{ .PodMeta.Namespace }}
 /sa/{{ .PodSpec.ServiceAccountName }}
 /n/{{ .PodMeta.Name }}{% endraw %}
 ```
 
-The `aegis-workload-demo` part from that template is the **name** that **Aegis**
+The `example` part from that template is the **name** that **Aegis**
 will identify this workload as.
 
 Since we know the name of our workload, adding secrets to it will be a single
@@ -348,7 +348,7 @@ command that we’ll execute on **Aegis Sentinel**:
 kubectl exec -it aegis-sentinel-b55f8bff5-7m7n7 \
 -n aegis-system \
 -- aegis \
--w aegis-workload-demo \
+-w example \
 -s '{"username":"Aegis", "password": "KeepYourSecrets"}'
 
 OK
@@ -359,7 +359,7 @@ Once you do that, wait a few moments, and check the logs of our workload pod,
 you can see the updated secret displayed on the console:
 
 ```text
-kubectl logs aegis-workload-demo-fd4c8bf8b-6fcq2 -f
+kubectl logs example-fd4c8bf8b-6fcq2 -f
 
 …
 secret: '  '
@@ -432,7 +432,7 @@ on your project’s requirements.
 > [Check out the **SDK Demo** Git repository][git-sdk]
 > to view the source for this use case.
 
-[git-sdk]: https://github.com/shieldworks/aegis-workload-demo-using-sdk "Aegis Workload Demo Using SDK"
+[git-sdk]: https://github.com/shieldworks/example-using-sdk "Aegis Workload Demo Using SDK"
 
 That part taken care of; let’s deploy a workload that does not use a sidecar.
 
@@ -444,24 +444,24 @@ Here is the deployment manifest for our workload:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: aegis-workload-demo
+  name: example
   namespace: default
   labels:
-    app.kubernetes.io/name: aegis-workload-demo
+    app.kubernetes.io/name: example
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: aegis-workload-demo
+      app.kubernetes.io/name: example
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: aegis-workload-demo
+        app.kubernetes.io/name: example
     spec:
-      serviceAccountName: aegis-workload-demo
+      serviceAccountName: example
       containers:
       - name: main
-        image: aegishub/aegis-workload-demo-using-sdk:0.9.8
+        image: aegishub/example-using-sdk:0.9.8
         volumeMounts:
         - name: spire-agent-socket
           mountPath: /spire-agent-socket
@@ -477,7 +477,7 @@ The `Identity.yaml` and `Service.yaml` will be the same as the demo workload
 with a sidecar. And, as a reminder, you can find those files
 [inside this **GitHub** folder][install-k8s] as well.
 
-Here’s how the source code of `aegishub/aegis-workload-demo-using-sdk` looks like:
+Here’s how the source code of `aegishub/example-using-sdk` looks like:
 
 ```go 
 package main
@@ -537,7 +537,7 @@ Then let’s check our workload:
 kubectl get po
 
 NAME                                   READY   STATUS    RESTARTS   AGE
-aegis-workload-demo-544dd799d8-rpzqc   1/1     Running   0          5s
+example-544dd799d8-rpzqc   1/1     Running   0          5s
 ```
 
 It looks healthy. Let us view its logs too
@@ -592,41 +592,41 @@ Here is a sample deployment descriptor for your workload that uses
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: aegis-workload-demo
+  name: example
   namespace: default
   labels:
-    app.kubernetes.io/name: aegis-workload-demo
+    app.kubernetes.io/name: example
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: aegis-workload-demo
+      app.kubernetes.io/name: example
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: aegis-workload-demo
+        app.kubernetes.io/name: example
     spec:
-      serviceAccountName: aegis-workload-demo
+      serviceAccountName: example
       containers:
       - name: main
-        image: aegishub/aegis-workload-demo-using-init-container:0.13.0
+        image: aegishub/example-using-init-container:0.13.0
         
         # These environment variables are interpolated dynamically at runtime.
         env:
         - name: SECRET
           valueFrom:
             secretKeyRef:
-              name: aegis-secret-aegis-workload-demo
+              name: aegis-secret-example
               key: VALUE
         - name: USERNAME
           valueFrom:
             secretKeyRef:
-              name: aegis-secret-aegis-workload-demo
+              name: aegis-secret-example
               key: USERNAME
         - name: PASSWORD
           valueFrom:
             secretKeyRef:
-              name: aegis-secret-aegis-workload-demo
+              name: aegis-secret-example
               key: PASSWORD
 
       initContainers:
@@ -657,7 +657,7 @@ SENTINEL=$(kubectl get po -n aegis-system \
 
 # Execute the command needed to interpolate the secret.
 kubectl exec "$SENTINEL" -n aegis-system -- aegis \
--w "aegis-workload-demo" \
+-w "example" \
 -n "default" \
 -s '{"username": "root", "password": "SuperSecret", "value": "AegisRocks"}' \
 -t '{"USERNAME":"{{.username}}", "PASSWORD":"{{.password}}", "VALUE": "{{.value}}"}' \
@@ -683,7 +683,7 @@ visually explains the above concepts in greater detail:
 
 [![Watch the video](/doks-theme/assets/images/capture.png)](https://vimeo.com/v0lkan/aegis-secrets)
 
-[git-init-container]: https://github.com/shieldworks/aegis-workload-demo-using-init-container "Aegis Workload Demo Using Init Container"
+[git-init-container]: https://github.com/shieldworks/example-using-init-container "Aegis Workload Demo Using Init Container"
 
 ## Conclusion
 
