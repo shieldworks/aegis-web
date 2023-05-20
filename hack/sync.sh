@@ -8,6 +8,8 @@
 #     .\_/.
 #
 
+./hack/update-timestamp.sh
+
 JEKYLL_ENV=production jekyll build
 
 rm -rf _site/versions
