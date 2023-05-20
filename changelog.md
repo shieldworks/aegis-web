@@ -28,7 +28,7 @@ edit this page on <strong>GitHub</strong> ✏️</a></p>
 
 ## Recent
 
-* WIP
+* The docs now have last update timestamp and a commit hash too.
 
 ## [v0.16.1] - 2023-05-16
 
