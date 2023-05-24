@@ -307,6 +307,53 @@ needs][k8s-pv] for production setups.
 [aegis-safe-deployment-yaml]: https://github.com/shieldworks/aegis/blob/main/install/k8s/safe/Deployment.yaml
 [k8s-pv]: https://kubernetes.io/docs/concepts/storage/volumes/
 
+## High Availability of Aegis Safe
+
+> **tl;dr:**
+> 
+> **Aegis Safe** is **not** highly-available; however it is so robust that
+> high-availability is hardly a need.
+
+Since **Aegis Safe** keeps all of it state in memory, using a pod with enough
+memory and compute resources is the most effective way to leverage it. Although,
+with some effort, it might be possible to make it highly available, the effort
+will likely bring unnecessary complexity without much added benefit.
+
+**Aegis Safe** is, by design, a single pod; so technically-speaking, it is
+not highly-available. So in the rare case when **Aegis Safe** crashes, or
+gets evicted due to a resource contention, there will be minimal disruption
+until it restarts. However, **Aegis Safe** restarts fairly quickly, so the 
+time window where it is unreachable will hardly be an issue.
+
+Moreover **Aegis Safe** employs “*lazy learning*” and does not load everything
+into memory all at once, allowing **very** fast restarts. In addition, its 
+lightweight and focused code ensures that crashes are infrequent, making
+**Aegis Safe** *practically* highly available.
+
+While it is possible to modify the current architecture to include more than one
+**Aegis Safe** pod and place it behind a service to ensure high-availability,
+this would be a significant undertaking, with not much benefit to merit it:
+
+First of all, for that case to happen, the state would need to be moved away
+from the memory, and centralized into a common in-memory store (*such as Redis,
+or etcd*). This will introduce another moving part to manage. Or alternatively
+all **Aegis Safe** pods could be set up to broadcast their operations and reach
+a quorum. A quorum-based solution would be more complex than using a share store,
+besides reaching a quorum means a performance it (*both in terms of decision time
+and also compute required*).
+
+On top of all these bootstrapping coordination would be necessary to prevent
+two pods from creating different bootstrap secrets simultaneously.
+
+Also, for a backing store like Redis, the data would need to be encrypted
+(*and Redis, for example, does not support encryption at rest by default*).
+
+When considering all these, **Aegis Safe** has not been created highly-available
+**by design**; however, it is so robust, and it restarts from crashes so fast that
+it’s “*as good as*” highly-available.
+
+
+
 ## Update Aegis’ Log Levels
 
 **Aegis Safe** and **Aegis Sidecar** are configured to log at `TRACE` level by
