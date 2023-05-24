@@ -311,8 +311,8 @@ needs][k8s-pv] for production setups.
 
 > **tl;dr:**
 > 
-> **Aegis Safe** is **not** highly-available; however it is so robust that
-> high-availability is hardly a need.
+> **Aegis Safe** may not emphasize high-availability, but its robustness is 
+> so outstanding that the need for high-availability becomes almost negligible.
 
 Since **Aegis Safe** keeps all of it state in memory, using a pod with enough
 memory and compute resources is the most effective way to leverage it. Although,
