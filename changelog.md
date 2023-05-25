@@ -30,6 +30,7 @@ edit this page on <strong>GitHub</strong> ✏️</a></p>
 
 * The docs now have “*last update*” timestamp and a commit hash too.
 * Other documentation updates.
+* Fixed minor go report card warnings.
 
 ## [v0.16.1] - 2023-05-16
 
