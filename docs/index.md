@@ -29,12 +29,25 @@ edit this page on <strong>GitHub</strong> ✏️</a></p>
 
 ## What Is **Aegis**?
 
-[**Aegis**][aegis] is a **Kubernetes-native**, lightweight secrets manager 
-that keeps your secrets secret. With **Aegis**, you can rest assured 
-that your sensitive data is always **secure** and **protected**. 
+[**Aegis**][aegis] is a cloud-native secure store for secrets management.
+It provides a minimal and intuitive API, ensuring practical security without
+compromising user experience. 
+
+Endorsed by industry experts, **Aegis** is a ground-up re-imagination of
+secrets management, leveraging [**SPIRE**](https://spiffe.io/) for 
+authentication and providing a cloud-native way to manage secrets end-to-end.
+
+**Aegis** is resilient and secure by default,
+storing sensitive data in memory and encrypting any data saved to disk.
+
+With **Aegis**, you can rest assured that your sensitive data is always 
+**secure** and **protected**. 
+
+## Where Can I Use **Aegis**?
 
 **Aegis** is perfect for securely storing arbitrary configuration information at a 
-central location and securely dispatching it to workloads.
+central location and securely dispatching it to workloads, offering 
+*centralized* and *secure* secrets store for your clusters.
 
 By leveraging Kubernetes security primitives, [**SPIRE**][spire], and strong,
 industry-standard encryption, **Aegis** ensures that your secrets are **only** 
@@ -59,8 +72,6 @@ If you haven’t watched this introductory video yet, now might be a good time �
 > [Check out this showcase that includes other **Aegis** use cases][vimeo].
 
 [vimeo]: https://vimeo.com/showcase/10074951
-
-**Aegis** offers a *centralized* and *secure* secrets store for your clusters.
 
 ## Terminology: A Tale of Two Secrets
 
