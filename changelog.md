@@ -41,7 +41,7 @@ edit this page on <strong>GitHub</strong> ✏️</a></p>
 * Enhancements to speed up the build operations.
 * `AEGIS_SAFE_USE_KUBERNETES_SECRETS` was a noop, fixed it to have impact if
   the option is not specified declaratively. That is, if the value is not
-  provided, environment variable is honored (*if set, otherwise assumed `false`).
+  provided, environment variable is honored (*if set, otherwise assumed `false`*).
 * Fixed a bunch of "UNKNOWN ENTITY" warnings in audit logs, also made entity name
   mandatory in the audit logs.
 * Upgraded manifests to remove Kustomization deprecation warnings.
