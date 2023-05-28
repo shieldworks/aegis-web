@@ -22,7 +22,6 @@ edit this page on <strong>GitHub</strong> ✏️</a></p>
 Here are the **Aegis** documentations captured in time for specific releases:
 
 * [Latest](https://aegis.ist/)
-* [v0.17.1](https://aegis.ist/versions/v0.17.1)
 * [v0.16.1](https://aegis.ist/versions/v0.16.1)
 * [v0.15.7](https://aegis.ist/versions/v0.15.7)
 * [v0.15.6](https://aegis.ist/versions/v0.15.6)

@@ -1,0 +1,13 @@
+#
+# .-'_.---._'-.
+# ||####|(__)||   Protect your secrets, protect your business.
+#   \\()|##//       Secure your sensitive data with Aegis.
+#    \\ |#//                    <aegis.ist>
+#     .\_/.
+#
+
+.DS_Store
+.idea
+.code
+.history
+_site
