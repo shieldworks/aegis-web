@@ -32,6 +32,15 @@ edit this page on <strong>GitHub</strong> ✏️</a></p>
 * Other documentation updates.
 * Fixed minor go report card warnings.
 * Enhancements to speed up the build operations.
+* AEGIS_SAFE_USE_KUBERNETES_SECRETS was noop, fixed it to have impact if
+  the option is not specified declaratively. That is, if the value is not
+  provided, environment variable is honored (*if set, otherwise assumed `false`).
+* **BREAKING**: Renamed `AEGIS_SAFE_SVID_RETRIEVAL_TIMEOUT` to `AEGIS_BOOTSTRAP_TIMEOUT`.
+  Reasoning: No need to expose unnecessary jargon and implementation specifics,
+  also the current variable name is more representative of what is being done
+* Fixed a bunch of "UNKNOWN ENTITY" warnings in audit logs, also made entity name
+  mandatory in the audit logs.
+* Upgraded manifests to remove Kustomization deprecation warnings.
 
 ## [v0.16.1] - 2023-05-16
 

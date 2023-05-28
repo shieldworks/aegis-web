@@ -179,8 +179,8 @@ Defaults to `":8443"`.
 ### AEGIS_SAFE_SECRET_BUFFER_SIZE
 
 `AEGIS_SAFE_SECRET_BUFFER_SIZE` is the amount of secret insertion operations
-to be buffered until **Aegis Safe API** blocks and waits for the buffer to have an
-empty slot.
+to be buffered until **Aegis Safe API** blocks and waits for the buffer to have 
+an empty slot.
 
 If the environment variable is not set, this buffer size defaults to `10`.
 
@@ -188,6 +188,27 @@ Two separate buffers of the same size are used for IO operations, and
 Kubernetes `Secret` creation (*depending on the type of the API request*). The
 Kubernetes Secrets buffer, and File IO buffer work asynchronously and
 independent of each other int two separate goroutines.
+
+### AEGIS_SAFE_K8S_SECRET_BUFFER_SIZE
+
+`AEGIS_SAFE_K8S_SECRET_BUFFER_SIZE` is the buffer size for the **Aegis Safe**
+Kubernetes secret queue.
+
+If the environment variable is not set, the default buffer size is `10`.
+
+### AEGIS_SAFE_SECRET_DELETE_BUFFER_SIZE
+
+`AEGIS_SAFE_SECRET_DELETE_BUFFER_SIZE` isd the buffer size for the **Aegis Safe** 
+secret deletion queue.
+
+If the environment variable is not set, the default buffer size is `10`.
+
+### AEGIS_SAFE_K8S_SECRET_DELETE_BUFFER_SIZE
+
+`AEGIS_SAFE_K8S_SECRET_DELETE_BUFFER_SIZE` the buffer size for the 
+**Aegis Safe** Kubernetes secret deletion queue.
+
+If the environment variable is not set, the default buffer size is `10`.
 
 ### AEGIS_SAFE_BACKING_STORE
 
