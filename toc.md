@@ -37,7 +37,7 @@ We have sorted the links in the order of importance and priority for you.
   * [Encrypting Secrets](/docs/use-case-encrypt)
   * [Transforming Secrets](/docs/use-case-transform)
   * [Showcase of Everything so Far](/docs/use-case-showcase)
-* [Local Development](/docs/contributing)
+* [**Aegis** Local Development](/docs/contributing)
 * [Configuring **Aegis**](/docs/configuration)
 * [**Aegis** Production Deployment](/production)
 * [**Aegis SDK** Documentation](/docs/sdk)

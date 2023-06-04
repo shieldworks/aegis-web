@@ -150,6 +150,113 @@ If you run these commands in the above order, you’ll be able to **build**,
 
 ## Minikube Quirks
 
+### Docker for Mac Troubleshooting
+
+When you use **Minikube** with **Docker for Mac**, you’ll likely get a warning
+similar to the following:
+
+```bash {% raw %}
+make k8s-start
+
+# below is the response to the command above
+
+./hack/minikube-start.sh
+
+…
+… truncated …
+…
+
+Registry addon with docker driver uses port 50565 please use that instead of 
+default port 5000 
+
+…{% endraw %}
+```
+
+The port `50656` is a randomly-selected port. Every time you run `make k8s-start`
+it will pick a different port.
+
+You can verify that the repository is there:
+
+```bash 
+{% raw %}curl localhost:50565/v2/_catalog
+# response:
+# {"repositories":[]} 
+{% endraw %}
+```
+
+There are two issues here: 
+
+* First, all the local development scripts assume port 5000 as the repository port;
+  however, port 5000 on your mac will likely be controlled by the **Airplay Receiver**
+* And secondly, you’ll need to forward `localhost:5000` to whatever port the error
+  message shows you.
+
+To fix the first issue, on your Mac’s “**System Settings**” you’ll need to go to 
+“**Setting » Airdrop & Handoff » Airplay Receiver**” and on that screen…
+
+* **uncheck** “*allow handoff between this Mac and your iCloud devices*”, 
+* make sure “**Airdrop**” is selected as “***no one°”
+* and finally, after updating your settings,  **restart your Mac** 
+  (*this step is important; without restart, your macOS will still hold onto 
+  that port*)
+
+Note that where these settings are can be slightly different from one version
+of macOS to another.
+
+As for the second issue, to redirect your local `:5000` port to the docker engine’s
+designated port, you can use [`socat`][socat].
+
+[socat]: http://www.dest-unreach.org/socat/ "socat: Multipurpose Relay"
+
+```bash 
+{% raw %}
+# Install `socat` if you don’t have it on your system.
+brew install socat
+
+# Replace 49876 with whatever port the warning message gave you during 
+# the initial cluster setup.
+socat TCP-LISTEN:5000,fork,reuseaddr TCP:localhost:49876
+{% endraw %}
+```
+
+Then execute the following on a separate tab:
+
+```bash
+{% raw %}
+curl localhost:5000/v2/_catalog
+
+# Should return something similar to this:
+# {"repositories":[]}
+{% endraw %}
+```
+
+If you get a successful response to the above `curl`, then congratulations,
+you have successfully set up your local docker registry for your **Aegis**
+development needs.
+
+> **Make a Big McTunnel**
+> 
+> If you have `localhost:5000` unallocated, there is a `make mac-tunnel`
+> target in the **Aegis**’ project **Makefile** that will automatically find 
+> the exposed docker registry port, and establish a tunnel for you.
+> 
+> Execute this:
+> 
+> ```bash
+> make mac-tunnel
+> ```
+> 
+> And then on a separate terminal window, verify that you can access the 
+> registry from `localhost:5000`.
+> 
+> ```bash
+> curl localhost:5000/v2/_catalog
+> # Should return something similar to this:
+> # "repositories":[]
+> ```
+
+### Ubuntu Troubleshooting
+
 If you are using **Ubuntu**, it would be helpful to know that **Minikube** and
 **snap** version of **Docker** do not play well together. If you are having
 registry-related issues, or if you are not able to execute a `docker images`
@@ -232,11 +339,3 @@ Just explore the [Makefile][makefile] and get a feeling of it.
 recommendations.
 
 [makefile]: https://github.com/shieldworks/aegis/blob/main/Makefile
-
-<!--
-Added
-Changed
-Deprecated
-Removed
-Security
--->

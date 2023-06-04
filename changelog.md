@@ -28,6 +28,9 @@ edit this page on <strong>GitHub</strong> ✏️</a></p>
 
 ## Recent
 
+* Documentation update (mac development instructions)
+* Added more tests, improved the overall test code.
+
 ## [v0.17.1] - 2023-05-28
 
 ### Added
