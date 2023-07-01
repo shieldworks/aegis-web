@@ -170,7 +170,8 @@ make test-local
 
 ### 5. Tagging
 
-Tagging needs to be done on the build server.
+Tagging needs to be done **on the build server**.
+
 There is no automation for this yet.
 
 ```bash 

@@ -1,6 +1,6 @@
 # Theme settings
 doks:
-    baseurl:
+    baseurl: /versions/v0.15.6
     color_theme: blue # Available themes: blue (default), green, purple, red and yellow
     header:
         logo:

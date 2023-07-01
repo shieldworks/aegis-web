@@ -50,7 +50,7 @@ introduce more advanced techniques as we build upon our knowledge.
 3. [Using **Aegis SDK**](/docs/use-case-sdk)
 4. [Using **Aegis Init Container**](/docs/use-case-init-container)
 5. [Encrypting Secrets](/docs/use-case-encrypt)
-6. [Formatting Secrets](/docs/use-case-format)
+6. [Transforming Secrets](/docs/use-case-transform)
 7. [**Aegis** Showcase](/docs/use-case-showcase)
 
 ## Further Reading
