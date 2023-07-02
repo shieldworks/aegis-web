@@ -24,6 +24,14 @@ page_nav:
 border-radius:8px;">
 edit this page on <strong>GitHub</strong> ✏️</a></p>
 
+
+## Recent Updates
+
+* Added `make h`; a summarized version of `make help`, keeping it as minimal
+  as possible.
+* Added FIPS-compliant Go binaries for Aegis Safe, Aegis Sentinel, and 
+  Aegis Init Container.
+
 # Aegis Changelog
 
 ## [v0.17.3] - 2023-06-30
