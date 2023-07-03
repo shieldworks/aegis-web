@@ -31,6 +31,11 @@ edit this page on <strong>GitHub</strong> ✏️</a></p>
   as possible.
 * Added FIPS-compliant Go binaries for Aegis Safe, Aegis Sentinel, and 
   Aegis Init Container.
+* FIPS-compliant mode. When using FIPS-compliant binaries if you set 
+  `AEGIS_SAFE_FIPS_COMPLIANT` to `true` then Aegis will run in FIPS-compliant mode.
+* **BREAKING**: Aegis Key is a triplet now, which means older Aegis keys will not
+  work, and you will need to generate new keys. This is a one-time change. Make sure
+  you back up your secrets before changing your key.
 
 # Aegis Changelog
 
@@ -44,7 +49,8 @@ This was a maintenance release. The focus was testing and stability.
 * Documentation updates.
 * Significant improvement in build, test, and deployment scripts.
 * Added support for [VMware Photon OS][photon] base images.
-* Further enhancements to improve [Aegis’ go report card](https://goreportcard.com/report/github.com/shieldworks/aegis).
+* Further enhancements to improve 
+  [Aegis’ go report card](https://goreportcard.com/report/github.com/shieldworks/aegis).
 
 [photon]: https://vmware.github.io/photon/
 

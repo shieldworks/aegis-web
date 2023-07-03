@@ -87,6 +87,26 @@ Both **Aegis Safe** and **Aegis Sentinel** use this environment variable.
 If not provided, it will default to:
 `"spiffe://aegis.ist/workload/aegis-sentinel/ns/aegis-system/sa/aegis-sentinel/n/"`
 
+### AEGIS_SAFE_FIPS_COMPLIANT
+
+`AEGIS_SAFE_FIPS_COMPLIANT` is required for **Aegis Safe** to run in FIPS-compliant
+mode. Defaults to `"false"`, which means **Aegis Safe** will run in non-FIPS-compliant
+mode. Setting it to `"true"` will make **Aegis Safe** run in FIPS-compliant mode.
+
+Note that this is not a guarantee that Aegis Safe will actually
+run in FIPS compliant mode, as it depends on the underlying base image.
+
+If you are using one of the official FIPS-complaint Aegis Docker images,
+then it will be FIPS-compliant.
+
+As a FIPS-compliant base image you can choose from the following:
+
+* [aegishub/aegis-ist-fips-safe][aegis-safe-istanbul-fips] (*using a Distroless base*)
+* [aegishub/aegis-photon-fips-safe][aegis-safe-photon-fips] (*using VMware Photon OS as a base*)
+
+[aegis-safe-istanbul-fips]: https://hub.docker.com/repository/docker/aegishub/aegis-ist-fips-safe/general
+[aegis-safe-photon-fips]: https://hub.docker.com/repository/docker/aegishub/aegis-photon-fips-safe/general
+
 ### AEGIS_SAFE_SVID_PREFIX
 
 Both **Aegis Sentinel**, **Aegis Safe**, and **workloads** use this environment
