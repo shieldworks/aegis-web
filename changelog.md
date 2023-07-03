@@ -29,7 +29,7 @@ edit this page on <strong>GitHub</strong> ✏️</a></p>
 
 * …
 
-## [v0.17.3] - 2023-07-03
+## [v0.17.4] - 2023-07-03
 
 ### Added
 
