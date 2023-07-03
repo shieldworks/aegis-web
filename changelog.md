@@ -27,12 +27,22 @@ edit this page on <strong>GitHub</strong> ✏️</a></p>
 
 ## Recent Updates
 
+* …
+
+## [v0.17.3] - 2023-07-03
+
+### Added
+
 * Added `make h`; a summarized version of `make help`, keeping it as minimal
   as possible.
 * Added FIPS-compliant Go binaries for Aegis Safe, Aegis Sentinel, and 
   Aegis Init Container.
-* FIPS-compliant mode. When using FIPS-compliant binaries if you set 
-  `AEGIS_SAFE_FIPS_COMPLIANT` to `true` then Aegis will run in FIPS-compliant mode.
+* Introduced FIPS-compliant mode to Aegis Safe. When using FIPS-compliant 
+  binaries if you set `AEGIS_SAFE_FIPS_COMPLIANT` to `true` then Aegis will 
+  run in FIPS-compliant mode.
+
+### Changed
+
 * **BREAKING**: Aegis Key is a triplet now, which means older Aegis keys will not
   work, and you will need to generate new keys. This is a one-time change. Make sure
   you back up your secrets before changing your key.
