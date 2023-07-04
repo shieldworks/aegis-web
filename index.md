@@ -13,7 +13,7 @@ keywords: aegis, secrets management, secrets store, Kubernetes
 title: Aegis
 description: keep your secrets… secret
 buttons:
-- icon: arrow-right
+- icon: home
   content: Quickstart
   url: '/docs'
   external_url: false

@@ -150,13 +150,27 @@ When set to `"true"`, **Aegis Safe** will **not** store the master key in a
 Kubernetes `Secret`; the master key will reside soley in the memory of
 **Aegis Safe**. 
 
-This approach gives a tighter control over the threat boundary of **Aegis Safe**, 
-and it’s considerably more secure than storing the master key as a Kubernetes 
-`Secret`. However, it also means that you’ll be responsible for securing the 
-master key yourself. That’s why it’s not enabled by default.
+The control offered by this approach regarding the threat boundary of
+**Aegis Safe** provides enhanced security compared to the default behavior where 
+the master key is randomly-generated in a cryptographically secure way and 
+stored in a Kubernetes `Secret` (*which is still **pretty secure**, especially if 
+you encrypt your `etcd` and establish a tight RBAC over the Kubernetes `Secret`
+that stores the master key*). 
 
-When set to `"true"`, **Aegis Safe** will not respond to API requests until a
-a master key is provided.
+That being said, in manual input mode, all the cryptographic material will be kept 
+in memory, and no Kubernetes `Secret`s will be harmed (*which is even more secure*).
+
+However, this approach does place the onus of securing the master key on you. 
+
+Yet, don’t worry, storing the master key can be easily handled depending on your 
+infrastructure: With the right setup, managing the master key is just another cog 
+in the machinery of your security measures, not an additional burden. 
+
+That’s why, although it’s not enabled by default, adopting this measure could be 
+an additional step in bolstering your system’s security.
+
+Also note that when this variable is set to `"true"`, **Aegis Safe** will **not** 
+respond to API requests until a master key is provided, using **Aegis Sentinel**.
 
 ### AEGIS_SAFE_SECRET_NAME_PREFIX
 
