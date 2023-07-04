@@ -146,15 +146,6 @@ this is to do a project wide search and find and replace places where reference
 the master crypto key and instead use the key provided by the operator using
 **Aegis Sentinel**. Defaults to `"false"`.
 
-When set to `"true"`, **Aegis Safe** will **not** store the master key in a 
-Kubernetes `Secret`; the master key will reside soley in the memory of
-**Aegis Safe**. 
-
-This approach gives a tighter control over the threat boundary of **Aegis Safe**, 
-and it’s considerably more secure than storing the master key as a Kubernetes 
-`Secret`. However, it also means that you’ll be responsible for securing the 
-master key yourself. That’s why it’s not enabled by default.
-
 When set to `"true"`, **Aegis Safe** will not respond to API requests until a
 a master key is provided.
 
