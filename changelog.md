@@ -24,10 +24,27 @@ page_nav:
 border-radius:8px;">
 edit this page on <strong>GitHub</strong> ✏️</a></p>
 
+# Aegis Changelog
 
 ## Recent Updates
 
 * …
+
+## [v0.18.0] - 2023-07-03
+
+### Added
+
+* Added `make build-essential` as a Makefile target to build a smaller subset
+  of items. This is useful for testing and development.
+* There is a new key input mode `AEGIS_MANUAL_KEY_INPUT` which allows you to
+  manually provide the master encryption key to Aegis Safe. This way, you won’t  
+  have to rely on a Kubernetes Secret to store the key.
+
+### Changed
+
+* **BREAKING**: Changed some environment variables to make their intention clearer:
+  AEGIS_SAFE_AGE_KEY_SECRET_NAME is now AEGIS_CRYPTO_KEY_NAME, and
+  AEGIS_SAFE_AGE_KEY_PATH is now AEGIS_CRYPTO_KEY_PATH.
 
 ## [v0.17.4] - 2023-07-03
 
@@ -46,8 +63,6 @@ edit this page on <strong>GitHub</strong> ✏️</a></p>
 * **BREAKING**: Aegis Key is a triplet now, which means older Aegis keys will not
   work, and you will need to generate new keys. This is a one-time change. Make sure
   you back up your secrets before changing your key.
-
-# Aegis Changelog
 
 ## [v0.17.3] - 2023-06-30
 

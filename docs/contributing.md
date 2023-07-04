@@ -103,36 +103,52 @@ logically grouped commands:
         ℹ️ This Makefile assumes you use Minikube and Docker
         ℹ️ for most operations.
 --------------------------------------------------------------------
+  Using Docker for Mac?
+        ➡ 'make mac-tunnel' to proxy to the internal registry.
 
   Using Minikube? If DOCKER_HOST and MINIKUBE_ACTIVE_DOCKERD are
   not set, then run: eval $(minikube -p minikube docker-env)
-        ➡ $DOCKER_HOST            :
-        ➡ $MINIKUBE_ACTIVE_DOCKERD:
+        ➡ $DOCKER_HOST            : 
+        ➡ $MINIKUBE_ACTIVE_DOCKERD: 
 --------------------------------------------------------------------
   Prep/Cleanup:
-        ˃ make k8s-delete;make k8s-start;
-        ˃ make clean;
+          ˃ make k8s-delete;make k8s-start;
+          ˃ make clean;
 --------------------------------------------------------------------
   Testing:
     ⦿ Istanbul images:
-        ˃ make build-local;make deploy-local;make test-local;
+          ˃ make build-local;make deploy-local;make test-local;
+    ⦿ Istanbul FIPS images:
+          ˃ make build-local;make deploy-fips-local;make test-local;
     ⦿ Photon images:
-        ˃ make build-local;make deploy-photon-local;make test-local;
-    ⦿ Istanbul (remote) images:
-        ˃ make build;make deploy;make test-remote;
-    ⦿ Photon (remote) images:
-        ˃ make build;make deploy-photon;make test-remote
---------------------------------------------------------------------
-  Tagging:
-        ˃ make tag;
+          ˃ make build-local;make deploy-photon-local;make test-local;
+    ⦿ Photon FIPS images:
+          ˃ make build-local;make deploy-photon-fips-local;make test-local;
 --------------------------------------------------------------------
   Example Use Cases:
-        ˃ make example-sidecar-deploy(-local);
-        ˃ make example-sdk-deploy(-local);
-        ˃ make example-multiple-secrets-deploy(-local);
+    Using local images:
+          ˃ make example-sidecar-deploy-local;
+          ˃ make example-sdk-deploy-local;
+          ˃ make example-multiple-secrets-deploy-local;
+    Using remote images:
+          ˃ make example-sidecar-deploy;
+          ˃ make example-sdk-deploy;
+          ˃ make example-multiple-secrets-deploy;
+--------------------------------------------------------------------
+ Do these at the build server only!
+   Building and Remote Testing:
+     ⦿ Istanbul (remote) images:
+         ˃ make build;make deploy;make test-remote;
+     ⦿ Istanbul FIPS (remote) images:
+         ˃ make build;make deploy-fips;make test-remote;
+     ⦿ Photon (remote) images:
+         ˃ make build;make deploy-photon;make test-remote;
+     ⦿ Photon FIPS (remote) images:
+         ˃ make build;make deploy-photon-fips;make test-remote;
+   Tagging:
+         ˃ make tag;
 --------------------------------------------------------------------
 {% endraw %}
-
 ```
 
 ## Building, Deploying, and Testing

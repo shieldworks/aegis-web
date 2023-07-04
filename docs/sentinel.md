@@ -72,37 +72,39 @@ Output:
 
 ```text 
 usage: aegis [-h|--help] [-l|--list] [-k|--use-k8s] [-d|--delete] [-a|--append]
-             [-n|--namespace "<value>"] [-b|--store "<value>"] [-w|--workload
-             "<value>"] [-s|--secret "<value>"] [-t|--template "<value>"]
-             [-f|--format "<value>"] [-e|--encrypt]
+             [-n|--namespace "<value>"] [-i|--input-keys "<value>"] [-b|--store
+             "<value>"] [-w|--workload "<value>"] [-s|--secret "<value>"]
+             [-t|--template "<value>"] [-f|--format "<value>"] [-e|--encrypt]
 
              Assigns secrets to workloads.
 
 Arguments:
 
-  -h  --help       Print help information
-  -l  --list       lists all registered workloads.. Default: false
-  -k  --use-k8s    update an associated Kubernetes secret upon save. Overrides
-                   AEGIS_SAFE_USE_KUBERNETES_SECRETS.. Default: false
-  -d  --delete     delete the secret associated with the workload.. Default:
-                   false
-  -a  --append     append the secret to the existing secret collection
-                   associated with the workload.. Default: false
-  -n  --namespace  the namespace of the Kubernetes Secret to create.. Default:
-                   default
-  -b  --store      backing store type (file|memory|cluster). Overrides
-                   AEGIS_SAFE_BACKING_STORE.
-  -w  --workload   name of the workload (i.e. the '$name' segment of its
-                   ClusterSPIFFEID
-                   ('spiffe://trustDomain/workload/$name/…')).
-  -s  --secret     the secret to store for the workload.
-  -t  --template   the template used to transform the secret stored.
-  -f  --format     the format to display the secrets in. Has effect only when
-                   `-t` is provided. Valid values: yaml, json, and none.
-                   Defaults to none.
-  -e  --encrypt    returns an encrypted version of the secret if used with
-                   `-s`; decrypts the secret before registering it to the
-                   workload if used with `-s` and `-w`.
+  -h  --help        Print help information
+  -l  --list        lists all registered workloads.. Default: false
+  -k  --use-k8s     update an associated Kubernetes secret upon save. Overrides
+                    AEGIS_SAFE_USE_KUBERNETES_SECRETS.. Default: false
+  -d  --delete      delete the secret associated with the workload.. Default:
+                    false
+  -a  --append      append the secret to the existing secret collection
+                    associated with the workload.. Default: false
+  -n  --namespace   the namespace of the Kubernetes Secret to create.. Default:
+                    default
+  -i  --input-keys  A string containing the private and public Age keys and AES
+                    seed, each separated by '\n'.
+  -b  --store       backing store type (file|memory) (default: file). Overrides
+                    AEGIS_SAFE_BACKING_STORE.
+  -w  --workload    name of the workload (i.e. the '$name' segment of its
+                    ClusterSPIFFEID
+                    ('spiffe://trustDomain/workload/$name/…')).
+  -s  --secret      the secret to store for the workload.
+  -t  --template    the template used to transform the secret stored.
+  -f  --format      the format to display the secrets in. Has effect only when
+                    `-t` is provided. Valid values: yaml, json, and none.
+                    Defaults to none.
+  -e  --encrypt     returns an encrypted version of the secret if used with
+                    `-s`; decrypts the secret before registering it to the
+                    workload if used with `-s` and `-w`.. Default: false
 ```
 
 Note that based on your **Aegis Sentinel** version the output of the above
@@ -374,4 +376,25 @@ kubectl describe secret aegis-secret-billing -n finance
 #   ====
 #   USERNAME:  137 bytes
 #   PASSWORD:  196 bytes
+```
+
+## Setting the Master Secret Manually
+
+**Aegis Safe** uses a master secret to encrypt the secrets that are stored.
+Typically, this master secret is stored as a Kubernetes secret for your 
+convenience. However, if you want you can set `AEGIS_MANUAL_KEY_INPUT` to
+`"true"` and provide the master secret manually.
+
+Although this approach enhances security, it also means that you will have to
+provide the master secret to **Aegis Safe** whenever the pod is evicted, or
+crashes, or restarts for any reason. Since, this brings a mild operational
+inconvenience, it is not enabled by default.
+
+```bash 
+{% raw %}kubectl exec "$SENTINEL" -n aegis-system -- aegis \
+  --input-keys "AGE-SECRET-KEY-1RZU…\nage1…\na6…ceec"
+  
+# Output:
+#
+# OK{% endraw %}
 ```

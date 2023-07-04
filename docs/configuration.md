@@ -123,22 +123,31 @@ If not provided, it will default to:
 
 If not given, defaults to `"/data"`.
 
-### AEGIS_SAFE_AGE_KEY_PATH
+### AEGIS_CRYPTO_KEY_PATH
 
-`AEGIS_SAFE_AGE_KEY_PATH` is where **Aegis Safe** will fetch the `"key.txt"`
+`AEGIS_CRYPTO_KEY_PATH` is where **Aegis Safe** will fetch the `"key.txt"`
 that contains the encryption keys.
 
 If not given, it will default to `"/key/key.txt"`.
 
-### AEGIS_SAFE_AGE_KEY_SECRET_NAME
+### AEGIS_CRYPTO_KEY_NAME
 
-`AEGIS_SAFE_AGE_KEY_SECRET_NAME` is how the age secret key is referenced by
+`AEGIS_CRYPTO_KEY_NAME` is how the age secret key is referenced by
 name inside **Aegis Safe**’s code. If not set, defaults to `"aegis-safe-age-key"`.
 
 If you change the value of this environment variable, make sure to change the 
 relevant `Secret` and `Deployment` YAML manifests too. The easiest way to do 
 this is to do a project wide search and find and replace places where reference
 `"aegis-safe-age-key"` to your new name of choice.
+
+### AEGIS_MANUAL_KEY_INPUT
+
+`AEGIS_MANUAL_KEY_INPUT` is used to tell **Aegis Safe** to bypass generating
+the master crypto key and instead use the key provided by the operator using
+**Aegis Sentinel**. Defaults to `"false"`.
+
+When set to `"true"`, **Aegis Safe** will not respond to API requests until a
+a master key is provided.
 
 ### AEGIS_SAFE_SECRET_NAME_PREFIX
 
