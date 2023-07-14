@@ -28,7 +28,10 @@ edit this page on <strong>GitHub</strong> ✏️</a></p>
 
 ## Recent Updates
 
-* …
+* Fixed an issue related to SPIRE crashing when using the edge version of
+  SPIRE controller manager 
+  ([#374](https://github.com/shieldworks/aegis/issues/476) — 
+  [@abhishek44sharma](https://github.com/abhishek44sharma)).
 
 ## [v0.18.0] - 2023-07-03
 
