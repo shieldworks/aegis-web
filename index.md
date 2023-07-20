@@ -7,7 +7,7 @@
 #     .\_/.
 #
 
-layout: homepage
+layout: default
 keywords: aegis, secrets management, secrets store, Kubernetes
 
 title: Aegis
@@ -53,13 +53,65 @@ grid_navigation:
   url: '/timeline'
 ---
 
-<div style='padding:56.25% 0 0 0;position:relative;'>
+## 🎉 Important Announcement: Aegis is Transitioning to VMware Secrets Manager for Cloud-Native Apps 🎉
+
+Dear Aegis Community,
+
+I am excited to announce that Aegis, your trusted open-source project for secrets 
+management, is transitioning to a new home under VMware’s umbrella, with the new 
+name “**VMware Secrets Manager for Cloud-Native Apps*” 
+(*or Secrets Manager for short*).
+
+This decision was not made lightly, but it is the best step forward for our 
+community. Under VMware, the project will gain increased visibility, robust 
+support, and a thriving ecosystem to accelerate its growth. Rest assured, the 
+project will remain open-source, and I will continue to serve as the 
+core maintainer.
+
+Here’s what to expect in the coming weeks:
+
+1. We will continue contributing to the current Aegis repository
+   (<https://github.com/shieldworks/aegis>) and synchronizing it with the 
+   private VMware repository. During this period, we will modify the code and rename 
+   instances of “Aegis” as “VMware Secrets Manager.”
+2. The public repo will be synchronized with the private repo under VMware’s GitHub.
+3. Our documentation website (<https://aegis.ist/>) will undergo name and branding 
+   changes. While the content will remain the same, you may notice differences in 
+   the theme and references to “VMware Secrets Manager for Cloud-Native Apps” 
+   instead of Aegis.
+4. The documentation GitHub repository (Mhttps://github.com/shieldworks/aegis-web/>) 
+   will be merged into the main repository (<https://github.com/shieldworks/aegis>) 
+   to expedite the transition.
+5. Once the code is ready, we will submit it for VMware Open Source’s due 
+   diligence and implement any changes based on their feedback.
+6. Upon completing these steps, the project under VMware will become open to 
+   public contribution. We will then archive the existing repositories with a 
+   note directing users to the current code at VMware’s GitHub.
+
+To ensure a seamless transition, we will continue to publish artifacts to 
+DockerHub during this process.
+
+We are grateful for your support and understanding during this transition. 
+
+This move will give Aegis the resources to grow and serve our community better. 
+
+Please feel free to reach out if you have any questions or concerns.
+
+During this process, I’ll be transparent and inform you using various channels 
+I have used.
+
+Best Regards,
+
+Volkan Özçelik
+
+Core Maintainer, Aegis
+
+
+<!--div style='padding:56.25% 0 0 0;position:relative;'>
   <iframe src='https://vimeo.com/showcase/10074951/embed' 
     allowfullscreen frameborder='0' 
     style='position:absolute;top:0;left:0;width:100%;height:100%;'></iframe>
-</div>
-
-
+</div-->
 
 [spiffe]: https://spiffe.io/
 [age]: https://age-encryption.org/
