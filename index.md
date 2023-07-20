@@ -59,7 +59,7 @@ Dear Aegis Community,
 
 I am excited to announce that Aegis, your trusted open-source project for secrets 
 management, is transitioning to a new home under VMware’s umbrella, with the new 
-name “**VMware Secrets Manager for Cloud-Native Apps*” 
+name “*VMware Secrets Manager for Cloud-Native Apps*” 
 (*or Secrets Manager for short*).
 
 This decision was not made lightly, but it is the best step forward for our 
