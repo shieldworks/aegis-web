@@ -18,7 +18,7 @@ Please note that the core functionality remains the same, though under
 the new organization and project name. Any future updates and enhancements
 will be carried out in the new repository.
 
-[For all future activities, please follow the new repository][new-aegis].
+[**For all future activities, please follow the new repository**][new-aegis].
 
 [new-aegis]: https://github.com/vmware-tanzu/secrets-manager "VMware Secrets Manager for Cloud-Native Apps"
 
