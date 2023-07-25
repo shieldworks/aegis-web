@@ -64,9 +64,11 @@ name “*VMware Secrets Manager for Cloud-Native Apps*”
 
 This decision was not made lightly, but it is the best step forward for our 
 community. Under VMware, the project will gain increased visibility, robust 
-support, and a thriving ecosystem to accelerate its growth. Rest assured, the 
-project will remain open-source, and I will continue to serve as the 
-core maintainer.
+support, and a thriving ecosystem to accelerate its growth. 
+
+<p style="background: #edc910; color: #000000;padding:1em;margin:1em 0 1em 0;">
+Rest assured, <strong>the project will remain open-source</strong>, and I 
+(<em>Volkan Özçelik</em>) will continue to serve as the core maintainer.</p>
 
 Here’s what to expect in the coming weeks:
 
@@ -79,7 +81,7 @@ Here’s what to expect in the coming weeks:
    changes. While the content will remain the same, you may notice differences in 
    the theme and references to “VMware Secrets Manager for Cloud-Native Apps” 
    instead of Aegis.
-4. The documentation GitHub repository (Mhttps://github.com/shieldworks/aegis-web/>) 
+4. The documentation GitHub repository (<https://github.com/shieldworks/aegis-web/>) 
    will be merged into the main repository (<https://github.com/shieldworks/aegis>) 
    to expedite the transition.
 5. Once the code is ready, we will submit it for VMware Open Source’s due 
